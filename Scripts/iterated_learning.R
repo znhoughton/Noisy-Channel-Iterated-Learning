@@ -11,7 +11,7 @@ noisy_channel_learning_prod_noise = function(p_theta, N, prior_mu, nu, p_noise, 
     
     prior_noise = rbinom(n = 1, size = 1, prob = 1-prior_prob_noise)
     
-    if (generated_word == prior_noise) { #if we hear A and B
+    if (generated_word == prior_noise) { #if the speaker produces A and B and intends to produce A and B, or produces A and B but intends to produce B and A
       
       un_normalized_p_hat_alpha = (alpha_1 / (alpha_1 + alpha_2)) * (1 - p_noise)
       un_normalized_p_hat_nonalpha = (1 - (alpha_1 / (alpha_1 + alpha_2))) * p_noise
