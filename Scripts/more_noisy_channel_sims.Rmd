@@ -955,10 +955,10 @@ no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
 #tic()
-new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1)) 
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1)) 
 #toc()
 
-write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6_pnoise_0_producer_nonoise.csv')
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6_pnoise_0_producer_nonoise.csv')
 new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6_pnoise_0_producer_nonoise.csv')
 #test_df = df %>% group_by(word_row) %>% nest()
 
@@ -1007,10 +1007,10 @@ no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
 #tic()
-new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))# to practice using that library)
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))# to practice using that library)
 #toc()
 
-write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.75_pnoise_0_producer_nonoise.csv')
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.75_pnoise_0_producer_nonoise.csv')
 
 new_df = read_csv('../Sims Data/nsims_1000_genpref_0.75_pnoise_0_producer_nonoise.csv')
 plot_data = new_df #%>%
@@ -1063,10 +1063,10 @@ no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
 #tic()
-new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))# to practice using that library)
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))# to practice using that library)
 #toc()
 
-write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.5_pnoise_0_producer_nonoise.csv')
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.5_pnoise_0_producer_nonoise.csv')
 new_df = read_csv('../Sims Data/nsims_1000_genpref_0.5_pnoise_0_producer_nonoise.csv')
 plot_data = new_df #%>%
   #filter(generation %in% c(1,100,500))
