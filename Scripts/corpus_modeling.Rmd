@@ -1,0 +1,18 @@
+---
+title: "Corpus Modeling"
+author: "Zach"
+date: "2024-01-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Corpus Modeling
+
+In this script we will apply our iterative learning function to the corpus of binomials from [cite morgan and levy evolang paper].
+
+```{r}
+
+```
