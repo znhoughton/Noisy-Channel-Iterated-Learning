@@ -7,12 +7,47 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(furrr)
+source('iterated_learning.R')
 ```
 
 ## Corpus Modeling
 
 In this script we will apply our iterative learning function to the corpus of binomials from [cite morgan and levy evolang paper].
 
-```{r}
+### Load Corpus
 
+```{r}
+corpus = read_csv("../Corpus Data/corpus.csv")
+```
+
+### Apply iterated learning function to corpus data
+
+```{r}
+n_gen = 500
+n_sims = 10 #small number of sims because I don't want to wait 10 years for results
+nu = 10
+p_noise = 0
+prior_prob_noise = 0
+
+
+simulations_of_corpus = future_map_dfr(corpus, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..13, prior_mu = ..15, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' ..13)) #we use future_map_dfr() to parralelize the function, since it doesn't matter what order the function is run in.
+
+write_csv(new_df, '../Sims Data/corpus_sim_results.csv')
+new_df = read_csv('../Sims Data/corpus_sim_results.csv')
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  #facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  theme_bw()
 ```

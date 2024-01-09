@@ -16,7 +16,7 @@ library(tictoc)
 source('iterated_learning.R')
 ```
 
-## Speaker vs Listener Noise 
+## Speaker vs Listener Noise
 
 In this section we'll manipulate the relationship between speaker (prior_noise) and listener (p_noise).
 
@@ -25,37 +25,29 @@ In this section we'll manipulate the relationship between speaker (prior_noise) 
 We'll keep p_theta equal to 0.5 and prior_mu equal to 0.6.
 
 ```{r warning = F, message = F}
-n_gen = 500
-n_sims = 1000
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
 p_theta = 0.5 #initial p_theta value
 
 nu = 10
-p_noise = 1/100
-prior_prob_noise = 1/1000
+p_noise = 1/100 #listener noise
+prior_prob_noise = 1/1000 #speaker noise
 
-
-#N = 100
-WordA = 'WordA'
-WordB = 'WordB'
 prior_mu = 0.6
 
-#df = as.data.frame(c(50, 100, 500, 1000, 10000))
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
 
-#no_cores = availableCores() - 1
-#plan(multisession, workers = no_cores)
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
 
 
-#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1)) # we use purr::pmap_dfr() here to apply our function because it's a bit cleaner (and because I want to practice using that 
-#toc()
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
 
 #write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
 new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
 
 
-plot_data = new_df #%>%
-  #filter(generation %in% c(1,100,500))
-  #ungroup() %>%
-  #filter(word_row %in% sample(1:nrow(data_sliced), size = 6))
+plot_data = new_df 
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram() +
@@ -66,6 +58,104 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
 
 ### p_noise = 0.001, prior_noise = 0.01
 
+```{r warning = F, message = F}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 1/1000 #listener noise
+prior_prob_noise = 1/100 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
+new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+```
+
 ### p_noise = 0.05, prior_noise = 0.01
 
+```{r warning = F, message = F}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 1/20 #listener noise
+prior_prob_noise = 1/100 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
+new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+```
+
 ### p_noise = 0.01, prior_noise = 0.05
+
+```{r warning = F, message = F}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 1/100 #listener noise
+prior_prob_noise = 1/20 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
+new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+```
