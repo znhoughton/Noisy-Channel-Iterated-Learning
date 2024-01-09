@@ -1,0 +1,71 @@
+---
+title: "Speaker vs Listener Noise Ratios"
+author: "Zach"
+date: "2024-01-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(profvis)
+#nstall.packages("microbenchmark")
+library(microbenchmark)
+library(furrr)
+library(tictoc)
+source('iterated_learning.R')
+```
+
+## Speaker vs Listener Noise 
+
+In this section we'll manipulate the relationship between speaker (prior_noise) and listener (p_noise).
+
+### p_noise = 0.01, prior_noise = 0.001
+
+We'll keep p_theta equal to 0.5 and prior_mu equal to 0.6.
+
+```{r warning = F, message = F}
+n_gen = 500
+n_sims = 1000
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 1/100
+prior_prob_noise = 1/1000
+
+
+#N = 100
+WordA = 'WordA'
+WordB = 'WordB'
+prior_mu = 0.6
+
+#df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+#no_cores = availableCores() - 1
+#plan(multisession, workers = no_cores)
+
+
+#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1)) # we use purr::pmap_dfr() here to apply our function because it's a bit cleaner (and because I want to practice using that 
+#toc()
+
+#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
+new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+
+
+plot_data = new_df #%>%
+  #filter(generation %in% c(1,100,500))
+  #ungroup() %>%
+  #filter(word_row %in% sample(1:nrow(data_sliced), size = 6))
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+```
+
+### p_noise = 0.001, prior_noise = 0.01
+
+### p_noise = 0.05, prior_noise = 0.01
+
+### p_noise = 0.01, prior_noise = 0.05
