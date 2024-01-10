@@ -26,7 +26,7 @@ corpus = read_csv("../Corpus Data/corpus.csv") %>%
 
 ### Apply iterated learning function to corpus data
 
-We'll use p_noise = 0.01 and prior_prob_noise = 0.005
+We'll use p_noise = 0.05 and prior_prob_noise = 0.01
 
 ```{r warning = F, message = F}
 n_gen = 500
@@ -73,3 +73,97 @@ ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
 
 
 ```
+
+###  p_noise = 0.02 and prior_prob_noise = 0.01 
+
+```{r}
+n_gen = 500
+n_sims = 10 #small number of sims because I don't want to wait 10 years for results
+nu = 10 #reasonable prior
+p_noise = 0.02
+prior_prob_noise = 0.01 #we only get regularization if the listeners' inferred noise is greater than the producers' noise
+
+file_path = '../Sims Data/corpus_sim_results2.csv'
+#corpus = corpus[1:2,] # for debugging
+
+
+if (!file.exists(file_path)) {
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+simulations_of_corpus = future_pmap_dfr(corpus, ~data.frame(iterated_learning(n_gen = n_gen, 
+                                                            n_sims = n_sims, 
+                                                            p_theta = 0.5, 
+                                                            N = ..16, 
+                                                            prior_mu = ..15, 
+                                                            nu = nu, 
+                                                            p_noise = p_noise,
+                                                            prior_prob_noise = prior_prob_noise, 
+                                                                       last_gen_only = T), 'FrequencyPer350Mil' = ..16, 'WordA' = ..1, 'WordB' = ..2, 'RelFreq' = ..14, 'GenPref' = ..15)) #we use future_map_dfr() to parralelize the function, since it doesn't matter what order the function is run in.
+
+write_csv(simulations_of_corpus, '../Sims Data/corpus_sim_results2.csv')
+
+} else {
+simulations_of_corpus = read_csv('../Sims Data/corpus_sim_results2.csv')
+}
+
+plot_data = simulations_of_corpus 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  #facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  theme_bw()
+```
+
+### p_noise = 0.02 and prior_prob_noise = 0.005
+
+```{r warning = F, message = F}
+n_gen = 500
+n_sims = 10 #small number of sims because I don't want to wait 10 years for results
+nu = 10 #reasonable prior
+p_noise = 0.02
+prior_prob_noise = 0.005 #we only get regularization if the listeners' inferred noise is greater than the producers' noise
+
+file_path = '../Sims Data/corpus_sim_results3.csv'
+#corpus = corpus[1:2,] # for debugging
+
+
+if (!file.exists(file_path)) {
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+simulations_of_corpus = future_pmap_dfr(corpus, ~data.frame(iterated_learning(n_gen = n_gen, 
+                                                            n_sims = n_sims, 
+                                                            p_theta = 0.5, 
+                                                            N = ..16, 
+                                                            prior_mu = ..15, 
+                                                            nu = nu, 
+                                                            p_noise = p_noise,
+                                                            prior_prob_noise = prior_prob_noise, 
+                                                                       last_gen_only = T), 'FrequencyPer350Mil' = ..16, 'WordA' = ..1, 'WordB' = ..2, 'RelFreq' = ..14, 'GenPref' = ..15)) #we use future_map_dfr() to parralelize the function, since it doesn't matter what order the function is run in.
+
+write_csv(simulations_of_corpus, '../Sims Data/corpus_sim_results3.csv')
+
+} else {
+simulations_of_corpus = read_csv('../Sims Data/corpus_sim_results3.csv')
+}
+
+plot_data = simulations_of_corpus 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  #facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  theme_bw()
+```
+
+###  
