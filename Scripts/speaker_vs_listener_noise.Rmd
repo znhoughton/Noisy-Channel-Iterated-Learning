@@ -40,12 +40,17 @@ df = as.data.frame(c(50, 100, 500, 1000, 10000))
 no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
+file_path = '../Sims Data/speaker_.001_listener_.01.csv'
 
-#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+if (!file.exists(file_path)) {
 
-#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
-new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
 
+write_csv(new_df, '../Sims Data/speaker_.001_listener_.01.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.001_listener_.01.csv')
+}
 
 plot_data = new_df 
 
@@ -74,12 +79,18 @@ df = as.data.frame(c(50, 100, 500, 1000, 10000))
 no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
+file_path = '../Sims Data/speaker_.01_listener_.001.csv'
 
-#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+if (!file.exists(file_path)) {
 
-#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
-new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
 
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.001.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.001.csv')
+}
 
 plot_data = new_df 
 
@@ -108,12 +119,18 @@ df = as.data.frame(c(50, 100, 500, 1000, 10000))
 no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
+file_path = '../Sims Data/speaker_.01_listener_.05.csv'
 
-#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+if (!file.exists(file_path)) {
 
-#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
-new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
 
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.05.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.05.csv')
+}
 
 plot_data = new_df 
 
@@ -143,11 +160,18 @@ df = as.data.frame(c(50, 100, 500, 1000, 10000))
 no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
+file_path = '../Sims Data/speaker_.05_listener_.01.csv'
 
-#new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+if (!file.exists(file_path)) {
 
-#write_csv(new_df, '../Sims Data/nsims_1000_genpref_0.6.csv')
-new_df = read_csv('../Sims Data/nsims_1000_genpref_0.6.csv')
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.05_listener_.01.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.05_listener_.01.csv')
+}
 
 
 plot_data = new_df 
@@ -158,4 +182,255 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   facet_grid(generation ~ Overall.Frequency) +
   theme_bw()
 
+```
+
+So clearly we get regularization when the listener assumes greater noise than the speaker produces. Let's try a few simulations where the difference is small:
+
+### p_noise = 0.01, prior_noise = 0.005
+
+```{r warning = F, message = F}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.005 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.005.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.005.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.005.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+```
+
+### p_noise = 0.01, prior_noise = 0.009
+
+```{r warning = F, message = F}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.009 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.009.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.009.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.009.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+```
+
+What if we have the same noise level but 1000 generations? (Maybe it takes longer to get to the stable generation with such a small difference between speaker and listener noise levels.
+
+```{r warning = F, message = F}
+n_gen = 1000 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.009 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.009_ngen1000.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.009_ngen1000.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen1000.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+
+```
+
+### p_noise = 0.01, prior_noise = 0.0075
+
+```{r}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.0075 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.0075.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.0075.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.0075.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+```
+
+### 2000 generations
+
+Since it seems like these eventually regularize, let's confirm this by trying a simulation with 2000 generations.
+
+```{r warning = F, message = F}
+n_gen = 2000 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.009 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.009_ngen1000.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.009_ngen2000.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen2000.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
+```
+
+```{r warning = F, message = F}
+n_gen = 2000 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.0075 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.0075_ngen2000.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.0075_ngen2000.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.0075_ngen2000.csv')
+}
+
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram() +
+  geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  theme_bw()
 ```
