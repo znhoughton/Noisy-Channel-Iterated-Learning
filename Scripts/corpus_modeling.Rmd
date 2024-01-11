@@ -74,7 +74,7 @@ ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
 
 ```
 
-###  p_noise = 0.02 and prior_prob_noise = 0.01 
+### p_noise = 0.02 and prior_prob_noise = 0.01
 
 ```{r}
 n_gen = 500
@@ -166,4 +166,4 @@ ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
   theme_bw()
 ```
 
-###  
+### 
