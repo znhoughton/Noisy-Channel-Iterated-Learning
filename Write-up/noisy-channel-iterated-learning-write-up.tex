@@ -1,0 +1,351 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  jou,floatsintext]{apa6}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+\makeatletter
+\usepackage{etoolbox}
+\patchcmd{\maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\keywords{keywords}
+\usepackage{dblfloatfix}
+
+
+\usepackage{csquotes}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Frequency-dependent regularization arises from a noisy-channel processing system},
+  pdfauthor={Zachary Houghton1 \& Emily Morgan1},
+  pdflang={en-EN},
+  pdfkeywords={keywords},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Frequency-dependent regularization arises from a noisy-channel processing system}
+\author{Zachary Houghton\textsuperscript{1} \& Emily Morgan\textsuperscript{1}}
+\date{}
+
+
+\shorttitle{Frequency-dependent regularization arises from a noisy-channel processing system}
+
+\authornote{
+
+Correspondence concerning this article should be addressed to Zachary Houghton, . E-mail: \href{mailto:znhoughton@ucdavis.ed}{\nolinkurl{znhoughton@ucdavis.ed}}
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} University of California, Davis}
+
+\abstract{%
+This is an abstract.
+}
+
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{introduction}
+
+Speakers often have great flexible in their choices to convey a meaning. For example, speakers are often confronted with many different ways to express the same meaning. A customer might ask whether a store sells ``radios and televisions'', but they could have easily asked whether the store sells ``televisions and radios.'' However, despite conveying the same meaning, speakers sometimes have strong preferences for one choice over competing choices. For example, speakers prefer \emph{men and women} to \emph{women and men} (Benor \& Levy, 2006; Morgan \& Levy, 2016a), and this preference is more extreme for higher frequency items (e.g., \emph{bread and butter}). That is, higher-frequency items typically have more polarized preferences (Liu \& Morgan, 2020, 2021; Morgan \& Levy, 2015, 2016b). Specifically, Morgan and Levy (2015) demonstrated that more frequent binomial expressions (e.g., \emph{bread and butter}) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). Further, Liu and Morgan (2020) demonstrated that this phenomenon holds true for the dative alternation in English as well (\emph{give him the ball} vs \emph{give the ball to him}).
+
+How does this polarization for high-frequency items arise? One possibility is that it occurs as a consequence of imperfect transmission between generations. For example, Morgan and Levy (2016b) demonstrated that in an iterated-learning paradigm (Reali \& Griffiths, 2009), this frequency-dependent regularization can arise from an interaction between a frequency-independent bias and transmission across generations.
+
+However, it is unclear what the process driving the frequency-independent bias in language could be. One possibility is that this is a product of noisy-channel processing (Gibson, Bergen, \& Piantadosi, 2013). That is, listeners are confronted with a great deal of noise in the form of perception errors (perhaps due to a noisy environment) and even production errors (speakers don't always say what they intended to) (Gibson et al., 2013). In order to overcome these errors, a processing system must take into account the noise of the system, and this claim is backed up by experimental evidence (e.g., Felty, Buchwald, Gruenenfelder, \& Pisoni, n.d.). For example, Felty et al. (n.d.) demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. Gibson et al. (2013) further demonstrated two key points: First, when people are presented with an implausible sentence (e.g., \emph{the mother gave the candle the daughter}), participants are more likely to interpret the sentence as being the plausible version (e.g., \emph{the mother gave the candle to the daughter}) if there is increased noise (e.g., by adding errors to the filler items). Second, increasing the likelihood of implausible events increases the rate of interpretations of the implausible version of the sentence. Indeed these results are consistent with the predictions of their noisy-channel processing model (Equation 1), which operationalizes noisy-channel processing as a Bayesian process where a listener computes the probability that their perception matches the speakers intended utterance as being proportional to the likelihood of the intended utterance times the probability of the intended utterance being corrupted to the perceived utterance.
+
+\begin{equation}
+\label{eq:gibsonnoisy}
+P(S_i|s_p) \propto P(S_i) P(S_i \to S_p)
+\end{equation}
+
+It is possible that the frequency-dependent regularization we see in Morgan and Levy (2016b) is a product of listeners' noisy-channel processing. Thus, the present study examines whether Gibson et al. (2013)'s noisy-channel processing model can account for frequency-dependent regularization.
+
+\section{Dataset}\label{dataset}
+
+Following Morgan and Levy (2016b), we use Morgan and Levy (2015)'s corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial (i.e., compositional ordering preferences, estimated from the above constraints) and observed binomial orderings.
+
+\section{Model}\label{model}
+
+Following Reali and Griffiths (2009), we use a 2-alternative iterated learning paradigm. A learner hears N tokens of a binomial expression and then produces N tokens for the next generation. After hearing N tokens, they will infer the probability, \(\theta\), of the alphabetical form of the binomial. Using that probability, they will then produce N tokens for the next generation, and this process will continue iteratively.
+
+The prior probability of a binomial's ordering is operationalized using the beta distribution (following Morgan \& Levy, 2016b). Specifically, we treat the generative preference for a given binomial as the prior for our model. This is operationalized using the beta distribution with \(\mu_{prior}\), which is the generative preference for a given binomial, and \(\nu\), which determines how tightly clustered around the means the draws are. In other words, a higher \(\nu\) corresponds to a stronger belief in the prior probability. Thus the prior probability for a given binomial in its alphabetical form is estimated as:
+
+\begin{equation}
+\label{eq:thetaPrior}
+P(\theta_{prior}) = \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu}
+\end{equation}
+
+and the probability of hearing it in non-alphabetical form is \(1-P(\theta_{prior})\).
+
+This is then used as the prior in Gibson et al. (2013)'s noisy-channel processing model, such that if a listener hears the alphabetical form of a binomial they update the probability of hearing it in alphabetical form according to the following parametrization,
+
+\begin{equation}
+\label{eq:phatAlpha}
+\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot p_{noise}
+\end{equation}
+
+where \(1 - p_{noise}\) is a fixed parameter for every binomial. They also update the probability of hearing the non-alphabetical form:
+
+\begin{equation}
+\label{eq:phatNonalpha}
+\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-p_{noise})
+\end{equation}
+
+If the listener hears the non-alphabetical form of the binomial, they update using the same equations, but with a slight change to the noise parameter:
+
+\begin{equation}
+\label{eq:phatAlpha2}
+\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot p_{noise} 
+\end{equation}
+
+and,
+
+\begin{equation}
+\label{eq:phatNonalpha2}
+\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-p_{noise}) 
+\end{equation}
+
+Once the learner finishes hearing N tokens, they then produce N tokens generated binomially, where \(\theta_1\) is their inferred probability of the alphabetical form of the given binomial:
+
+\begin{equation}
+\label{eq:binomialProd}
+P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
+\end{equation}
+
+For the first generation of learners, \(\theta_1\) is set to 0.5.
+
+Finally, when the learner produces the N tokens, there is a possibility the speaker will make an error. This is also generated binomially, with \(\theta_1\) being a fixed parameter, which is the probability that the producer makes an error.
+
+\section{Results}\label{results}
+
+First we show that the noisy-channel processing model can predict frequency-dependent regularization across generations, presented in Figure \ref{fig:regularizationplot1}.
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/speaker_noise_001_listener_01} 
+
+}
+
+\caption{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.}\label{fig:regularizationplot1}
+\end{figure}
+
+Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter (Figure \ref{fig:regularizationplot2}).
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/speaker_noise_01_listener_001} 
+
+}
+
+\caption{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.}\label{fig:regularizationplot2}
+\end{figure}
+
+\section{Conclusion}\label{conclusion}
+
+\newpage
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-benor2006}
+Benor, S. B., \& Levy, R. (2006). The chicken or the egg? A probabilistic analysis of english binomials. \emph{Language}, 233278. Retrieved from \url{https://www.jstor.org/stable/4490157?casa_token=nPxM9z86cbUAAAAA:cLIZ78yyFzblh6KJgwHgoxpDRnUfo1wHk1_rFYxcLnsARSdBKtGIHkm75tgFQH09tQtWPE92pt_N9sTWdnASq45rsS83g07MWkgI2qAoMcSFJZ2WgDE}
+
+\bibitem[\citeproctext]{ref-feltyMisperceptionsSpokenWords}
+Felty, R. A., Buchwald, A., Gruenenfelder, T. M., \& Pisoni, D. B. (n.d.). \emph{Misperceptions of spoken words: Data from a random sample of american english words}. Retrieved from \url{https://www.robfelty.com/academic-files/docs/FeltyEtAl2013.pdf}
+
+\bibitem[\citeproctext]{ref-gibsonNoisy2013}
+Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013). Rational integration of noisy evidence and prior semantic expectations in sentence interpretation. \emph{Proceedings of the National Academy of Sciences}, \emph{110}(20), 8051--8056. \url{https://doi.org/10.1073/pnas.1216438110}
+
+\bibitem[\citeproctext]{ref-liu2020}
+Liu, Z., \& Morgan, E. (2020). \emph{Frequency-dependent regularization in constituent ordering preferences.} Retrieved from \url{https://www.cognitivesciencesociety.org/cogsci20/papers/0751/0751.pdf}
+
+\bibitem[\citeproctext]{ref-liu2021}
+Liu, Z., \& Morgan, E. (2021). \emph{Frequency-dependent regularization in syntactic constructions}. 387389. Retrieved from \url{https://aclanthology.org/2021.scil-1.41.pdf}
+
+\bibitem[\citeproctext]{ref-morganModelingIdiosyncraticPreferences2015}
+Morgan, E., \& Levy, R. (2015). \emph{Modeling idiosyncratic preferences : How generative knowledge and expression frequency jointly determine language structure}. 1649--1654.
+
+\bibitem[\citeproctext]{ref-morgan2016}
+Morgan, E., \& Levy, R. (2016a). Abstract knowledge versus direct experience in processing of binomial expressions. \emph{Cognition}, \emph{157}, 384--402. \url{https://doi.org/10.1016/j.cognition.2016.09.011}
+
+\bibitem[\citeproctext]{ref-morganFrequencydependentRegularizationIterated2016}
+Morgan, E., \& Levy, R. (2016b). Frequency-dependent regularization in iterated learning. \emph{The Evolution of Language: Proceedings of the 11th International Conference (EVOLANGX11)}, (2015).
+
+\bibitem[\citeproctext]{ref-realiEvolutionFrequencyDistributions2009}
+Reali, F., \& Griffiths, T. L. (2009). The evolution of frequency distributions: Relating regularization to inductive biases through iterated learning. \emph{Cognition}, \emph{111}(3), 317--328. \url{https://doi.org/10.1016/j.cognition.2009.02.012}
+
+\end{CSLReferences}
+
+
+\end{document}

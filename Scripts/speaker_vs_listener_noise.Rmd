@@ -56,9 +56,14 @@ plot_data = new_df
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram() +
-  geom_density() +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
+
+#ggsave('./Write-up/Figures/speaker_noise_001_listener_01.png')
 ```
 
 ### p_noise = 0.001, prior_noise = 0.01
@@ -96,9 +101,11 @@ plot_data = new_df
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram() +
-  geom_density() +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
   theme_bw()
+
+ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png')
 ```
 
 ### p_noise = 0.05, prior_noise = 0.01

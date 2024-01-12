@@ -1,52 +1,30 @@
 ---
-title             : "The title"
-shorttitle        : "Title"
+title             : "Frequency-dependent regularization arises from a noisy-channel processing system"
+shorttitle        : "Frequency-dependent regularization arises from a noisy-channel processing system"
 
 author: 
-  - name          : "First Author"
+  - name          : "Zachary Houghton"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
-    email         : "my@email.com"
-    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
-      - "Conceptualization"
-      - "Writing - Original Draft Preparation"
-      - "Writing - Review & Editing"
-  - name          : "Ernst-August Doelle"
-    affiliation   : "1,2"
-    role:
-      - "Writing - Review & Editing"
-      - "Supervision"
+    address       : ""
+    email         : "znhoughton@ucdavis.ed"
+  - name          : "Emily Morgan"
+    affiliation   : "1"
 
 affiliation:
   - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
-  - id            : "2"
-    institution   : "Konstanz Business School"
+    institution   : "University of California, Davis"
 
-authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
 
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  One or two sentences to put the results into a more **general context**.
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
-  <!-- https://tinyurl.com/ybremelq -->
+            This is an abstract.
   
 keywords          : "keywords"
-wordcount         : "X"
+#wordcount         : "X"
 
-bibliography      : "r-references.bib"
-
-floatsintext      : no
-linenumbers       : yes
+bibliography      : ["r-references.bib", "library.bib", "references.bib"]
+floatsintext      : yes
+linenumbers       : no
 draft             : no
 mask              : no
 
@@ -54,13 +32,15 @@ figurelist        : no
 tablelist         : no
 footnotelist      : no
 
-classoption       : "man"
+classoption       : "jou"
 output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
 library("papaja")
 r_refs("r-references.bib")
+
+
 ```
 
 ```{r analysis-preferences}
@@ -69,23 +49,104 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
-# Methods
+# Introduction
 
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+Speakers often have great flexible in their choices to convey a meaning. For example, speakers are often confronted with many different ways to express the same meaning. A customer might ask whether a store sells "radios and televisions", but they could have easily asked whether the store sells "televisions and radios." However, despite conveying the same meaning, speakers sometimes have strong preferences for one choice over competing choices. For example, speakers prefer *men and women* to *women and men* [@morgan2016; @benor2006], and this preference is more extreme for higher frequency items (e.g., *bread and butter*). That is, higher-frequency items typically have more polarized preferences [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015]. Specifically, @morganModelingIdiosyncraticPreferences2015 demonstrated that more frequent binomial expressions (e.g., *bread and butter*) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). Further, @liu2020 demonstrated that this phenomenon holds true for the dative alternation in English as well (*give him the ball* vs *give the ball to him*).
 
-## Participants
+How does this polarization for high-frequency items arise? One possibility is that it occurs as a consequence of imperfect transmission between generations. For example, @morganFrequencydependentRegularizationIterated2016 demonstrated that in an iterated-learning paradigm [@realiEvolutionFrequencyDistributions2009], this frequency-dependent regularization can arise from an interaction between a frequency-independent bias and transmission across generations. <!--# go into more depth about this paper -->
 
-## Material
+However, it is unclear what the process driving the frequency-independent bias in language could be. One possibility is that this is a product of noisy-channel processing [@gibsonNoisy2013]. That is, listeners are confronted with a great deal of noise in the form of perception errors (perhaps due to a noisy environment) and even production errors (speakers don't always say what they intended to) [@gibsonNoisy2013]. In order to overcome these errors, a processing system must take into account the noise of the system, and this claim is backed up by experimental evidence [e.g., @feltyMisperceptionsSpokenWords]. For example, @feltyMisperceptionsSpokenWords demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. @gibsonNoisy2013 further demonstrated two key points: First, when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), participants are more likely to interpret the sentence as being the plausible version (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding errors to the filler items). Second, increasing the likelihood of implausible events increases the rate of interpretations of the implausible version of the sentence. Indeed these results are consistent with the predictions of their noisy-channel processing model (Equation 1), which operationalizes noisy-channel processing as a Bayesian process where a listener computes the probability that their perception matches the speakers intended utterance as being proportional to the likelihood of the intended utterance times the probability of the intended utterance being corrupted to the perceived utterance.
 
-## Procedure
+```{=tex}
+\begin{equation}
+(\#eq:gibsonnoisy)
+P(S_i|s_p) \propto P(S_i) P(S_i \to S_p)
+\end{equation}
+```
+It is possible that the frequency-dependent regularization we see in @morganFrequencydependentRegularizationIterated2016 is a product of listeners' noisy-channel processing. Thus, the present study examines whether @gibsonNoisy2013's noisy-channel processing model can account for frequency-dependent regularization.
 
-## Data analysis
+# Dataset
 
-We used `r cite_r("r-references.bib")` for all our analyses.
+Following @morganFrequencydependentRegularizationIterated2016, we use @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial (i.e., compositional ordering preferences, estimated from the above constraints) and observed binomial orderings.
+
+# Model
+
+Following @realiEvolutionFrequencyDistributions2009, we use a 2-alternative iterated learning paradigm. A learner hears N tokens of a binomial expression and then produces N tokens for the next generation. After hearing N tokens, they will infer the probability, $\theta$, of the alphabetical form of the binomial. Using that probability, they will then produce N tokens for the next generation, and this process will continue iteratively.
+
+The prior probability of a binomial's ordering is operationalized using the beta distribution [following @morganFrequencydependentRegularizationIterated2016]. Specifically, we treat the generative preference for a given binomial as the prior for our model. This is operationalized using the beta distribution with $\mu_{prior}$, which is the generative preference for a given binomial, and $\nu$, which determines how tightly clustered around the means the draws are. In other words, a higher $\nu$ corresponds to a stronger belief in the prior probability. Thus the prior probability for a given binomial in its alphabetical form is estimated as:
+
+```{=tex}
+\begin{equation}
+(\#eq:thetaPrior)
+P(\theta_{prior}) = \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu}
+\end{equation}
+```
+and the probability of hearing it in non-alphabetical form is $1-P(\theta_{prior})$.
+
+This is then used as the prior in @gibsonNoisy2013's noisy-channel processing model, such that if a listener hears the alphabetical form of a binomial they update the probability of hearing it in alphabetical form according to the following parametrization,
+
+```{=tex}
+\begin{equation}
+(\#eq:phatAlpha)
+\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot p_{noise}
+\end{equation}
+```
+where $1 - p_{noise}$ is a fixed parameter for every binomial. They also update the probability of hearing the non-alphabetical form:
+
+```{=tex}
+\begin{equation}
+(\#eq:phatNonalpha)
+\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-p_{noise})
+\end{equation}
+```
+If the listener hears the non-alphabetical form of the binomial, they update using the same equations, but with a slight change to the noise parameter:
+
+```{=tex}
+\begin{equation}
+(\#eq:phatAlpha2)
+\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot p_{noise} 
+\end{equation}
+```
+and,
+
+```{=tex}
+\begin{equation}
+(\#eq:phatNonalpha2)
+\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-p_{noise}) 
+\end{equation}
+```
+Once the learner finishes hearing N tokens, they then produce N tokens generated binomially, where $\theta_1$ is their inferred probability of the alphabetical form of the given binomial:
+
+```{=tex}
+\begin{equation}
+(\#eq:binomialProd)
+P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
+\end{equation}
+```
+For the first generation of learners, $\theta_1$ is set to 0.5.
+
+Finally, when the learner produces the N tokens, there is a possibility the speaker will make an error. This is also generated binomially, with $\theta_1$ being a fixed parameter, which is the probability that the producer makes an error.
 
 # Results
 
-# Discussion
+First we show that the noisy-channel processing model can predict frequency-dependent regularization across generations, presented in Figure \@ref(fig:regularizationplot1).
+
+(ref:regularizationPlot1Cap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.
+
+```{r regularizationplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:regularizationPlot1Cap)'}
+knitr::include_graphics('Figures/speaker_noise_001_listener_01.png')
+```
+
+Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter (Figure \@ref(fig:regularizationplot2)).
+
+(ref:regularizationPlot2Cap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.
+
+```{r regularizationplot2, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:regularizationPlot2Cap)'}
+knitr::include_graphics('Figures/speaker_noise_01_listener_001.png')
+
+```
+
+# Conclusion
 
 \newpage
 
