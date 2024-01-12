@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(furrr)
+library(ggpubr)
 source('iterated_learning.R')
 ```
 
@@ -60,17 +61,34 @@ simulations_of_corpus = read_csv('../Sims Data/corpus_sim_results.csv')
 
 plot_data = simulations_of_corpus 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+our_model_p1 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   #facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
   theme_bw()
 
-ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+corpus_p1 = ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  xlab('Relative Frequency') +
+  ylab('Density') +
   theme_bw()
 
+corpus_p2 = ggplot(data = corpus, aes(x = GenPref, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  xlab('Generative Preferences') +
+  ylab('Density') +
+  theme_bw()
+
+ggarrange(corpus_p1, corpus_p2, nrow = 1)
+#ggsave('./Write-up/Figures/corpus_plots.png')
+
+ggarrange(corpus_p1, our_model_p1)
+
+#ggsave('./Write-up/Figures/corpus_plot_and_ours.png')
 
 ```
 
@@ -154,16 +172,26 @@ simulations_of_corpus = read_csv('../Sims Data/corpus_sim_results3.csv')
 
 plot_data = simulations_of_corpus 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+our_model_p1 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   #facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
   theme_bw()
 
-ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+corpus_p1 = ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  xlab('Relative Frequency') +
+  ylab('Density') +
   theme_bw()
+
+
+ggarrange(corpus_p1, our_model_p1)
+
+#ggsave('./Write-up/Figures/corpus_plot_and_ours.png')
+#dev.off()
 ```
 
 ### 

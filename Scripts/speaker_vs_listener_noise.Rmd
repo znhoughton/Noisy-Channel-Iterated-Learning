@@ -14,6 +14,7 @@ library(microbenchmark)
 library(furrr)
 library(tictoc)
 source('iterated_learning.R')
+
 ```
 
 ## Speaker vs Listener Noise
@@ -55,7 +56,7 @@ new_df = read_csv('../Sims Data/speaker_.001_listener_.01.csv')
 plot_data = new_df 
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
+  geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
   xlab(expression(mu[posterior]))+
@@ -100,12 +101,12 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.001.csv')
 plot_data = new_df 
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
+  geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
   theme_bw()
 
-ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png')
+#ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png')
 ```
 
 ### p_noise = 0.05, prior_noise = 0.01
