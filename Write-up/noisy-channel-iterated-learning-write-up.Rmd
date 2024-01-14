@@ -22,11 +22,11 @@ abstract: |
 keywords          : "Frequency-dependent regularization, Noisy-channel processing, Psycholinguistics"
 #wordcount         : "X"
 
-bibliography      : ["r-references.bib", "library.bib", "references.bib"]
-floatsintext      : yes
-linenumbers       : no
-draft             : no
-mask              : no
+bibliography: ["references.bib", "library.bib", "references.bib"]
+floatsintext: yes
+linenumbers: no
+draft: no
+mask: no
 
 figurelist        : no
 tablelist         : no
@@ -51,23 +51,25 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 # Introduction
 
-Speakers often have great flexibility in their choices to convey a meaning. For example, speakers are often confronted with many different ways to express the same meaning. A customer might ask whether a store sells "radios and televisions", but they could have just as naturally asked whether the store sells "televisions and radios." However, despite conveying the same meaning, speakers sometimes have strong preferences for one choice over competing choices. For example, speakers prefer *men and women* to *women and men* [@morganAbstractKnowledgeDirect2016; @benor2006], and this preference is often more extreme for higher frequency items (e.g., *bread and butter*). That is, higher-frequency items typically have more polarized preferences [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015; @morganAbstractKnowledgeDirect2016]. However, it remains unclear what the process driving this phenomenon, called frequency-dependent regularization, is. In the present paper we examine whether a noisy-channel processing model [@gibsonNoisy2013] combined with transmission across generations can account for frequency-dependent regularization.
+Speakers often have great flexibility in their choices to convey a meaning. For example, speakers are often confronted with many different ways to express the same meaning. A customer might ask whether a store sells "radios and televisions", but they could have just as naturally asked whether the store sells "televisions and radios." However, despite conveying the same meaning, speakers sometimes have strong preferences for one choice over competing choices [e.g., preference for *men and women* over *women and men*, @benor2006; @morgan2016]. These preferences are driven to some extent by generative preferences (e.g., preference for short words before long words), however they are sometimes violated by idiosyncratic preferences [e.g., *ladies and gentlemen* preferred despite a general men-before-women generative preference, @morganFrequencydependentRegularizationIterated2016].
+
+Interestingly, ordering preferences are often more extreme for higher frequency items (e.g., *bread and butter*). That is, higher-frequency items typically have more polarized preferences [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015; @morgan2016]. However, it is still unclear what processeses this phenomenon, called frequency-dependent regularization, is driven by. In the present paper we examine whether a noisy-channel processing model [@gibsonNoisy2013] combined with transmission across generations [@realiEvolutionFrequencyDistributions2009] can account for frequency-dependent regularization.
 
 ## Frequency-dependent regularization
 
-In the last decade, frequency-dependent regularization – the phenomena of more frequent items having more extreme ordering preferences – has been documented for a variety of different constructions in English [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015]. For example, @morganModelingIdiosyncraticPreferences2015 demonstrated that more frequent binomial expressions (e.g., *bread and butter*) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). These ordering preferences are also not simply a result of abstract ordering preferences [e.g., short words before long words @morganAbstractKnowledgeDirect2016].
+In the last decade, frequency-dependent regularization – the phenomena of more frequent items having more extreme ordering preferences – has been documented for a variety of different constructions in English [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015]. For example, @morganModelingIdiosyncraticPreferences2015 demonstrated that more frequent binomial expressions (e.g., *bread and butter*) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). These ordering preferences are also not simply a result of abstract ordering preferences [e.g., short words before long words, @morgan2016].
 
-Additionally, @liu2020 demonstrated this effect holds true for the dative alternation in English (e.g., *the ball to him* vs *give him the ball*). Specifically, they demonstrated higher frequency verbs have more polarized preferences with respect to the dative alternation. Similarly, @liu2021 that Adjective-Adjective-Noun orderings also show frequency-dependent regularization (as a function of the head noun's frequency).
+Additionally, @liu2020 demonstrated this effect holds true for the dative alternation in English (e.g., *give* *the ball to him* vs *give him the ball*). Specifically, they demonstrated higher frequency verbs have more polarized preferences with respect to the dative alternation. Similarly, @liu2021 showed that Adjective-Adjective-Noun orderings also show frequency-dependent regularization. That is, adjective-adjective-Nouns with higher head noun frequencies show stronger ordering preferences, even after taking into account generative preferences of adjective orderings.
 
 How does this polarization for high-frequency items arise? One possibility is that it occurs as a consequence of imperfect transmission between generations. For example, @morganFrequencydependentRegularizationIterated2016 demonstrated that in an iterated-learning paradigm [@realiEvolutionFrequencyDistributions2009], this frequency-dependent regularization can arise from an interaction between a frequency-independent bias and transmission across generations. Specifically, they used an iterated learning paradigm [following @realiEvolutionFrequencyDistributions2009] and demonstrated that by introducing a frequency-independent regularization bias, after several generations the model predicted frequency-*dependent* regularization. However, it is unclear what process in language is analogous to the frequency-independent bias.
 
 ## Noisy-channel Processing
 
-One possibility is that frequency-dependent regularization arises as a product of noisy-channel processing [@gibsonNoisy2013]. That is, listeners are confronted with a great deal of noise in the form of perception errors (perhaps due to a noisy environment) and even production errors (speakers don't always say what they intended to) [@gibsonNoisy2013]. In order to overcome these errors, a processing system must take into account the noise of the system.
+One possibility is that frequency-dependent regularization arises as a product of noisy-channel processing [@gibsonNoisy2013]. That is, listeners are confronted with a great deal of noise in the form of perception errors (e.g., a noisy environment) and even production errors [speakers don't always say what they intended to, @gibsonNoisy2013]. In order to overcome these errors, a processing system must take into account the noise of the system.
 
 Indeed, there is evidence that our processing system does take noise into account. For example, @ganongPhoneticCategorizationAuditory1980 presented people with word-nonword continuums, where the VOT of the initial consonant was manipulated (e.g., *task*-*dask*). He found that when people are presented with a word in which the initial phoneme was close to the VOT boundary, people will process the segment as being the word, rather than the non-word, even when the VOT was incongruous with the interpretation. Further, @feltyMisperceptionsSpokenWords demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. This suggests that misperceptions may sometimes actually be a consequence of noisy-channel processing (rather than a failure of our perceptual system).
 
-In order to account for findings like these, @gibsonNoisy2013 developed a computational model that demonstrated how a system might take into account noise. Specifically, their model operationalizes noisy-channel processing as a Bayesian process where a listener computes the probability that their perception matches the speakers intended utterance as being proportional to the likelihood of the intended utterance times the probability of the intended utterance being corrupted to the perceived utterance (See equation 1):
+In order to account for findings like these, @gibsonNoisy2013 developed a computational model that demonstrated how a system might take into account noise. Specifically, their model operationalizes noisy-channel processing as a Bayesian process where a listener estimates the probability that their perception matches the speaker's intended utterance. Specifically, this is operationlized as being proportional to the likelihood of the intended utterance multiplied by the probability of the intended utterance being corrupted to the perceived utterance (See Equation \@ref(eq:gibsonnoisy)):
 
 ```{=tex}
 \begin{equation}
@@ -75,9 +77,11 @@ In order to account for findings like these, @gibsonNoisy2013 developed a comput
 P(S_i|s_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
 ```
-@gibsonNoisy2013's model made a variety of interesting predictions. For example, the model predicted that when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), they should be more likely to interpret the plausible version of the sentence (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding errors to the filler items). Their model also predicted that increasing the likelihood of implausible events should increase the rate of implausible interpretations of the sentence. Interestingly both of these results were born out in their experimental data, suggesting that humans do engage a noisy-channel system in processing.
+@gibsonNoisy2013's model made a variety of interesting predictions. For example, the model predicted that when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), they should be more likely to interpret the plausible version of the sentence (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding errors to the filler items). Their model also predicted that increasing the likelihood of implausible events should increase the rate of implausible interpretations of the sentence. Interestingly both of these results were born out in their experimental data, suggesting that humans do utilize a noisy-channel system in processing.
 
-Given the evidence of noisy-channel processing, it is possible that the frequency-dependent regularization that @morganFrequencydependentRegularizationIterated2016 saw is a product of listeners' noisy-channel processing. That is, perhaps the regularization bias responsible for the regularization across generations is a consequence of noisy-channel processing. Thus, the present study examines whether @gibsonNoisy2013's noisy-channel processing model can also predict frequency-dependent regularization.
+## Present Study
+
+Given the evidence of noisy-channel processing, it is possible that the frequency-dependent regularization that @morganFrequencydependentRegularizationIterated2016 saw is a product of listeners' noisy-channel processing. That is, perhaps the regularization bias responsible for the regularization across generations is a consequence of noisy-channel processing. Thus, the present study examines whether @gibsonNoisy2013's noisy-channel processing model can also predict frequency-dependent regularization across generations of language transmission.
 
 # Dataset
 
@@ -171,6 +175,20 @@ However, when we introduce noise (Figure \@ref(fig:regularizationplot1), we see 
 knitr::include_graphics('Figures/speaker_noise_001_listener_01.png')
 ```
 
+Further, the disparity of the noise affects the rate of regularization. Increased noise results in weaker regularization (i.e., less regularization for lower frequency items, see @ref(fig:absoluteDiffMatters)), however a larger relative difference between the speaker and listener noise parameters increases both the strength and the speed of the regularization (see @ref(fig:fasterSlowerReg)).
+
+(ref:fasterSlowerRegCap) A plot of simulations with different noise parameters at 500 (top plots) and 2000 (bottom plots) generations. For the left plots, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the right plots, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.
+
+```{r fasterSlowerReg, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:fasterSlowerRegCap)'}
+knitr::include_graphics('Figures/fasterSlowerReg.png')
+```
+
+(ref:absoluteDiffMattersCap) A plot of simulations with different noise parameters, but the same relative difference between the speaker and listener noise parameters. The top plot For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the relative difference between the listener and speaker noise parameters for both plots was the same (0.009).
+
+```{r absoluteDiffMatters, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:absoluteDiffMattersCap)'}
+knitr::include_graphics('Figures/absolute_matters.png')
+```
+
 Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter (Figure \@ref(fig:regularizationplot2)).
 
 (ref:regularizationPlot2Cap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.
@@ -180,9 +198,9 @@ knitr::include_graphics('Figures/speaker_noise_01_listener_001.png')
 
 ```
 
-It is useful to revisit here what the speaker and listener noise parameters are. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal eachother, since they essentially cancel eachother out (everytime a speaker makes an error, the listener is accounting for it, thus we get convergence to the prior).
+It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal eachother, since they essentially cancel eachother out (everytime a speaker makes an error, the listener is accounting for it, thus we get convergence to the prior).
 
-Thus our model makes a novel prediction: listeners are inferring more noise than speakers are actually producing.
+Thus our model makes a novel prediction: In order to account for frequency-dependent regularization, listeners must be inferring more noise than speakers are actually producing (according to our model).
 
 ## Corpus Data
 
@@ -195,6 +213,8 @@ knitr::include_graphics('Figures/corpus_plot_and_ours.png')
 ```
 
 # Conclusion
+
+Our results demonstrate the frequency-dependent regularization emerges from a noisy-channel processing model [@gibsonNoisy2013] in an iterative-learning paradigm [@realiEvolutionFrequencyDistributions2009] when listeners assume more noise in the environment than the speakers actually produce.
 
 -noisy channel processing
 

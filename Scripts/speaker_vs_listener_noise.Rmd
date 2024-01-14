@@ -13,6 +13,7 @@ library(profvis)
 library(microbenchmark)
 library(furrr)
 library(tictoc)
+library(ggpubr)
 source('iterated_learning.R')
 
 ```
@@ -55,7 +56,7 @@ new_df = read_csv('../Sims Data/speaker_.001_listener_.01.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+p_higher_reg = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
@@ -64,7 +65,8 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
-#ggsave('./Write-up/Figures/speaker_noise_001_listener_01.png')
+ggarrange(p_lower_reg, p_higher_reg, ncol = 1)
+#ggsave('./Write-up/Figures/higher_and_lower_reg.png')
 ```
 
 ### p_noise = 0.001, prior_noise = 0.01
@@ -107,6 +109,100 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   theme_bw()
 
 #ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png')
+```
+
+### p_noise = 0.1, prior_noise = 0.091
+
+Here we keep the relative difference the same
+
+```{r}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.1 #listener noise
+prior_prob_noise = 0.091 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.1_listener_.091.csv'
+
+if (!file.exists(file_path)) {
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.1_listener_.091.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.1_listener_.091.csv')
+}
+
+plot_data = new_df 
+
+rel_dif2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1.0)) +
+  theme_bw()
+
+
+ggarrange(rel_dif2, p_higher_reg, nrow = 2)
+#ggsave('./Write-up/Figures/absolute_matters.png')
+```
+
+### p_noise = 0.1, prior_noise = 0.01
+
+Here, p_noise is still 10x greater than prior_noise, but the relative difference is different:
+
+```{r}
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.1 #listener noise
+prior_prob_noise = 1/100 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.1_listener_.01.csv'
+
+if (!file.exists(file_path)) {
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.1_listener_.01.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.1_listener_.01.csv')
+}
+
+plot_data = new_df 
+
+ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  theme_bw()
+
+#ggsave('./Write-up/Figures/speaker_noise_01_listener_1.png')
 ```
 
 ### p_noise = 0.05, prior_noise = 0.01
@@ -228,10 +324,13 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.005.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+p_lower_reg = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
 ```
@@ -270,12 +369,14 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.009.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+ngen_500_2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
-
 ```
 
 What if we have the same noise level but 1000 generations? (Maybe it takes longer to get to the stable generation with such a small difference between speaker and listener noise levels.
@@ -313,9 +414,12 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen1000.csv')
 plot_data = new_df 
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
 ```
@@ -354,10 +458,13 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.0075.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+ngen_500 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
 ```
 
@@ -397,10 +504,13 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen2000.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+ngen_2000_2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
 ```
 
@@ -436,9 +546,58 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.0075_ngen2000.csv')
 
 plot_data = new_df 
 
-ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
-  geom_histogram() +
-  geom_density() +
+ngen_2000 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
   facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0.5, 1)) +
+  theme_bw()
+
+ggarrange(ngen_500_2, ngen_500, ngen_2000_2, ngen_2000, nrow = 2, ncol = 2)
+
+#ggsave('./Write-up/Figures/fasterSlowerReg.png')
+```
+
+```{r}
+n_gen = 2000 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.0075 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.0075_ngen2000.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.0075_ngen2000.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.0075_ngen2000.csv')
+}
+
+
+plot_data = new_df 
+
+ngen_2000 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  facet_grid(generation ~ Overall.Frequency) +
+  xlab(expression(mu[posterior]))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 ```
