@@ -1,52 +1,35 @@
 ---
-title             : "Frequency-dependent regularization arises from a noisy-channel processing model"
-shorttitle        : "Frequency-dependent regularization arises from a noisy-channel processing model"
+title: "Frequency-dependent regularization arises from a noisy-channel processing model"
+bibliography: ["library.bib", "references.bib"]
+csl: apa6.csl
+document-params: "10pt, letterpaper"
 
-author: 
-  - name          : "Zachary Houghton"
-    affiliation   : "1"
-    corresponding : yes    # Define only one corresponding author
-    address       : ""
-    email         : "znhoughton@ucdavis.ed"
-  - name          : "Emily Morgan"
-    affiliation   : "1"
+author-information: > 
+    \author{{\large \bf Zachary Houghton (znhoughton@ucdavis.edu)} \\ Department of Linguistics, 1 Shields Avenue \\ Davis, CA 95616 USA
+    \AND {\large \bf Emily Morgan (eimorgan@ucdavis.edu)} \\ Department of Linguistics, 1 Shields Avenue \\ Davis, CA 95616 USA}
 
-affiliation:
-  - id            : "1"
-    institution   : "University of California, Davis"
-
-
-abstract: |
-            Language often has different ways to express the same or similar meanings. Despite this, however, people seem to have preferences for some ways over others. For example, people overwhelmingly prefer *bread and butter* to *butter and bread*. Previous research has demonstrated that these ordering preferences grow stronger with frequency (i.e., frequency-dependent regularization). In this paper we demonstrate that this frequency-dependent regularization can be accounted for by @gibsonNoisy2013's noisy-channel processing model. We also show that this regularization can only be accounted for if the listener infers more noise than the speaker produces. Finally, we show that the model can account for the language distribution of binomial ordering preferences.
-  
-keywords          : "Frequency-dependent regularization, Noisy-channel processing, Psycholinguistics"
-#wordcount         : "X"
-
-bibliography: ["references.bib", "library.bib", "references.bib"]
-floatsintext: yes
-linenumbers: no
-draft: no
-mask: no
-
-figurelist        : no
-tablelist         : no
-footnotelist      : no
-
-classoption       : "jou"
-output            : papaja::apa6_pdf
+abstract: >
+    Language often has different ways to express the same or similar meanings. Despite this, however, people seem to have preferences for some ways over others. For example, people overwhelmingly prefer *bread and butter* to *butter and bread*. Previous research has demonstrated that these ordering preferences grow stronger with frequency (i.e., frequency-dependent regularization). In this paper we demonstrate that this frequency-dependent regularization can be accounted for by @gibsonNoisy2013's noisy-channel processing model. We also show that this regularization can only be accounted for if the listener infers more noise than the speaker produces. Finally, we show that the model can account for the language distribution of binomial ordering preferences.
+    
+keywords: >
+    Frequency-dependent regularization; Noisy-channel processing; Psycholinguistics.
+    
+output: cogsci2016::cogsci_paper
+#final-submission: \cogscifinalcopy
 ---
 
-```{r setup, include = FALSE}
-library("papaja")
-#r_refs("r-references.bib")
-
-
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=3, fig.height=3, fig.crop = F, 
+                      fig.pos = "tb", fig.path='figs/',
+                      echo=F, warning=F, cache=F, 
+                      message=F, sanitize = T)
 ```
 
-```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```{r, libraries}
+library(png)
+library(grid)
+library(ggplot2)
+library(xtable)
 ```
 
 # Introduction
@@ -69,11 +52,11 @@ One possibility is that frequency-dependent regularization arises as a product o
 
 Indeed, there is evidence that our processing system does take noise into account. For example, @ganongPhoneticCategorizationAuditory1980 presented people with word-nonword continuums, where the VOT of the initial consonant was manipulated (e.g., *task*-*dask*). He found that when people are presented with a word in which the initial phoneme was close to the VOT boundary, people will process the segment as being the word, rather than the non-word, even when the VOT was incongruous with the interpretation. Further, @feltyMisperceptionsSpokenWords demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. This suggests that misperceptions may sometimes actually be a consequence of noisy-channel processing (rather than a failure of our perceptual system).
 
-In order to account for findings like these, @gibsonNoisy2013 developed a computational model that demonstrated how a system might take into account noise. Specifically, their model operationalizes noisy-channel processing as a Bayesian process where a listener estimates the probability that their perception matches the speaker's intended utterance. Specifically, this is operationlized as being proportional to the likelihood of the intended utterance multiplied by the probability of the intended utterance being corrupted to the perceived utterance (See Equation \@ref(eq:gibsonnoisy)):
+In order to account for findings like these, @gibsonNoisy2013 developed a computational model that demonstrated how a system might take into account noise. Specifically, their model operationalizes noisy-channel processing as a Bayesian process where a listener estimates the probability that their perception matches the speaker's intended utterance. Specifically, this is operationlized as being proportional to the likelihood of the intended utterance multiplied by the probability of the intended utterance being corrupted to the perceived utterance (See Equation \ref{eq:gibsonnoisy}):
 
 ```{=tex}
 \begin{equation}
-(\#eq:gibsonnoisy)
+\label{eq:gibsonnoisy}
 P(S_i|s_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
 ```
@@ -85,11 +68,9 @@ Given the evidence of noisy-channel processing, it is possible that the frequenc
 
 # Dataset
 
-Following @morganFrequencydependentRegularizationIterated2016, we use @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial (i.e., compositional ordering preferences, estimated from the above constraints) and observed binomial orderings (the proportion of binomial orderings that are in alphabetical form for a given binomial). A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \@ref(fig:corpusplot1) , on the left and right respectively.
+Following @morganFrequencydependentRegularizationIterated2016, we use @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial (i.e., compositional ordering preferences, estimated from the above constraints) and observed binomial orderings (the proportion of binomial orderings that are in alphabetical form for a given binomial). A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \ref{fig:corpusplot1}, on the left and right respectively.
 
-(ref:corpusplotcaption1) The left plot is a plot of the relative orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.
-
-```{r corpusplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:corpusplotcaption1)'}
+```{r corpusplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'The left plot is a plot of the relative orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.'}
 knitr::include_graphics('Figures/corpus_plots.png')
 ```
 
@@ -101,7 +82,7 @@ The prior probability of a binomial's ordering is operationalized using the beta
 
 ```{=tex}
 \begin{equation}
-(\#eq:thetaPrior)
+\label{eq:thetaPrior}
 P(\theta_{prior}) = \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})}
 \end{equation}
 ```
@@ -111,7 +92,7 @@ This is then used as the prior in @gibsonNoisy2013's noisy-channel processing mo
 
 ```{=tex}
 \begin{equation}
-(\#eq:phatAlpha)
+\label{eq:phatAlpha}
 \hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot P(noise)
 \end{equation}
 ```
@@ -119,7 +100,7 @@ where $p_{noise}$ is a fixed parameter for every binomial, representing the prob
 
 ```{=tex}
 \begin{equation}
-(\#eq:phatNonalpha)
+\label{eq:phatNonalpha}
 \hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot (1-P(noise))
 \end{equation}
 ```
@@ -127,7 +108,7 @@ If the listener hears the non-alphabetical form of the binomial, they update usi
 
 ```{=tex}
 \begin{equation}
-(\#eq:phatAlpha2)
+\label{eq:phatAlpha2}
 \hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot P(noise) 
 \end{equation}
 ```
@@ -135,7 +116,7 @@ and the estimated probability of the non-alphabetical form is updated according 
 
 ```{=tex}
 \begin{equation}
-(\#eq:phatNonalpha2)
+\label{eq:phatNonalpha2}
 \hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-P(noise)) 
 \end{equation}
 ```
@@ -147,7 +128,7 @@ Once the learner finishes hearing N tokens, they then produce N tokens generated
 
 ```{=tex}
 \begin{equation}
-(\#eq:binomialProd)
+\label{eq:binomialProd}
 P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
 \end{equation}
 ```
@@ -157,43 +138,33 @@ When the learner produces the N tokens, there is also a possibility the speaker 
 
 ## Speaker vs Listener Noise
 
-First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^2] Instead we see convergence to the prior, which is expected. That is, @griffithsLanguageEvolutionIterated2007 demonstrated that when learners sample from the posterior, as the number of iterations increases, the stationary distribution converges to the prior. In other words, without any noise, each generation of learners produces data that is more and more similar to the prior, until convergence is reached (Figure \@ref(fig:noNoisePlot)).
+First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^2] Instead we see convergence to the prior, which is expected. That is, @griffithsLanguageEvolutionIterated2007 demonstrated that when learners sample from the posterior, as the number of iterations increases, the stationary distribution converges to the prior. In other words, without any noise, each generation of learners produces data that is more and more similar to the prior, until convergence is reached (Figure \ref{fig:noNoisePlot}).
 
 [^2]: All code and results can be found publicly available here: <https://github.com/znhoughton/Noisy-Channel-Iterated-Learning>
 
-(ref:noNoisePlotCap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that there is no frequency-dependent regularization apparent.
-
-```{r noNoisePlot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:noNoisePlotCap)'}
+```{r noNoisePlot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that there is no frequency-dependent regularization apparent.'}
 knitr::include_graphics('Figures/noNoise.png')
 ```
 
-However, when we introduce noise (Figure \@ref(fig:regularizationplot1)), we see that the model can predict frequency-dependent regularization across generations.
+However, when we introduce noise (Figure \ref{fig:regularizationplot1}), we see that the model can predict frequency-dependent regularization across generations.
 
-(ref:regularizationPlot1Cap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.
-
-```{r regularizationplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:regularizationPlot1Cap)'}
+```{r regularizationplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.'}
 knitr::include_graphics('Figures/speaker_noise_001_listener_01.png')
 ```
 
-Further, the disparity of the noise affects the rate of regularization. Increased noise results in weaker regularization (i.e., less regularization for lower frequency items, see Figure \@ref(fig:absolutediff)), however a larger relative difference between the speaker and listener noise parameters increases both the strength and the speed of the regularization (see Figure \@ref(fig:fasterslowerreg)).
+Further, the disparity of the noise affects the rate of regularization. Increased noise results in weaker regularization (i.e., less regularization for lower frequency items, see Figure \ref{fig:absolutediff}), however a larger relative difference between the speaker and listener noise parameters increases both the strength and the speed of the regularization (see Figure \ref{fig:fasterslowerreg}).
 
-(ref:fasterSlowerRegCap) A plot of simulations with different noise parameters at 500 (top plots) and 2000 (bottom plots) generations. For the left plots, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the right plots, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.
-
-```{r fasterslowerreg, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:fasterSlowerRegCap)'}
+```{r fasterslowerreg, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of simulations with different noise parameters at 500 (top plots) and 2000 (bottom plots) generations. For the left plots, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the right plots, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.'}
 knitr::include_graphics('Figures/fasterSlowerReg.png')
 ```
 
-(ref:absoluteDiffMattersCap) A plot of simulations with different noise parameters, but the same relative difference between the speaker and listener noise parameters. The top plot For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the relative difference between the listener and speaker noise parameters for both plots was the same (0.009).
-
-```{r absolutediff, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:absoluteDiffMattersCap)'}
+```{r absolutediff, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of simulations with different noise parameters, but the same relative difference between the speaker and listener noise parameters. The top plot For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the relative difference between the listener and speaker noise parameters for both plots was the same (0.009).'}
 knitr::include_graphics('Figures/absolute_matters.png')
 ```
 
-Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter (Figure \@ref(fig:regularizationplot2)).
+Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter (Figure \ref{fig:regularizationplot2}).
 
-(ref:regularizationPlot2Cap) A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.
-
-```{r regularizationplot2, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:regularizationPlot2Cap)'}
+```{r regularizationplot2, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.'}
 knitr::include_graphics('Figures/speaker_noise_01_listener_001.png')
 
 ```
@@ -204,11 +175,9 @@ Thus our model makes a novel prediction: In order to account for frequency-depen
 
 ## Corpus Data
 
-Finally, we now demonstrate that our model also predicts the language-wide distribution of binomial preference strengths seen in the corpus data. Specifically, we show that with $\nu$ set to 10, listener noise set to 0.02, and speaker noise set to 0.005, our model does a pretty good job of approximating the distribution in the corpus data (See Figure \@ref(fig:corpusourmodel)).
+Finally, we now demonstrate that our model also predicts the language-wide distribution of binomial preference strengths seen in the corpus data. Specifically, we show that with $\nu$ set to 10, listener noise set to 0.02, and speaker noise set to 0.005, our model does a pretty good job of approximating the distribution in the corpus data (See Figure \ref{fig:corpusourmodel}).
 
-(ref:corpusourmodelcap) A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the distribution of ordering preferences in the corpus data from @morganModelingIdiosyncraticPreferences2015. For our simulations, the binomial frequencies and generative preferences were matched with the corpus data. $\nu$ was set to 10, listener noise was set to 0.02, and speaker noise was set to 0.005.
-
-```{r corpusourmodel, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = '(ref:corpusourmodelcap)'}
+```{r corpusourmodel, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the distribution of ordering preferences in the corpus data from Morgan \\& Levy (2015). For our simulations, the binomial frequencies and generative preferences were matched with the corpus data. $\nu$ was set to 10, listener noise was set to 0.02, and speaker noise was set to 0.005.'}
 knitr::include_graphics('Figures/corpus_plot_and_ours.png') 
 ```
 
@@ -218,9 +187,15 @@ Our results demonstrate the frequency-dependent regularization emerges from a no
 
 Further our results suggest that in order to account for frequency-dependent regularization, listeners are inferring more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
 
-\newpage
-
 # References
 
-::: {#refs custom-style="Bibliography"}
-:::
+```{r}
+# References will be generated automatically by Pandoc and included here.
+# The following code is some latex to format the bibliography. Do not remove it.
+```
+
+```{=tex}
+\setlength{\parindent}{-0.1in} 
+\setlength{\leftskip}{0.125in}
+```
+\noindent
