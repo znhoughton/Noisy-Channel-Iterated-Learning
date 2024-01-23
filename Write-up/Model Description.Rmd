@@ -13,47 +13,66 @@ knitr::opts_chunk$set(echo = TRUE)
 
 At very step, learners hear N tokens with some in alphabetical (AandB) and some in nonalphabetical (BandA) order. After hearing a single token, learners compute $P(S_i = AandB|S_p)$ and update their beliefs about prior probability of the ordering for a given binomial, $P(S_i)$. The size of the update is proportional to how probable the learner believes the binomial ordering is.
 
-After hearing a token, learners compute $P(S_i = AandB|S_p)$ proportional to $P(S_i) \cdot P(S_i \to S_p)$. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $P(noise)$. $P(noise)$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's belief of the probability that the speaker intended to say AandB.
+After hearing a token, learners compute $P(S_i = AandB|S_p)$ proportional to $P(S_i) \cdot P(S_i \to S_p)$. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $P(noise)$. $P(noise)$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's belief of the probability of the intended order of the binomial.
 
-To initialize $P(S_i)$ before learners hear any data, we used the mean and concentration parametrization of the beta distribution. The mean ($\mu$) represents the expectation of the distribution (the mean value of draws from the distribution). The concentration parameter ($\nu$) describes how dense the distribution is.
+To initialize $P(S_i)$ before the learner hears any data, we used the mean and concentration parametrization of the beta distribution. The mean ($\mu$) represents the expectation of the distribution (the mean value of draws from the distribution). The concentration parameter ($\nu$) describes how dense the distribution is.
 
 Before the learner hears any data, $\mu$ is equal to the generative preference for the binomial (taken from [cite morgan and levy]. $\nu$ is a free parameter, set to 10 for all simulations in this paper.[^1]
 
 [^1]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
 
-We then use $P(S_i)$ and $P(noise)$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations. In particular, $P(S_i = AandB)$ = $\mu$, where $\mu$ = $\alpha_1$ / ($\alpha_1 + \alpha_2$) in the pseduco count parametrization. In fact, for updating we use the pseudocount parametrization, where $\alpha_1 = \mu \cdot \nu$ and $\alpha_2 = 1-\mu \cdot \nu$.
+We then use $P(S_i)$ and $P(noise)$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations.
 
-$$
+```{=tex}
+\begin{equation}
+\label{eq:praw}
+
 P_{raw}(S_i = AandB|S_p = AandB) = P(S_i = AandB) \cdot (1 -  P(noise))
-$$
 
-$$
+\end{equation}
+```
+```{=tex}
+\begin{equation}
+\label{eqpraw2}
+
 P_{raw}(S_i = BandA|AandB) = 1 - P(S_i = AandB) \cdot P(noise)
-$$
 
-These are then normalized:
+\end{equation}
+```
+In particular, $P(S_i = AandB)$ = $\mu$, where $\mu$ = $\alpha_1$ / ($\alpha_1 + \alpha_2$) in the pseduco count parametrization. In fact, for updating we use the pseudocount parametrization, where $\alpha_1 = \mu \cdot \nu$ and $\alpha_2 = 1-\mu \cdot \nu$.
 
-$$
+After calculating the unnormalized (raw) probabilities, they are then normalized:
+
+```{=tex}
+\begin{equation}
+\label{eq:phatalpha}
 \hat{P}(\alpha) = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}
-$$
-
-$$
+\end{equation}
+```
+```{=tex}
+\begin{equation}
+\label{eq:phatnotalpha}
 \hat{P}(\neg\alpha) = 1 - \hat{P}(\alpha)
-$$
-
+\end{equation}
+```
 We then update $\alpha_1'$ and $\alpha_2'$ to be used as the pseudocount parameters of $P(S_i)$ when the learner hears the next token. This update is done according to the following equation (note that for the update we use the pseudo count parametrization):
 
-$$
+```{=tex}
+\begin{equation}
+\label{eq:alpha1}
 \alpha_1' = \alpha_1 + \hat{P}(\alpha)
-$$
-
-$$
+\end{equation}
+```
+```{=tex}
+\begin{equation}
+\label{eq:alpha2}
 \alpha_2' = \alpha_2 + \hat{p}(\neg\alpha)
-$$
 
+\end{equation}
+```
 When the learner hears the next token, they use $\alpha_1'$ and $\alpha_2'$ to compute $P(S_i)$. Note that when learner hear AandB, they update their beliefs about the probability of both the alpahabetical *and* nonalphabetical forms of the binomial.
 
-When the learner is done hearing N tokens and updating their beliefs of $S_i$ for a given binomial, they then produce N tokens for the next generation of learners. These are generated binomially, where $\theta_1 = P(S_i=AandB)$ is the inferred probability of the alphabetical form of a given binomial:
+When the learner is done hearing N tokens and updating their beliefs of $P(S_i)$ for a given binomial, they then produce N tokens for the next generation of learners. These are generated binomially, where $\theta_1 = P(S_i=AandB)$ is the inferred probability of the alphabetical form of a given binomial:
 
 ```{=tex}
 \begin{equation}
@@ -61,6 +80,8 @@ When the learner is done hearing N tokens and updating their beliefs of $S_i$ fo
 P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
 \end{equation}
 ```
-When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. In order to model this, the speaker produces a token in the unintended order with probability $P(SpeakerNoise)$.
+When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. In order to model this, the speaker produces a token in the unintended order with probability $P(SpeakerNoise)$. This is a fixed parameter in the model and remains constant across binomials and generations.[^2]
+
+[^2]: Though future work may want to investigate the effects of the noise parameter also changing as a function of binomial frequency.
 
 This process continues iteratively for $ngen$ generations.
