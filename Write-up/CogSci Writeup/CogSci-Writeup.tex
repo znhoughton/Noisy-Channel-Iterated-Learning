@@ -76,11 +76,11 @@ some ways over others. For example, people overwhelmingly prefer
 has demonstrated that these ordering preferences grow stronger with
 frequency (i.e., frequency-dependent regularization). In this paper we
 demonstrate that this frequency-dependent regularization can be
-accounted for by Gibson, Bergen, \& Piantadosi (2013)'s noisy-channel
-processing model. We also show that this regularization can only be
-accounted for if the listener infers more noise than the speaker
-produces. Finally, we show that the model can account for the language
-distribution of binomial ordering preferences.
+accounted for by noisy-channel processing models (e.g., Gibson, Bergen,
+\& Piantadosi, 2013; Levy, 2008). We also show that this regularization
+can only be accounted for if the listener infers more noise than the
+speaker produces. Finally, we show that the model can account for the
+language-wide distribution of binomial ordering preferences.
 
 \textbf{Keywords:}
 Frequency-dependent regularization; Noisy-channel processing;
@@ -90,44 +90,45 @@ Psycholinguistics.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Speakers often have great flexibility in their choices to convey a
-meaning. For example, speakers are often confronted with many different
-ways to express the same meaning. A customer might ask whether a store
-sells ``radios and televisions'', but they could have just as naturally
-asked whether the store sells ``televisions and radios.'' However,
-despite conveying the same meaning, speakers sometimes have strong
-preferences for one choice over competing choices (e.g., preference for
-\emph{men and women} over \emph{women and men}, Benor \& Levy, 2006;
-Morgan \& Levy, 2016a). These preferences are driven to some extent by
-generative preferences (e.g., preference for short words before long
-words), however they are sometimes violated by idiosyncratic preferences
-(e.g., \emph{ladies and gentlemen} preferred despite a general
-men-before-women generative preference, Morgan \& Levy, 2016b).
+Speakers are often confronted with many different ways to express the
+same meaning. A customer might ask whether a store sells ``radios and
+televisions'', but they could have just as naturally asked whether the
+store sells ``televisions and radios.'' However, despite conveying the
+same meaning, speakers sometimes have strong preferences for one choice
+over competing choices (e.g., preference for \emph{men and women} over
+\emph{women and men}, Benor \& Levy, 2006; Morgan \& Levy, 2016a). These
+preferences are driven to some extent by generative preferences (e.g.,
+preference for short words before long words), however they are
+sometimes violated by idiosyncratic preferences (e.g., \emph{ladies and
+gentlemen} preferred despite a general men-before-women generative
+preference, Morgan \& Levy, 2016b).
 
-Interestingly, ordering preferences are often more extreme for higher
-frequency items (e.g., \emph{bread and butter}). That is,
-higher-frequency items typically have more polarized preferences (Liu \&
-Morgan, 2020, 2021; Morgan \& Levy, 2015, 2016b, 2016a). However, it is
-still unclear what processeses this phenomenon, called
-frequency-dependent regularization, is driven by. In the present paper
-we examine whether a noisy-channel processing model (Gibson et al.,
-2013) combined with transmission across generations (Reali \& Griffiths,
-2009) can account for frequency-dependent regularization.
+Interestingly, ordering preferences for certain constructions, such as
+binomial expressions, are often more extreme for higher frequency items
+(e.g., \emph{bread and butter}). That is, higher-frequency items
+typically have more polarized preferences (Liu \& Morgan, 2020, 2021;
+Morgan \& Levy, 2015, 2016b, 2016a). This phenomenon is called
+\emph{Frequency-dependent regularization}, and while there is evidence
+of it in several different constructions, it is still unclear what
+processeses this phenomenon is driven by. For example, it could be a
+consequence of learning processes or a consequence of sentence
+processing more broadly. In the present paper we examine whether a
+noisy-channel processing model (Gibson et al., 2013) combined with
+transmission across generations (Reali \& Griffiths, 2009) can account
+for frequency-dependent regularization.
 
 \hypertarget{frequency-dependent-regularization}{%
 \subsection{Frequency-dependent
 regularization}\label{frequency-dependent-regularization}}
 
-In the last decade, frequency-dependent regularization -- the phenomena
-of more frequent items having more extreme ordering preferences -- has
-been documented for a variety of different constructions in English (Liu
-\& Morgan, 2020, 2021; Morgan \& Levy, 2015, 2016b). For example, Morgan
-\& Levy (2015) demonstrated that more frequent binomial expressions
-(e.g., \emph{bread and butter}) are more strongly regularized (i.e., are
-preferred in one order overwhelmingly more than the alternative). These
-ordering preferences are also not simply a result of abstract ordering
-preferences (e.g., short words before long words, Morgan \& Levy,
-2016a).
+Frequency-dependent regularization has been documented for a variety of
+different constructions in English (Liu \& Morgan, 2020, 2021; Morgan \&
+Levy, 2015, 2016b). For example, Morgan \& Levy (2015) demonstrated that
+more frequent binomial expressions (e.g., \emph{bread and butter}) are
+more strongly regularized (i.e., are preferred in one order
+overwhelmingly more than the alternative). These ordering preferences
+are also not simply a result of abstract ordering preferences (e.g.,
+short words before long words, Morgan \& Levy, 2016a).
 
 Additionally, Liu \& Morgan (2020) demonstrated this effect holds true
 for the dative alternation in English (e.g., \emph{give} \emph{the ball
@@ -135,71 +136,82 @@ to him}~vs \emph{give him the ball}). Specifically, they demonstrated
 higher frequency verbs have more polarized preferences with respect to
 the dative alternation. Similarly, Liu \& Morgan (2021) showed that
 Adjective-Adjective-Noun orderings also show frequency-dependent
-regularization. That is, adjective-adjective-Nouns with higher head noun
+regularization. That is, adjective-adjective-Nouns with higher overall
 frequencies show stronger ordering preferences, even after taking into
 account generative preferences of adjective orderings.
 
 How does this polarization for high-frequency items arise? One
 possibility is that it occurs as a consequence of imperfect transmission
-between generations. For example, Morgan \& Levy (2016b) demonstrated
-that in an iterated-learning paradigm (Reali \& Griffiths, 2009), this
-frequency-dependent regularization can arise from an interaction between
-a frequency-independent bias and transmission across generations.
-Specifically, they used an iterated learning paradigm (following Reali
-\& Griffiths, 2009) and demonstrated that by introducing a
-frequency-independent regularization bias, after several generations the
-model predicted frequency-\emph{dependent} regularization. However, it
-is unclear what process in language is analogous to the
-frequency-independent bias.
+between generations. For example, as speakers transmit the language from
+one generation to the next, it is possible that the next generation may
+infer the probability of each ordering imperfectly. Indeed, Morgan \&
+Levy (2016b) demonstrated this possibility in an iterated-learning
+paradigm. They showed that frequency-dependent regularization can arise
+from an interaction between a frequency-independent bias and
+transmission across generations. Specifically, they used an iterated
+learning paradigm (following Reali \& Griffiths, 2009) and demonstrated
+that by introducing a frequency-independent regularization bias, after
+several generations the model predicted frequency-\emph{dependent}
+regularization. However, it is unclear what process in language is
+analogous to the frequency-independent bias.
 
 \hypertarget{noisy-channel-processing}{%
 \subsection{Noisy-channel Processing}\label{noisy-channel-processing}}
 
 One possibility is that frequency-dependent regularization arises as a
-product of noisy-channel processing (Gibson et al., 2013). That is,
-listeners are confronted with a great deal of noise in the form of
-perception errors (e.g., a noisy environment) and even production errors
-(speakers don't always say what they intended to, Gibson et al., 2013).
-In order to overcome these errors, a processing system must take into
-account the noise of the system.
+product of noisy-channel processing (Gibson et al., 2013). Listeners are
+confronted with a great deal of noise in the form of perception errors
+(e.g., a noisy environment) and even production errors (speakers don't
+always say what they intended to, Gibson et al., 2013). In order to
+overcome these errors, a processing system must take into account the
+noise of the system.
 
 Indeed, there is evidence that our processing system does take noise
-into account. For example, Ganong (1980) presented people with
-word-nonword continuums, where the VOT of the initial consonant was
-manipulated (e.g., \emph{task}-\emph{dask}). He found that when people
-are presented with a word in which the initial phoneme was close to the
-VOT boundary, people will process the segment as being the word, rather
-than the non-word, even when the VOT was incongruous with the
-interpretation. Further, Albert Felty, Buchwald, Gruenenfelder, \&
-Pisoni (2013) demonstrated that when listeners do misperceive a word,
-the word that they believe to have heard tends to be higher frequency
-than the target word. This suggests that misperceptions may sometimes
-actually be a consequence of noisy-channel processing (rather than a
-failure of our perceptual system).
+into account. For example, Ganong (1980) found that people will process
+a non-word as being a word under noisy conditions. Additionally, Albert
+Felty, Buchwald, Gruenenfelder, \& Pisoni (2013) demonstrated that when
+listeners do misperceive a word, the word that they believe to have
+heard tends to be higher frequency than the target word. Further, Keshev
+\& Meltzer-Asscher (2021) found that in Arabic, readers will even
+process ambiguous subject/object relative clauses as the more frequent
+interpretation, even if this interpretation compromises subject-verb
+agreement. These results taken together suggests that misperceptions may
+sometimes actually be a consequence of noisy-channel processing (rather
+than a failure of our perceptual system).\footnote{Changing \(\nu\) does
+  not qualitatively change the pattern of the results for any
+  simulations in the paper, as long as it's greater than 2.}
 
 In order to account for findings like these, Gibson et al. (2013)
 developed a computational model that demonstrated how a system might
-take into account noise. Specifically, their model operationalizes
-noisy-channel processing as a Bayesian process where a listener
-estimates the probability that their perception matches the speaker's
-intended utterance. Specifically, this is operationlized as being
-proportional to the likelihood of the intended utterance multiplied by
-the probability of the intended utterance being corrupted to the
-perceived utterance (See Equation \ref{eq:gibsonnoisy}):
+take into account noise (see Levy, 2008 for a similar approach).
+Specifically, their model operationalizes noisy-channel processing as a
+Bayesian process where a listener estimates the probability that their
+perception matches the speaker's intended utterance. Specifically, this
+is operationlized as being proportional to the prior probability of the
+intended utterance multiplied by the probability of the intended
+utterance being corrupted to the perceived utterance (See Equation
+\ref{eq:gibsonnoisy}):
 
 \begin{equation}
 \label{eq:gibsonnoisy}
-P(S_i|s_p) \propto P(S_i) P(S_i \to S_p)
+P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
+
+where \(P(S_i|S_p)\) is the probability that the intended utterance was
+actually the utterance that was perceived, \(P(S_i)\) is the prior
+probability of the intended utterance, and \(P(S_i \to S_p)\) is the
+probability that the intended utterance was corrupted by noise.
 
 Gibson et al. (2013)'s model made a variety of interesting predictions.
 For example, the model predicted that when people are presented with an
 implausible sentence (e.g., \emph{the mother gave the candle the
 daughter}), they should be more likely to interpret the plausible
 version of the sentence (e.g., \emph{the mother gave the candle to the
-daughter}) if there is increased noise (e.g., by adding errors to the
-filler items). Their model also predicted that increasing the likelihood
-of implausible events should increase the rate of implausible
+daughter}) if there is increased noise (e.g., by adding syntactic errors
+to the filler items, such as a deleted function word). Their model also
+predicted that increasing the likelihood of implausible events (e.g., by
+adding more filler items that were implausible, such as \emph{the girl
+was kicked by the ball}) should increase the rate of implausible
 interpretations of the sentence. Interestingly both of these results
 were born out in their experimental data, suggesting that humans do
 utilize a noisy-channel system in processing.
@@ -219,16 +231,18 @@ across generations of language transmission.
 \hypertarget{dataset}{%
 \section{Dataset}\label{dataset}}
 
-Following Morgan \& Levy (2016b), we use Morgan \& Levy (2015)'s corpus
-of 594 binomial expressions. This corpus has been annotated for various
+Following Morgan \& Levy (2016b), Morgan \& Levy (2015)'s corpus of 594
+binomial expressions. This corpus has been annotated for various
 phonological, semantic, and lexical constraints that are known to affect
 binomial ordering preferences. The corpus also includes estimated
-generative preferences for each binomial (i.e., compositional ordering
-preferences, estimated from the above constraints) and observed binomial
-orderings (the proportion of binomial orderings that are in alphabetical
-form for a given binomial). A visualization of the distribution of
-observed preferences and compositional preferences is included below in
-Figure \ref{fig:corpusplot1}, on the left and right respectively.
+generative preferences for each binomial, which are the ordering
+preferences estimated from the above constraints (e.g., preference for
+short before long). Additionally, it contains the observed binomial
+orderings preferences (hereafter: observed preferences) which are the
+proportion of binomial orderings that are in alphabetical form for a
+given binomial. A visualization of the distribution of observed
+preferences and compositional preferences is included below in Figure
+\ref{fig:corpusplot1}, on the left and right respectively.
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -237,100 +251,117 @@ Figure \ref{fig:corpusplot1}, on the left and right respectively.
 
 }
 
-\caption[The left plot is a plot of the relative orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus]{The left plot is a plot of the relative orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.}\label{fig:corpusplot1}
+\caption[The left plot is a plot of the observed orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus]{The left plot is a plot of the observed orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.}\label{fig:corpusplot1}
 \end{figure}
 \end{CodeChunk}
 
 \hypertarget{model}{%
 \section{Model}\label{model}}
 
-Following Reali \& Griffiths (2009), we use a 2-alternative iterated
-learning paradigm. A learner hears N tokens of a binomial expression and
-then produces N tokens for the next generation. After hearing N tokens,
-they infer the probability, \(\theta\), of the alphabetical form of the
-binomial. Using that probability, they then produce N tokens for the
-next generation, and this process continues iteratively.
+Following Morgan \& Levy (2016b), we use a 2-alternative iterated
+learning paradigm. At very step, learners hear N tokens with some in
+alphabetical (AandB) and some in nonalphabetical (BandA) order. After
+hearing a single token, learners compute \(P(S_i = AandB|S_p)\) and
+update their beliefs about prior probability of the ordering for a given
+binomial, \(P(S_i)\). The size of the update is proportional to how
+probable the learner believes the binomial ordering is.
 
-The prior probability of a binomial's ordering is operationalized using
-the beta distribution (following Morgan \& Levy, 2016b). Specifically,
-we treat the generative preference for a given binomial as the prior for
-our model. This is operationalized using the beta distribution with
-\(\mu_{prior}\), which is the generative preference for a given
-binomial, and \(\nu\), which determines the strength of the belief of
-the prior probability. Thus the prior probability for a given binomial
-in its alphabetical form is estimated as:
+After hearing a token, learners compute \(P(S_i = AandB|S_p)\)
+proportional to \(P(S_i) \cdot P(S_i \to S_p)\). \(P(S_i \to S_p)\) is a
+fixed noise parameter, which we will call \(P(noise)\). \(P(noise)\)
+represents the probability of the perceived binomial ordering being
+swapped by the learner (i.e., AandB being swapped to BandA or vice
+versa). \(P(S_i)\) represents the learner's belief of the probability of
+the intended order of the binomial.
 
-\begin{equation}
-\label{eq:thetaPrior}
-P(\theta_{prior}) = \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})}
-\end{equation}
+To initialize \(P(S_i)\) before the learner hears any data, we used the
+mean and concentration parametrization of the beta distribution. The
+mean (\(\mu\)) represents the expectation of the distribution (the mean
+value of draws from the distribution). The concentration parameter
+(\(\nu\)) describes how dense the distribution is.
 
-and the probability of hearing it in non-alphabetical form is
-\(1-P(\theta_{prior})\).
+Before the learner hears any data, \(\mu\) is equal to the generative
+preference for the binomial (taken from Morgan \& Levy, 2016b). \(\nu\)
+is a free parameter, set to 10 for all simulations in this
+paper.\footnote{Changing \(\nu\) does not qualitatively change the
+  pattern of the results for any simulations in the paper, as long as
+  it's greater than 2.}
 
-This is then used as the prior in Gibson et al. (2013)'s noisy-channel
-processing model, such that if a listener hears the alphabetical form of
-a binomial they update the probability of hearing it in alphabetical
-form according to the following parametrization,
-
-\begin{equation}
-\label{eq:phatAlpha}
-\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot P(noise)
-\end{equation}
-
-where \(p_{noise}\) is a fixed parameter for every binomial,
-representing the probability of mis-hearing a binomial expression. They
-also update the probability of hearing the non-alphabetical form:
+We then use \(P(S_i)\) and \(P(noise)\) to compute \(P(S_i|S_p)\). If
+the perceived binomial is alphabetical (AandB), we compute the
+unnormalized probability of the alphabetical and nonalphabetical
+orderings according to the below equations.
 
 \begin{equation}
-\label{eq:phatNonalpha}
-\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot (1-P(noise))
+\label{eq:praw}
+P_{raw}(S_i = AandB|S_p = AandB) = P(S_i = AandB) \cdot (1 -  P(noise))
 \end{equation}
-
-If the listener hears the non-alphabetical form of the binomial, they
-update using the same equations, but instead the likelihood of hearing
-the alphabetical form is \(p(noise)\), and the likelihood of hearing the
-non-alphabetical form is \(1-p(noise)\) (since hearing the
-non-alphabetical form is infact being faithful to the data in this
-context). Thus the estimated probability of the alphabetical form of the
-binomial is updated according to:
 
 \begin{equation}
-\label{eq:phatAlpha2}
-\hat{p}(\alpha) \propto \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + \nu(1 - \mu_{prior})} \cdot P(noise) 
+\label{eqprawtwo}
+P_{raw}(S_i = BandA|AandB) = 1 - P(S_i = AandB) \cdot P(noise)
 \end{equation}
 
-and the estimated probability of the non-alphabetical form is updated
-according to:
+In particular, \(P(S_i = AandB)\) = \(\mu\), where \(\mu\) =
+\(\alpha_1\) / (\(\alpha_1 + \alpha_2\)) in the pseduco count
+parametrization. In fact, for updating we use the pseudocount
+parametrization, where \(\alpha_1 = \mu \cdot \nu\) and
+\(\alpha_2 = 1-\mu \cdot \nu\).
+
+After calculating the unnormalized (raw) probabilities, they are then
+normalized:
 
 \begin{equation}
-\label{eq:phatNonalpha2}
-\hat{p}(\neg\alpha) \propto 1 - \frac{\mu_{prior} \cdot \nu}{(\mu_{prior} \cdot \nu) + (1 - \mu_{prior}) \cdot \nu} \cdot (1-P(noise)) 
+\label{eq:phatalpha}
+\hat{P}(\alpha) = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}
 \end{equation}
 
-Finally, before \(\hat{p}_\alpha\) and \(\hat{p}_{\neg\alpha}\) are
-updated, the un-normalized estimates of the alphabetical and
-non-alphabetical above are normalized such that they sum to
-1.\footnote{The full computational implementation can be found in the
-  \texttt{iterated\_learning.R} script in the github repository.}
+\begin{equation}
+\label{eq:phatnotalpha}
+\hat{P}(\neg\alpha) = 1 - \hat{P}(\alpha)
+\end{equation}
 
-Once the learner finishes hearing N tokens, they then produce N tokens
-generated binomially, where \(\theta_1\) is their inferred probability
-of the alphabetical form of the given binomial (which is set to 0.5 for
-the first generation):
+We then update \(\alpha_1'\) and \(\alpha_2'\) to be used as the
+pseudocount parameters of \(P(S_i)\) when the learner hears the next
+token. This update is done according to the following equation (note
+that for the update we use the pseudo count parametrization):
+
+\begin{equation}
+\label{eq:alpha1}
+\alpha_1' = \alpha_1 + \hat{P}(\alpha)
+\end{equation}
+
+\begin{equation}
+\label{eq:alpha2}
+\alpha_2' = \alpha_2 + \hat{p}(\neg\alpha)
+\end{equation}
+
+When the learner hears the next token, they use \(\alpha_1'\) and
+\(\alpha_2'\) to compute \(P(S_i)\). Note that when learner hear AandB,
+they update their beliefs about the probability of both the
+alpahabetical \emph{and} nonalphabetical forms of the binomial.
+
+When the learner is done hearing N tokens and updating their beliefs of
+\(P(S_i)\) for a given binomial, they then produce N tokens for the next
+generation of learners. These are generated binomially, where
+\(\theta_1 = P(S_i=AandB)\) is the inferred probability of the
+alphabetical form of a given binomial:
 
 \begin{equation}
 \label{eq:binomialProd}
 P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
 \end{equation}
 
-When the learner produces the N tokens, there is also a possibility the
-speaker will make an error. This is also generated binomially, with
-\(\theta_1\) being a fixed parameter, which is the probability that the
-learner makes an error. In our model, if the learner makes an error, the
-opposite ordering of a given binomial is produced. For example, if the
-learner intends to produce \emph{bread and butter} and makes an error,
-\emph{butter and bread} is produced.
+When producing each token, there is also a possibility that the speaker
+makes an error and produces an unintended ordering of the binomial. In
+order to model this, the speaker produces a token in the unintended
+order with probability \(P(SpeakerNoise)\). This is a fixed parameter in
+the model and remains constant across binomials and
+generations.\footnote{All code and results can be found publicly
+  available here:
+  \url{https://github.com/znhoughton/Noisy-Channel-Iterated-Learning}}
+
+This process continues iteratively for \(ngen\) generations.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -461,8 +492,9 @@ u$ was set to 10, listener noise was set to 0.02, and speaker noise was set to 0
 
 Our results demonstrate the frequency-dependent regularization emerges
 from a noisy-channel processing model (Gibson et al., 2013) in an
-iterative-learning paradigm (Reali \& Griffiths, 2009) when listeners
-assume more noise in the environment than the speakers actually produce.
+iterative-learning paradigm (Morgan \& Levy, 2016b; Reali \& Griffiths,
+2009) when listeners assume more noise in the environment than the
+speakers actually produce.
 
 Further our results suggest that in order to account for
 frequency-dependent regularization, listeners are inferring more noise
@@ -507,6 +539,17 @@ Griffiths, T. L., \& Kalish, M. L. (2007). Language evolution by
 iterated learning with bayesian agents. \emph{Cognitive Science},
 \emph{31}(3), 441--480.
 http://doi.org/\href{https://doi.org/10.1080/15326900701326576}{10.1080/15326900701326576}
+
+\leavevmode\vadjust pre{\hypertarget{ref-keshevNoisyBetterRare2021}{}}%
+Keshev, M., \& Meltzer-Asscher, A. (2021). Noisy is better than rare:
+Comprehenders compromise subject-verb agreement to form more probable
+linguistic structures. \emph{Cognitive Psychology}, \emph{124}, 101359.
+http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2020.101359}{10.1016/j.cogpsych.2020.101359}
+
+\leavevmode\vadjust pre{\hypertarget{ref-levyNoisychannel2008}{}}%
+Levy, R. (2008). A noisy-channel model of human sentence comprehension
+under uncertain input. In (p. 234243). Retrieved from
+\url{https://aclanthology.org/D08-1025.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-liu2020}{}}%
 Liu, Z., \& Morgan, E. (2020). Frequency-dependent regularization in
