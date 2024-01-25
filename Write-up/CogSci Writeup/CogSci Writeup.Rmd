@@ -52,9 +52,7 @@ How does this polarization for high-frequency items arise? One possibility is th
 
 One possibility is that frequency-dependent regularization arises as a product of noisy-channel processing [@gibsonNoisy2013]. Listeners are confronted with a great deal of noise in the form of perception errors (e.g., a noisy environment) and even production errors [speakers don't always say what they intended to, @gibsonNoisy2013]. In order to overcome these errors, a processing system must take into account the noise of the system.
 
-Indeed, there is evidence that our processing system does take noise into account. For example, @ganongPhoneticCategorizationAuditory1980 found that people will process a non-word as being a word under noisy conditions. Additionally, @feltyMisperceptionsSpokenWords demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. Further, @keshevNoisyBetterRare2021 found that in Arabic, readers will even process ambiguous subject/object relative clauses as the more frequent interpretation, even if this interpretation compromises subject-verb agreement. These results taken together suggests that misperceptions may sometimes actually be a consequence of noisy-channel processing (rather than a failure of our perceptual system).[^1]
-
-[^1]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
+Indeed, there is evidence that our processing system does take noise into account. For example, @ganongPhoneticCategorizationAuditory1980 found that people will process a non-word as being a word under noisy conditions. Additionally, @feltyMisperceptionsSpokenWords demonstrated that when listeners do misperceive a word, the word that they believe to have heard tends to be higher frequency than the target word. Further, @keshevNoisyBetterRare2021 found that in Arabic, readers will even process ambiguous subject/object relative clauses as the more frequent interpretation, even if this interpretation compromises subject-verb agreement. These results taken together suggests that misperceptions may sometimes actually be a consequence of noisy-channel processing (rather than a failure of our perceptual system).
 
 In order to account for findings like these, @gibsonNoisy2013 developed a computational model that demonstrated how a system might take into account noise [see @levyNoisychannel2008 for a similar approach]. Specifically, their model operationalizes noisy-channel processing as a Bayesian process where a listener estimates the probability that their perception matches the speaker's intended utterance. Specifically, this is operationlized as being proportional to the prior probability of the intended utterance multiplied by the probability of the intended utterance being corrupted to the perceived utterance (See Equation \ref{eq:gibsonnoisy}):
 
@@ -78,7 +76,7 @@ Given the evidence of noisy-channel processing, it is possible that the frequenc
 
 Following @morganFrequencydependentRegularizationIterated2016, @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial, which are the ordering preferences estimated from the above constraints (e.g., preference for short before long). Additionally, it contains the observed binomial orderings preferences (hereafter: observed preferences) which are the proportion of binomial orderings that are in alphabetical form for a given binomial. A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \ref{fig:corpusplot1}, on the left and right respectively.
 
-```{r corpusplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'The left plot is a plot of the observed orderings of binomials in the corpus data from @morganModelingIdiosyncraticPreferences2015, the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.'}
+```{r corpusplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \\& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.'}
 knitr::include_graphics('Figures/corpus_plots.png')
 ```
 
@@ -90,23 +88,24 @@ After hearing a token, learners compute $P(S_i = AandB|S_p)$ proportional to $P(
 
 To initialize $P(S_i)$ before the learner hears any data, we used the mean and concentration parametrization of the beta distribution. The mean ($\mu$) represents the expectation of the distribution (the mean value of draws from the distribution). The concentration parameter ($\nu$) describes how dense the distribution is.
 
-Before the learner hears any data, $\mu$ is equal to the generative preference for the binomial [taken from @morganFrequencydependentRegularizationIterated2016]. $\nu$ is a free parameter, set to 10 for all simulations in this paper.[^2]
+Before the learner hears any data, $\mu$ is equal to the generative preference for the binomial [taken from @morganFrequencydependentRegularizationIterated2016]. $\nu$ is a free parameter, set to 10 for all simulations in this paper.[^1]
 
-[^2]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
+[^1]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
 
 We then use $P(S_i)$ and $P(noise)$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations.
 
+```{=tex}
 \begin{equation}
 \label{eq:praw}
 P_{raw}(S_i = AandB|S_p = AandB) = P(S_i = AandB) \cdot (1 -  P(noise))
 \end{equation}
-
-
+```
+```{=tex}
 \begin{equation}
 \label{eqprawtwo}
 P_{raw}(S_i = BandA|AandB) = 1 - P(S_i = AandB) \cdot P(noise)
 \end{equation}
-
+```
 In particular, $P(S_i = AandB)$ = $\mu$, where $\mu$ = $\alpha_1$ / ($\alpha_1 + \alpha_2$) in the pseduco count parametrization. In fact, for updating we use the pseudocount parametrization, where $\alpha_1 = \mu \cdot \nu$ and $\alpha_2 = 1-\mu \cdot \nu$.
 
 After calculating the unnormalized (raw) probabilities, they are then normalized:
@@ -147,9 +146,7 @@ When the learner is done hearing N tokens and updating their beliefs of $P(S_i)$
 P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
 \end{equation}
 ```
-When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. In order to model this, the speaker produces a token in the unintended order with probability $P(SpeakerNoise)$. This is a fixed parameter in the model and remains constant across binomials and generations.[^3]
-
-[^3]: All code and results can be found publicly available here: <https://github.com/znhoughton/Noisy-Channel-Iterated-Learning>
+When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. In order to model this, the speaker produces a token in the unintended order with probability $P(SpeakerNoise)$. This is a fixed parameter in the model and remains constant across binomials and generations.
 
 This process continues iteratively for $ngen$ generations.
 
@@ -157,9 +154,9 @@ This process continues iteratively for $ngen$ generations.
 
 ## Speaker vs Listener Noise
 
-First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^4] Instead we see convergence to the prior, which is expected. That is, @griffithsLanguageEvolutionIterated2007 demonstrated that when learners sample from the posterior, as the number of iterations increases, the stationary distribution converges to the prior. In other words, without any noise, each generation of learners produces data that is more and more similar to the prior, until convergence is reached (Figure \ref{fig:noNoisePlot}).
+First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^2] Instead we see convergence to the prior, which is expected. That is, @griffithsLanguageEvolutionIterated2007 demonstrated that when learners sample from the posterior, as the number of iterations increases, the stationary distribution converges to the prior. In other words, without any noise, each generation of learners produces data that is more and more similar to the prior, until convergence is reached (Figure \ref{fig:noNoisePlot}).
 
-[^4]: All code and results can be found publicly available here: <https://github.com/znhoughton/Noisy-Channel-Iterated-Learning>
+[^2]: All code and results can be found publicly available here: <https://github.com/znhoughton/Noisy-Channel-Iterated-Learning>
 
 ```{r noNoisePlot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that there is no frequency-dependent regularization apparent.'}
 knitr::include_graphics('Figures/noNoise.png')
