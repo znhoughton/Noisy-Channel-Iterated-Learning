@@ -72,14 +72,14 @@ our_model_p1 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) 
 corpus_p1 = ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  xlab('Relative Frequency') +
+  xlab('Proportion of occurrences in alpahbetical order') +
   ylab('Density') +
   theme_bw()
 
 corpus_p2 = ggplot(data = corpus, aes(x = GenPref, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  xlab('Generative Preferences') +
+  xlab('Generative ordering preferences') +
   ylab('Density') +
   theme_bw()
 

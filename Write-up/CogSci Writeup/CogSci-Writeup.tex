@@ -87,7 +87,8 @@ Frequency-dependent regularization; Noisy-channel processing;
 Psycholinguistics.
 \end{abstract}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Speakers are often confronted with many different ways to express the
 same meaning. A customer might ask whether a store sells ``radios and
@@ -109,15 +110,16 @@ typically have more polarized preferences (Liu \& Morgan, 2020, 2021;
 Morgan \& Levy, 2015, 2016b, 2016a). This phenomenon is called
 \emph{Frequency-dependent regularization}, and while there is evidence
 of it in several different constructions, it is still unclear what
-processeses this phenomenon is driven by. For example, it could be a
+processes this phenomenon is driven by. For example, it could be a
 consequence of learning processes or a consequence of sentence
 processing more broadly. In the present paper we examine whether a
 noisy-channel processing model (Gibson et al., 2013) combined with
 transmission across generations (Reali \& Griffiths, 2009) can account
 for frequency-dependent regularization.
 
+\hypertarget{frequency-dependent-regularization}{%
 \subsection{Frequency-dependent
-regularization}\label{frequency-dependent-regularization}
+regularization}\label{frequency-dependent-regularization}}
 
 Frequency-dependent regularization has been documented for a variety of
 different constructions in English (Liu \& Morgan, 2020, 2021; Morgan \&
@@ -156,7 +158,8 @@ overcome the prior. Despite the evidence of frequency-dependent
 regularization, however, it is unclear what process in language is
 analogous to the frequency-independent bias.
 
-\subsection{Noisy-channel Processing}\label{noisy-channel-processing}
+\hypertarget{noisy-channel-processing}{%
+\subsection{Noisy-channel Processing}\label{noisy-channel-processing}}
 
 One possibility is that frequency-dependent regularization arises as a
 product of noisy-channel processing (Gibson et al., 2013). Listeners are
@@ -214,18 +217,21 @@ interpretations of the sentence. Interestingly both of these results
 were born out in their experimental data, suggesting that humans do
 utilize a noisy-channel system in processing.
 
-\subsection{Present Study}\label{present-study}
+\hypertarget{present-study}{%
+\subsection{Present Study}\label{present-study}}
 
 Given the evidence of noisy-channel processing, it is possible that the
 frequency-dependent regularization that Morgan \& Levy (2016b) saw is a
-product of listeners' noisy-channel processing. That is, perhaps the
-regularization bias responsible for the regularization across
-generations is a consequence of noisy-channel processing. Thus, the
+product of listeners' noisy-channel processing. That is, perhaps when
+learners hear the phrase \emph{butter and bread}, they think the speaker
+intended \emph{bread and butter}, and thus also increase the strength of
+\emph{bread and butter} even though they didn't hear it. Thus, the
 present study examines whether Gibson et al. (2013)'s noisy-channel
 processing model can also predict frequency-dependent regularization
 across generations of language transmission.
 
-\section{Dataset}\label{dataset}
+\hypertarget{dataset}{%
+\section{Dataset}\label{dataset}}
 
 Following Morgan \& Levy (2016b), Morgan \& Levy (2015)'s corpus of 594
 binomial expressions. This corpus has been annotated for various
@@ -238,7 +244,7 @@ orderings preferences (hereafter: observed preferences) which are the
 proportion of binomial orderings that are in alphabetical form for a
 given binomial. A visualization of the distribution of observed
 preferences and compositional preferences is included below in Figure
-\ref{fig:corpusplot1}, on the left and right respectively.
+\ref{fig:corpusplot1}.
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -247,11 +253,12 @@ preferences and compositional preferences is included below in Figure
 
 }
 
-\caption[The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus]{The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus. The x-axis is proportion of occurrences in alphabetical order and the y-axis is the probability density.}\label{fig:corpusplot1}
+\caption[The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus]{The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus.}\label{fig:corpusplot1}
 \end{figure}
 \end{CodeChunk}
 
-\section{Model}\label{model}
+\hypertarget{model}{%
+\section{Model}\label{model}}
 
 Following Morgan \& Levy (2016b), we use a 2-alternative iterated
 learning paradigm. At very step, learners hear N tokens with some in
@@ -308,7 +315,7 @@ normalized:
 
 \begin{equation}
 \label{eq:phatalpha}
-\hat{P}(\alpha) = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}
+{\scriptstyle \hat{P}(\alpha) = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}}
 \end{equation}
 
 \begin{equation}
@@ -355,9 +362,11 @@ the model and remains constant across binomials and generations.
 
 This process continues iteratively for \(ngen\) generations.
 
-\section{Results}\label{results}
+\hypertarget{results}{%
+\section{Results}\label{results}}
 
-\subsection{Speaker vs Listener Noise}\label{speaker-vs-listener-noise}
+\hypertarget{speaker-vs-listener-noise}{%
+\subsection{Speaker vs Listener Noise}\label{speaker-vs-listener-noise}}
 
 First we demonstrate that frequency-dependent regularization does not
 arise when there is no listener or speaker noise.\footnote{All code and
@@ -455,7 +464,8 @@ Thus our model makes a novel prediction: In order to account for
 frequency-dependent regularization, listeners must be inferring more
 noise than speakers are actually producing (according to our model).
 
-\subsection{Corpus Data}\label{corpus-data}
+\hypertarget{corpus-data}{%
+\subsection{Corpus Data}\label{corpus-data}}
 
 Finally, we now demonstrate that our model also predicts the
 language-wide distribution of binomial preference strengths seen in the
@@ -476,7 +486,8 @@ u$ was set to 10, listener noise was set to 0.02, and speaker noise was set to 0
 \end{figure}
 \end{CodeChunk}
 
-\section{Conclusion}\label{conclusion}
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
 Our results demonstrate the frequency-dependent regularization emerges
 from a noisy-channel processing model (Gibson et al., 2013) in an
@@ -489,82 +500,83 @@ frequency-dependent regularization, listeners are inferring more noise
 than speakers are producing. An interesting avenue for future research
 is whether this prediction is born out in experimental work.
 
-\section{References}\label{references}
+\hypertarget{references}{%
+\section{References}\label{references}}
 
 \setlength{\parindent}{-0.1in} 
 \setlength{\leftskip}{0.125in}
 
 \noindent
 
-\phantomsection\label{refs}
+\hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-feltyMisperceptionsSpokenWords}
+\leavevmode\vadjust pre{\hypertarget{ref-feltyMisperceptionsSpokenWords}{}}%
 Albert Felty, R., Buchwald, A., Gruenenfelder, T. M., \& Pisoni, D. B.
 (2013). Misperceptions of spoken words: Data from a random sample of
 american english words. \emph{The Journal of the Acoustical Society of
 America}, \emph{134}(1), 572--585.
 
-\bibitem[\citeproctext]{ref-benor2006}
+\leavevmode\vadjust pre{\hypertarget{ref-benor2006}{}}%
 Benor, S. B., \& Levy, R. (2006). The chicken or the egg? A
 probabilistic analysis of english binomials. \emph{Language}, 233278.
 
-\bibitem[\citeproctext]{ref-ganongPhoneticCategorizationAuditory1980}
+\leavevmode\vadjust pre{\hypertarget{ref-ganongPhoneticCategorizationAuditory1980}{}}%
 Ganong, W. F. (1980). Phonetic categorization in auditory word
 perception. \emph{Journal of Experimental Psychology: Human Perception
 and Performance}, \emph{6}(1), 110. Retrieved from
 \url{https://psycnet.apa.org/record/1981-07020-001}
 
-\bibitem[\citeproctext]{ref-gibsonNoisy2013}
+\leavevmode\vadjust pre{\hypertarget{ref-gibsonNoisy2013}{}}%
 Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013). Rational
 integration of noisy evidence and prior semantic expectations in
 sentence interpretation. \emph{Proceedings of the National Academy of
 Sciences}, \emph{110}(20), 8051--8056.
 http://doi.org/\href{https://doi.org/10.1073/pnas.1216438110}{10.1073/pnas.1216438110}
 
-\bibitem[\citeproctext]{ref-griffithsLanguageEvolutionIterated2007}
+\leavevmode\vadjust pre{\hypertarget{ref-griffithsLanguageEvolutionIterated2007}{}}%
 Griffiths, T. L., \& Kalish, M. L. (2007). Language evolution by
 iterated learning with bayesian agents. \emph{Cognitive Science},
 \emph{31}(3), 441--480.
 http://doi.org/\href{https://doi.org/10.1080/15326900701326576}{10.1080/15326900701326576}
 
-\bibitem[\citeproctext]{ref-keshevNoisyBetterRare2021}
+\leavevmode\vadjust pre{\hypertarget{ref-keshevNoisyBetterRare2021}{}}%
 Keshev, M., \& Meltzer-Asscher, A. (2021). Noisy is better than rare:
 Comprehenders compromise subject-verb agreement to form more probable
 linguistic structures. \emph{Cognitive Psychology}, \emph{124}, 101359.
 http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2020.101359}{10.1016/j.cogpsych.2020.101359}
 
-\bibitem[\citeproctext]{ref-levyNoisychannel2008}
+\leavevmode\vadjust pre{\hypertarget{ref-levyNoisychannel2008}{}}%
 Levy, R. (2008). A noisy-channel model of human sentence comprehension
 under uncertain input. In (p. 234243). Retrieved from
 \url{https://aclanthology.org/D08-1025.pdf}
 
-\bibitem[\citeproctext]{ref-liu2020}
+\leavevmode\vadjust pre{\hypertarget{ref-liu2020}{}}%
 Liu, Z., \& Morgan, E. (2020). Frequency-dependent regularization in
 constituent ordering preferences. In. Retrieved from
 \url{https://www.cognitivesciencesociety.org/cogsci20/papers/0751/0751.pdf}
 
-\bibitem[\citeproctext]{ref-liu2021}
+\leavevmode\vadjust pre{\hypertarget{ref-liu2021}{}}%
 Liu, Z., \& Morgan, E. (2021). Frequency-dependent regularization in
 syntactic constructions. In (p. 387389). Retrieved from
 \url{https://aclanthology.org/2021.scil-1.41.pdf}
 
-\bibitem[\citeproctext]{ref-morganModelingIdiosyncraticPreferences2015}
+\leavevmode\vadjust pre{\hypertarget{ref-morganModelingIdiosyncraticPreferences2015}{}}%
 Morgan, E., \& Levy, R. (2015). Modeling idiosyncratic preferences : How
 generative knowledge and expression frequency jointly determine language
 structure, 1649--1654.
 
-\bibitem[\citeproctext]{ref-morgan2016}
+\leavevmode\vadjust pre{\hypertarget{ref-morgan2016}{}}%
 Morgan, E., \& Levy, R. (2016a). Abstract knowledge versus direct
 experience in processing of binomial expressions. \emph{Cognition},
 \emph{157}, 384--402.
 http://doi.org/\href{https://doi.org/10.1016/j.cognition.2016.09.011}{10.1016/j.cognition.2016.09.011}
 
-\bibitem[\citeproctext]{ref-morganFrequencydependentRegularizationIterated2016}
+\leavevmode\vadjust pre{\hypertarget{ref-morganFrequencydependentRegularizationIterated2016}{}}%
 Morgan, E., \& Levy, R. (2016b). Frequency-dependent regularization in
 iterated learning. \emph{The Evolution of Language: Proceedings of the
 11th International Conference}.
 
-\bibitem[\citeproctext]{ref-realiEvolutionFrequencyDistributions2009}
+\leavevmode\vadjust pre{\hypertarget{ref-realiEvolutionFrequencyDistributions2009}{}}%
 Reali, F., \& Griffiths, T. L. (2009). The evolution of frequency
 distributions: Relating regularization to inductive biases through
 iterated learning. \emph{Cognition}, \emph{111}(3), 317--328.
