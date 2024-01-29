@@ -74,7 +74,7 @@ Given the evidence of noisy-channel processing, it is possible that the frequenc
 
 # Dataset
 
-Following @morganFrequencydependentRegularizationIterated2016, @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial, which are the ordering preferences estimated from the above constraints (e.g., preference for short before long). Additionally, it contains the observed binomial orderings preferences (hereafter: observed preferences) which are the proportion of binomial orderings that are in alphabetical form for a given binomial. A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \ref{fig:corpusplot1}.
+Following @morganFrequencydependentRegularizationIterated2016, @morganModelingIdiosyncraticPreferences2015's corpus of 594 binomial expressions. This corpus has been annotated for various phonological, semantic, and lexical constraints that are known to affect binomial ordering preferences. The corpus also includes estimated generative preferences for each binomial, which are the ordering preferences estimated from the above constraints (e.g., preference for short before long). Additionally, it contains the observed binomial orderings preferences (hereafter: observed preferences) which are the proportion of binomial orderings that are in alphabetical order for a given binomial. A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \ref{fig:corpusplot1}.
 
 ```{r corpusplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'The left plot is a plot of the observed orderings of binomials in the corpus data from Morgan \\& Levy (2015), the right is the plot of the generative preferences of binomials in the same corpus.'}
 knitr::include_graphics('Figures/corpus_plots.png')
@@ -202,7 +202,7 @@ knitr::include_graphics('Figures/corpus_plot_and_ours.png')
 
 Our results demonstrate the frequency-dependent regularization emerges from a noisy-channel processing model [@gibsonNoisy2013] in an iterative-learning paradigm [@morganFrequencydependentRegularizationIterated2016; @realiEvolutionFrequencyDistributions2009] when listeners assume more noise in the environment than the speakers actually produce.
 
-Further our results suggest that in order to account for frequency-dependent regularization, listeners are inferring more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
+Further our results suggest that in order to account for frequency-dependent regularization, listeners are encountering more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
 
 # References
 
