@@ -82,7 +82,7 @@ knitr::include_graphics('Figures/corpus_plots.png')
 
 # Model
 
-some changesFollowing @morganFrequencydependentRegularizationIterated2016, we use a 2-alternative iterated learning paradigm. At very step, learners hear N tokens with some in alphabetical (AandB) and some in nonalphabetical (BandA) order. After hearing a single token, learners compute $P(S_i = AandB|S_p)$ and update their beliefs about prior probability of the ordering for a given binomial, $P(S_i)$. The size of the update is proportional to how probable the learner believes the binomial ordering is.
+Following @morganFrequencydependentRegularizationIterated2016, we use a 2-alternative iterated learning paradigm. At very step, learners hear N tokens with some in alphabetical (AandB) and some in nonalphabetical (BandA) order. After hearing a single token, learners compute $P(S_i = AandB|S_p)$ and update their beliefs about prior probability of the ordering for a given binomial, $P(S_i)$. The size of the update is proportional to how probable the learner believes the binomial ordering is.
 
 After hearing a token, learners compute $P(S_i = AandB|S_p)$ proportional to $P(S_i) \cdot P(S_i \to S_p)$. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $P(noise)$. $P(noise)$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's belief of the probability of the intended order of the binomial.
 
