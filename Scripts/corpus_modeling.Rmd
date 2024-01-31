@@ -67,7 +67,6 @@ our_model_p1 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) 
   #facet_grid(generation ~ Overall.Frequency) +
   xlab(expression(mu[posterior]))+
   ylab('Density') +
-  theme(plot.margin = unit(c(0.6,1,0.6,1), 'cm')) +
   theme_bw()
 
 corpus_p1 = ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
@@ -75,7 +74,6 @@ corpus_p1 = ggplot(data = corpus, aes(x = RelFreq, y = ..density..)) +
   #geom_density() +
   xlab('Proportion of occurrences in alpahbetical order') +
   ylab('Density') +
-  theme(plot.margin = unit(c(0.6,1,0.6,1), 'cm')) +
   theme_bw()
 
 corpus_p2 = ggplot(data = corpus, aes(x = GenPref, y = ..density..)) +
@@ -83,11 +81,10 @@ corpus_p2 = ggplot(data = corpus, aes(x = GenPref, y = ..density..)) +
   #geom_density() +
   xlab('Generative ordering preferences') +
   ylab('Density') +
-  theme(plot.margin = unit(c(0.6,1,0.6,1), 'cm')) +
   theme_bw()
 
 ggarrange(corpus_p1, corpus_p2, nrow = 1)
-#ggsave('./Write-up/Figures/corpus_plots.png')
+#ggsave('./Write-up/Figures/corpus_plots.png', width = 20, height = 7, units = "cm")
 
 ggarrange(corpus_p1, our_model_p1)
 

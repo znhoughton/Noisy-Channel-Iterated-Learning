@@ -987,13 +987,13 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  #facet_grid(generation ~ Overall.Frequency) +
+  xlab(bquote(P(S[i]))) +
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
-#ggsave('./Write-up/Figures/noNoise.png')
+#ggsave('./Write-up/Figures/noNoise.png', width = 20, height = 7, units = "cm")
 ```
 
 #### Genpref = 0.75

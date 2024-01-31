@@ -56,17 +56,27 @@ new_df = read_csv('../Sims Data/speaker_.001_listener_.01.csv')
 
 plot_data = new_df 
 
+p_regularization_plot = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  ##facet_grid(generation ~ Overall.Frequency) +
+  xlab(bquote(P(S[i])))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  theme_bw()
+
 p_higher_reg = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  #facet_grid(generation ~ Overall.Frequency) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
 ggarrange(p_lower_reg, p_higher_reg, ncol = 1)
 #ggsave('./Write-up/Figures/higher_and_lower_reg.png')
+#ggsave('./Write-up/Figures/speaker_noise_001_listener_01.png', width = 20, height = 7, units = "cm")
 ```
 
 ### p_noise = 0.001, prior_noise = 0.01
@@ -148,8 +158,8 @@ plot_data = new_df
 rel_dif2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  #facet_grid(generation ~ Overall.Frequency) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1.0)) +
   theme_bw()
