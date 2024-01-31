@@ -77,7 +77,7 @@ has demonstrated that these ordering preferences grow stronger with
 frequency (i.e., frequency-dependent regularization). In this paper we
 demonstrate that this frequency-dependent regularization can be
 accounted for by noisy-channel processing models (e.g., Gibson, Bergen,
-\& Piantadosi, 2013; Levy, 2008). We also show that this regularization
+\& Piantadosi, 2013a; Levy, 2008). We also show that this regularization
 can only be accounted for if the listener infers more noise than the
 speaker produces. Finally, we show that the model can account for the
 language-wide distribution of binomial ordering preferences.
@@ -87,8 +87,7 @@ Frequency-dependent regularization; Noisy-channel processing;
 Psycholinguistics.
 \end{abstract}
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
 Speakers are often confronted with many different ways to express the
 same meaning. A customer might ask whether a store sells ``radios and
@@ -113,13 +112,12 @@ of it in several different constructions, it is still unclear what
 processes this phenomenon is driven by. For example, it could be a
 consequence of learning processes or a consequence of sentence
 processing more broadly. In the present paper we examine whether a
-noisy-channel processing model (Gibson et al., 2013) combined with
+noisy-channel processing model (Gibson et al., 2013a) combined with
 transmission across generations (Reali \& Griffiths, 2009) can account
 for frequency-dependent regularization.
 
-\hypertarget{frequency-dependent-regularization}{%
 \subsection{Frequency-dependent
-regularization}\label{frequency-dependent-regularization}}
+regularization}\label{frequency-dependent-regularization}
 
 Frequency-dependent regularization has been documented for a variety of
 different constructions in English (Liu \& Morgan, 2020, 2021; Morgan \&
@@ -164,15 +162,14 @@ do so imperfectly. Despite the evidence of frequency-dependent
 regularization, however, it is unclear what process in language is
 analogous to the frequency-independent regularization bias.
 
-\hypertarget{noisy-channel-processing}{%
-\subsection{Noisy-channel Processing}\label{noisy-channel-processing}}
+\subsection{Noisy-channel Processing}\label{noisy-channel-processing}
 
 One possibility is that frequency-dependent regularization arises as a
-product of noisy-channel processing (Gibson et al., 2013). Listeners are
-confronted with a great deal of noise in the form of perception errors
-(e.g., a noisy environment) and even production errors (speakers don't
-always say what they intended to, Gibson et al., 2013). In order to
-overcome these errors, a processing system must take into account the
+product of noisy-channel processing (Gibson et al., 2013a). Listeners
+are confronted with a great deal of noise in the form of perception
+errors (e.g., a noisy environment) and even production errors (speakers
+don't always say what they intended to, Gibson et al., 2013a). In order
+to overcome these errors, a processing system must take into account the
 noise of the system, for example by probabilistically determining
 whether the perceived utterance was infact intended by the speaker.
 
@@ -204,7 +201,7 @@ constructions for both meanings (\emph{While the man hunted it the deer
 ran into the woods} vs \emph{While the man hunted the deer it ran into
 the woods}).
 
-In order to account for findings like these, Gibson et al. (2013)
+In order to account for findings like these, Gibson et al. (2013a)
 developed a computational model that demonstrated how a system might
 take into account noise (see Levy, 2008 for a similar approach).
 Specifically, their model operationalizes noisy-channel processing as a
@@ -237,7 +234,7 @@ and butter,} \(P(S_p =\) \emph{bread and butter} \textbar{} \(S_i=\)
 \emph{bread and butter}, given that they intended to say \emph{bread and
 butter}.
 
-Gibson et al. (2013)'s model made a variety of interesting predictions.
+Gibson et al. (2013a)'s model made a variety of interesting predictions.
 For example, the model predicted that when people are presented with an
 implausible sentence (e.g., \emph{the mother gave the candle the
 daughter}), they should be more likely to interpret the plausible
@@ -254,8 +251,7 @@ ball kicked the girl} vs \emph{The girl kicked the ball}) are also taken
 into account by comprehenders. These results taken together suggest that
 humans do utilize a noisy-channel system in processing.
 
-\hypertarget{present-study}{%
-\subsection{Present Study}\label{present-study}}
+\subsection{Present Study}\label{present-study}
 
 Given the evidence of noisy-channel processing, it is possible that the
 frequency-dependent regularization that Morgan \& Levy (2016b) saw is a
@@ -264,25 +260,35 @@ learners hear the phrase \emph{butter and bread}, they think the speaker
 intended \emph{bread and butter}, and thus also activates \emph{bread
 and butter} even though they didn't hear it. Further, this may compound
 over time for high frequency items, but not for low frequency items.
-Thus, the present study examines whether Gibson et al. (2013)'s
+Thus, the present study examines whether Gibson et al. (2013a)'s
 noisy-channel processing model can also predict frequency-dependent
 regularization across generations of language transmission.
 
-\hypertarget{dataset}{%
-\section{Dataset}\label{dataset}}
+\section{Dataset}\label{dataset}
 
 Following Morgan \& Levy (2016b), we use Morgan \& Levy (2015)'s corpus
 of 594 binomial expressions. This corpus has been annotated for various
 phonological, semantic, and lexical constraints that are known to affect
-binomial ordering preferences. The corpus also includes estimated
-generative preferences for each binomial, which are the ordering
-preferences estimated from the above constraints (e.g., preference for
-short before long). Additionally, it contains the observed binomial
-orderings preferences (hereafter: observed preferences) which are the
-proportion of binomial orderings that are in alphabetical order for a
-given binomial. A visualization of the distribution of observed
-preferences and compositional preferences is included below in Figure
-\ref{fig:corpusplot1}.
+binomial ordering preferences. The corpus also includes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The estimated generative preferences for each binomial, which are
+  values between 0 and 1 representing the ordering preferences estimated
+  from the above constraints, independent of frequency. The generative
+  constraints are calculated using Morgan \& Levy (2015)'s model.
+\item
+  The observed binomial orderings preferences (hereafter: observed
+  preferences) which are the proportion of binomial orderings that are
+  in alphabetical order (a neutral reference order) for a given
+  binomial. A visualization of the distribution of observed preferences
+  and compositional preferences is included below in Figure
+  \ref{fig:corpusplot1}.
+\item
+  The overall frequency of a binomial expression (the frequency of AandB
+  plus the frequency of BandA).
+\end{enumerate}
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -295,24 +301,27 @@ preferences and compositional preferences is included below in Figure
 \end{figure}
 \end{CodeChunk}
 
-\hypertarget{model}{%
-\section{Model}\label{model}}
+\section{Model}\label{model}
 
 Following Morgan \& Levy (2016b), we use a 2-alternative iterated
 learning paradigm. At very step, learners hear N tokens with some in
 alphabetical (AandB) and some in nonalphabetical (BandA) order. After
-hearing a single token, learners compute \(P(S_i = AandB|S_p)\) and
-update their beliefs about prior probability of the ordering for a given
-binomial, \(P(S_i)\). The size of the update is proportional to how
-probable the learner believes the binomial ordering is.
+hearing all N tokens, the learner then produces N tokens to the next
+generation.
 
-After hearing a token, learners compute \(P(S_i = AandB|S_p)\)
-proportional to \(P(S_i) \cdot P(S_i \to S_p)\). \(P(S_i \to S_p)\) is a
-fixed noise parameter, which we will call \(P(noise)\). \(P(noise)\)
-represents the probability of the perceived binomial ordering being
-swapped by the learner (i.e., AandB being swapped to BandA or vice
-versa). \(P(S_i)\) represents the learner's belief of the probability of
-the intended order of the binomial.
+Within a single generation, after hearing a single token, learners
+compute \(P(S_i = AandB|S_p)\) and update their beliefs about prior
+probability of the ordering for a given binomial, \(P(S_i)\). The size
+of the update is proportional to how probable the learner believes it is
+that each order was intended.
+
+After hearing a token, learners compute \(P(S_i = AandB|S_p)\) according
+to Equation \ref{eq:gibsonnoisy}. \(P(S_i \to S_p)\) is a fixed noise
+parameter, which we will call \(P_{noise}\). \(P_{noise}\) represents
+the probability of the perceived binomial ordering being swapped by the
+learner (i.e., AandB being swapped to BandA or vice versa). \(P(S_i)\)
+represents the learner's prior belief of the probability of the intended
+order of the binomial.
 
 To initialize \(P(S_i)\) before the learner hears any data, we used the
 mean and concentration parametrization of the beta distribution. The
@@ -330,41 +339,46 @@ paper.\footnote{Changing \(\nu\) does not qualitatively change the
 We then use \(P(S_i)\) and \(P(noise)\) to compute \(P(S_i|S_p)\). If
 the perceived binomial is alphabetical (AandB), we compute the
 unnormalized probability of the alphabetical and nonalphabetical
-orderings according to the below equations.
+orderings according to the below equations. Note that the process is
+comparable if the perceived binomial is nonalphabetical.
 
 \begin{equation}
 \label{eq:praw}
-P_{raw}(S_i = AandB|S_p = AandB) = P(S_i = AandB) \cdot (1 -  P(noise))
+P_{raw}(S_i = AandB|S_p = AandB) \\ = P(S_i = AandB) \cdot (1 -  P(noise))
 \end{equation}
 
 \begin{equation}
 \label{eqprawtwo}
-P_{raw}(S_i = BandA|AandB) = 1 - P(S_i = AandB) \cdot P(noise)
+P_{raw}(S_i = BandA|AandB) = (1 - P(S_i = AandB)) \cdot P(noise)
 \end{equation}
 
-In particular, \(P(S_i = AandB)\) = \(\mu\), where \(\mu\) =
-\(\alpha_1\) / (\(\alpha_1 + \alpha_2\)) in the pseduco count
-parametrization. In fact, for updating we use the pseudocount
-parametrization, where \(\alpha_1 = \mu \cdot \nu\) and
-\(\alpha_2 = 1-\mu \cdot \nu\).
+On the first trial, \(P(S_i = AandB)\) = \(\mu\).
 
 After calculating the unnormalized (raw) probabilities, they are then
 normalized:
 
+\scalebox{0.8}{%
+normal:
 \begin{equation}
 \label{eq:phatalpha}
-{\scriptstyle \hat{P}(\alpha) = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}}
-\end{equation}
+\hat{P}_{\alpha} = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)}
+\end{equation}}
 
 \begin{equation}
 \label{eq:phatnotalpha}
-\hat{P}(\neg\alpha) = 1 - \hat{P}(\alpha)
+\hat{P}_{\neg\alpha} = 1 - \hat{P}(\alpha)
 \end{equation}
 
+\noindent where \(\hat{P_\alpha}\) is the probability that the intended
+binomial order was the alphabetical order, and \(\hat{P}_{\neg\alpha}\)
+is the probability that the intended binomial order was the
+nonalphabetical order.
+
 We then update \(\alpha_1'\) and \(\alpha_2'\) to be used as the
-pseudocount parameters of \(P(S_i)\) when the learner hears the next
-token. This update is done according to the following equation (note
-that for the update we use the pseudo count parametrization):
+parameters of \(P(S_i)\) when the learner hears the next token. For
+updating we use the pseudocount parametrization, where
+\(\alpha_1 = \mu \cdot \nu\) and \(\alpha_2 = 1-\mu \cdot \nu\). This
+update is done according to the following equation:
 
 \begin{equation}
 \label{eq:alpha1}
@@ -377,46 +391,57 @@ that for the update we use the pseudo count parametrization):
 \end{equation}
 
 When the learner hears the next token, they use \(\alpha_1'\) and
-\(\alpha_2'\) to compute \(P(S_i)\). Note that when learner hear AandB,
-they update their beliefs about the probability of both the
+\(\alpha_2'\) to compute \(P(S_i)\). Note that when the learner hears a
+binomial, they update their beliefs about the probability of both the
 alpahabetical \emph{and} nonalphabetical forms of the binomial.
 
 When the learner is done hearing N tokens and updating their beliefs of
 \(P(S_i)\) for a given binomial, they then produce N tokens for the next
-generation of learners. These are generated binomially, where
-\(\theta_1 = P(S_i=AandB)\) is the inferred probability of the
-alphabetical form of a given binomial:
-
-\begin{equation}
-\label{eq:binomialProd}
-P(x_1|\theta_1) = \binom{N}{x_1} \theta^{x_1} (1-\theta_1)^{N-x_1}
-\end{equation}
+generation of learners. These are generated binomially, with
+\(\theta = P(S_i=AandB)\) is the inferred probability of the
+alphabetical form of a given binomial.
 
 When producing each token, there is also a possibility that the speaker
 makes an error and produces an unintended ordering of the binomial. In
 order to model this, the speaker produces a token in the unintended
-order with probability \(P(SpeakerNoise)\). This is a fixed parameter in
-the model and remains constant across binomials and generations.
+order with probability \(P_{SpeakerNoise}\). This is a fixed parameter
+in the model and remains constant across binomials and generations.
 
 This process continues iteratively for \(ngen\) generations.
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\section{Results}\label{results}
 
-\hypertarget{speaker-vs-listener-noise}{%
-\subsection{Speaker vs Listener Noise}\label{speaker-vs-listener-noise}}
+We present our results in two main sections. The first section
+demonstrates the effects of the speaker and listener noise parameters
+(\(P_{noise}\) and \(P_{SpeakerNoise}\) respectively) on simulations of
+individual binomials. The goal of this section is to examine whether the
+model can account for frequency-dependent regularization across
+individual binomials varying in frequency.
+
+The second section compared our model's predicted binomial orderings
+across a range of binomials to the real-world corpus-wide distribution.
+In this section, rather than simulating individual binomials, we
+simulated the distribution of binomial orderings across the entire
+dataset of binomials from Morgan \& Levy (2015) with the intent of
+examining whether our model can capture the corpus-wide distribution.
+
+\subsection{Speaker vs Listener Noise}\label{speaker-vs-listener-noise}
 
 First we demonstrate that frequency-dependent regularization does not
 arise when there is no listener or speaker noise.\footnote{All code and
-  results can be found publicly available here:
-  \url{https://github.com/znhoughton/Noisy-Channel-Iterated-Learning}}
-Instead we see convergence to the prior, which is expected. That is,
-Griffiths \& Kalish (2007) demonstrated that when learners sample from
-the posterior, as the number of iterations increases, the stationary
+  results can be found publicly available here: {[}redacted{]}} Instead
+we see convergence to the prior, which is expected. That is, Griffiths
+\& Kalish (2007) demonstrated that when learners sample from the
+posterior, as the number of iterations increases, the stationary
 distribution converges to the prior. In other words, without any noise,
 each generation of learners produces data that is more and more similar
-to the prior, until convergence is reached (Figure
-\ref{fig:noNoisePlot}).
+to the prior, until convergence is reached. To confirm this, we
+simulated the evolution of a single binomial across 500 generations and,
+with various frequencies (50, 100, 500, 1000, and 10,000). The
+generative preference was 0.6. 1000 chains were run. We then examined
+the model's inferred ordering preference in the final generation. A
+visualization of the results is presented in Figure
+\ref{fig:noNoisePlot}.
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -429,9 +454,15 @@ to the prior, until convergence is reached (Figure
 \end{figure}
 \end{CodeChunk}
 
-However, when we introduce noise (Figure \ref{fig:regularizationplot1}),
-we see that the model can predict frequency-dependent regularization
-across generations.
+In a follow-up simulation, we introduced speaker and listener noise to
+examine the evolution of a single binomial across 500 generations.
+Similarly, we varied the frequencies (50, 100, 500, 1000, and 10,000),
+set the generative preference to 0.6, and ran 1000 chains. The key
+difference is that in this simulation, speaker noise
+(\(P_{SpeakerNoise}\)) was set when we to 0.001 and listener noise
+\(P_{noise}\) was set to 0.01. Interestingly, introducing noise results
+in predicted frequency-dependent regularization across generations
+(Figure \ref{fig:regularizationplot1}).
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -444,13 +475,30 @@ across generations.
 \end{figure}
 \end{CodeChunk}
 
-Further, the disparity of the noise affects the rate of regularization.
-Increased noise results in weaker regularization (i.e., less
-regularization for lower frequency items, see Figure
-\ref{fig:absolutediff}), however a larger relative difference between
-the speaker and listener noise parameters increases both the strength
-and the speed of the regularization (see Figure
-\ref{fig:fasterslowerreg}).
+Further, the disparity of the noise affects the rate of regularization
+(see Figure \ref{fig:absolutediff}). To demonstrate this, we replicated
+the same simulations as above but with different speaker and listener
+values. Specifically, we ran a simulation with the speaker noise
+parameter set to 0.091 and the listener noise set to 0.1 (top plot in
+\ref{fig:absolutediff}) and another with speaker noise set to 0.001 and
+listener noise set to 0.01 (bottom plot in Figure
+\ref{fig:absolutediff}). Note that the difference between the speaker
+and listener noise for both was the same.
+
+Interestingly, a larger difference between the speaker and listener
+noise parameters increases the strength of the regularization. To
+examine this, we simulated across the same frequency span as before (50,
+100, 500, 1000, 10000), with generative preference set to 0.6, however
+we varied the speaker noise parameter. Since regularization occurred
+more slowly, we ran the simulation for 2000 generations to ensure that
+we arrived at the stationary distribution. For both simulations,
+listener noise was set to 0.01, however in one simulation (top of Figure
+\ref{fig:fasterslowerreg}), speaker noise was set to 0.009 and in
+another simulation (bottom of Figure \ref{fig:fasterslowerreg}), speaker
+noise was set to 0.0075. As Figure \ref{fig:fasterslowerreg}
+demonstrates, Increased noise results in weaker regularization (i.e.,
+less regularization for lower frequency items in the left plot compared
+to the right plot).
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -459,7 +507,7 @@ and the speed of the regularization (see Figure
 
 }
 
-\caption[A plot of simulations with different noise parameters at 500 (top plots) and 2000 (bottom plots) generations]{A plot of simulations with different noise parameters at 500 (top plots) and 2000 (bottom plots) generations. For the left plots, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the right plots, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.}\label{fig:fasterslowerreg}
+\caption[A plot of simulations with different noise parameters after 2000 generations]{A plot of simulations with different noise parameters after 2000 generations. For the top plot, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the bottom plot, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.}\label{fig:fasterslowerreg}
 \end{figure}
 \end{CodeChunk}
 
@@ -470,12 +518,18 @@ and the speed of the regularization (see Figure
 
 }
 
-\caption[A plot of simulations with different noise parameters, but the same relative difference between the speaker and listener noise parameters]{A plot of simulations with different noise parameters, but the same relative difference between the speaker and listener noise parameters. The top plot For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the relative difference between the listener and speaker noise parameters for both plots was the same (0.009).}\label{fig:absolutediff}
+\caption[A plot of simulations with different noise parameters, but the same difference between the speaker and listener noise parameters]{A plot of simulations with different noise parameters, but the same difference between the speaker and listener noise parameters. For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the difference between the listener and speaker noise parameters for both plots was the same (0.009).}\label{fig:absolutediff}
 \end{figure}
 \end{CodeChunk}
 
 Interestingly this regularization disappears if the listener's noise
-parameter is less than or equal to the speaker's noise parameter (Figure
+parameter is less than or equal to the speaker's noise parameter. To
+examine this, we ran a simulation using the same frequency and
+generative preferences settings as before, but we varied the listener
+and speaker noise parameters. Specifically, listener noise was set to
+0.001 and speaker noise was set to 0.01. We ran the simulation across
+500 generations. The simulations demonstrate that when listener noise is
+less than speaker noise, regularization does not occur (Figure
 \ref{fig:regularizationplot2}).
 
 \begin{CodeChunk}
@@ -502,15 +556,17 @@ Thus our model makes a novel prediction: In order to account for
 frequency-dependent regularization, listeners must be inferring more
 noise than speakers are actually producing (according to our model).
 
-\hypertarget{corpus-data}{%
-\subsection{Corpus Data}\label{corpus-data}}
+\subsection{Corpus Data}\label{corpus-data}
 
 Finally, we now demonstrate that our model also predicts the
 language-wide distribution of binomial preference strengths seen in the
-corpus data. Specifically, we show that with \(\nu\) set to 10, listener
-noise set to 0.02, and speaker noise set to 0.005, our model does a
-pretty good job of approximating the distribution in the corpus data
-(See Figure \ref{fig:corpusourmodel}).
+corpus data. In order to demonstrate this, we simulated model
+predictions for the 594 binomials from Morgan \& Levy (2015). The model
+estimated the ordering preference across 500 generations with 10 chains
+each. The generative preference and N was dependent on the binomial. We
+also set listener noise to 0.02 and speaker noise to 0.005. Our results
+demonstrate that our model can approximate the distribution in the
+corpus data (See Figure \ref{fig:corpusourmodel}).
 
 \begin{CodeChunk}
 \begin{figure}[tb]
@@ -519,131 +575,139 @@ pretty good job of approximating the distribution in the corpus data
 
 }
 
-\caption[A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the distribution of ordering preferences in the corpus data from Morgan \& Levy (2015)]{A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the distribution of ordering preferences in the corpus data from Morgan \& Levy (2015). For our simulations, the binomial frequencies and generative preferences were matched with the corpus data. $
+\caption[A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the stationary distribution of ordering preferences in the corpus data from Morgan \& Levy (2015)]{A plot of the distribution of ordering preferences after 500 generations of our iterated learning model (left) and the stationary distribution of ordering preferences in the corpus data from Morgan \& Levy (2015). For our simulations, the binomial frequencies and generative preferences were matched with the corpus data. $
 u$ was set to 10, listener noise was set to 0.02, and speaker noise was set to 0.005.}\label{fig:corpusourmodel}
 \end{figure}
 \end{CodeChunk}
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+\section{Conclusion}\label{conclusion}
 
-Our results demonstrate the frequency-dependent regularization emerges
-from a noisy-channel processing model (Gibson et al., 2013) in an
-iterative-learning paradigm (Morgan \& Levy, 2016b; Reali \& Griffiths,
-2009) when listeners assume more noise in the environment than the
-speakers actually produce.
+The present study examined whether a noisy-channel processing model
+(Gibson, Bergen, \& Piantadosi, 2013b) integrated in an iterated
+learning model (Morgan \& Levy, 2016b) can capture the effects of
+frequency-dependent regularization.
+
+Our results demonstrate the frequency-dependent regularization can
+emerge from a noisy-channel processing model when listeners encounter
+more noise in the environment than the speakers actually produce.
 
 Further our results suggest that in order to account for
 frequency-dependent regularization, listeners are encountering more
 noise than speakers are producing. An interesting avenue for future
 research is whether this prediction is born out in experimental work.
 
-\hypertarget{references}{%
-\section{References}\label{references}}
+\section{References}\label{references}
 
 \setlength{\parindent}{-0.1in} 
 \setlength{\leftskip}{0.125in}
 
 \noindent
 
-\hypertarget{refs}{}
+\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-feltyMisperceptionsSpokenWords}{}}%
+\bibitem[\citeproctext]{ref-feltyMisperceptionsSpokenWords}
 Albert Felty, R., Buchwald, A., Gruenenfelder, T. M., \& Pisoni, D. B.
 (2013). Misperceptions of spoken words: Data from a random sample of
 american english words. \emph{The Journal of the Acoustical Society of
 America}, \emph{134}(1), 572--585.
 
-\leavevmode\vadjust pre{\hypertarget{ref-benor2006}{}}%
+\bibitem[\citeproctext]{ref-benor2006}
 Benor, S. B., \& Levy, R. (2006). The chicken or the egg? A
 probabilistic analysis of english binomials. \emph{Language}, 233278.
 
-\leavevmode\vadjust pre{\hypertarget{ref-christiansonThematicRolesAssigned2001}{}}%
+\bibitem[\citeproctext]{ref-christiansonThematicRolesAssigned2001}
 Christianson, K., Hollingworth, A., Halliwell, J. F., \& Ferreira, F.
 (2001). Thematic roles assigned along the garden path linger.
 \emph{Cognitive Psychology}, \emph{42}(4), 368--407.
 http://doi.org/\href{https://doi.org/10.1006/cogp.2001.0752}{10.1006/cogp.2001.0752}
 
-\leavevmode\vadjust pre{\hypertarget{ref-ferreiraGoodEnoughApproach2007}{}}%
+\bibitem[\citeproctext]{ref-ferreiraGoodEnoughApproach2007}
 Ferreira, F., \& Patson, N. D. (2007). The {`}Good Enough{'} Approach to
 Language Comprehension. \emph{Language and Linguistics Compass},
 \emph{1}(1-2), 71--83.
 http://doi.org/\href{https://doi.org/10.1111/j.1749-818X.2007.00007.x}{10.1111/j.1749-818X.2007.00007.x}
 
-\leavevmode\vadjust pre{\hypertarget{ref-ganongPhoneticCategorizationAuditory1980}{}}%
+\bibitem[\citeproctext]{ref-ganongPhoneticCategorizationAuditory1980}
 Ganong, W. F. (1980). Phonetic categorization in auditory word
 perception. \emph{Journal of Experimental Psychology: Human Perception
 and Performance}, \emph{6}(1), 110. Retrieved from
 \url{https://psycnet.apa.org/record/1981-07020-001}
 
-\leavevmode\vadjust pre{\hypertarget{ref-gibsonNoisy2013}{}}%
-Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013). Rational
+\bibitem[\citeproctext]{ref-gibson2013}
+Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013b). Rational
 integration of noisy evidence and prior semantic expectations in
 sentence interpretation. \emph{Proceedings of the National Academy of
 Sciences}, \emph{110}(20), 8051--8056.
 http://doi.org/\href{https://doi.org/10.1073/pnas.1216438110}{10.1073/pnas.1216438110}
 
-\leavevmode\vadjust pre{\hypertarget{ref-griffithsLanguageEvolutionIterated2007}{}}%
+\bibitem[\citeproctext]{ref-gibsonNoisy2013}
+Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013a). Rational
+integration of noisy evidence and prior semantic expectations in
+sentence interpretation. \emph{Proceedings of the National Academy of
+Sciences}, \emph{110}(20), 8051--8056.
+http://doi.org/\href{https://doi.org/10.1073/pnas.1216438110}{10.1073/pnas.1216438110}
+
+\bibitem[\citeproctext]{ref-griffithsLanguageEvolutionIterated2007}
 Griffiths, T. L., \& Kalish, M. L. (2007). Language evolution by
 iterated learning with bayesian agents. \emph{Cognitive Science},
 \emph{31}(3), 441--480.
 http://doi.org/\href{https://doi.org/10.1080/15326900701326576}{10.1080/15326900701326576}
 
-\leavevmode\vadjust pre{\hypertarget{ref-keshevNoisyBetterRare2021}{}}%
+\bibitem[\citeproctext]{ref-keshevNoisyBetterRare2021}
 Keshev, M., \& Meltzer-Asscher, A. (2021). Noisy is better than rare:
 Comprehenders compromise subject-verb agreement to form more probable
 linguistic structures. \emph{Cognitive Psychology}, \emph{124}, 101359.
 http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2020.101359}{10.1016/j.cogpsych.2020.101359}
 
-\leavevmode\vadjust pre{\hypertarget{ref-levyNoisychannel2008}{}}%
+\bibitem[\citeproctext]{ref-levyNoisychannel2008}
 Levy, R. (2008). A noisy-channel model of human sentence comprehension
 under uncertain input. In (p. 234243). Retrieved from
 \url{https://aclanthology.org/D08-1025.pdf}
 
-\leavevmode\vadjust pre{\hypertarget{ref-liu2020}{}}%
+\bibitem[\citeproctext]{ref-liu2020}
 Liu, Z., \& Morgan, E. (2020). Frequency-dependent regularization in
 constituent ordering preferences. In. Retrieved from
 \url{https://www.cognitivesciencesociety.org/cogsci20/papers/0751/0751.pdf}
 
-\leavevmode\vadjust pre{\hypertarget{ref-liu2021}{}}%
+\bibitem[\citeproctext]{ref-liu2021}
 Liu, Z., \& Morgan, E. (2021). Frequency-dependent regularization in
 syntactic constructions. In (p. 387389). Retrieved from
 \url{https://aclanthology.org/2021.scil-1.41.pdf}
 
-\leavevmode\vadjust pre{\hypertarget{ref-morganModelingIdiosyncraticPreferences2015}{}}%
+\bibitem[\citeproctext]{ref-morganModelingIdiosyncraticPreferences2015}
 Morgan, E., \& Levy, R. (2015). Modeling idiosyncratic preferences : How
 generative knowledge and expression frequency jointly determine language
 structure, 1649--1654.
 
-\leavevmode\vadjust pre{\hypertarget{ref-morgan2016}{}}%
+\bibitem[\citeproctext]{ref-morgan2016}
 Morgan, E., \& Levy, R. (2016a). Abstract knowledge versus direct
 experience in processing of binomial expressions. \emph{Cognition},
 \emph{157}, 384--402.
 http://doi.org/\href{https://doi.org/10.1016/j.cognition.2016.09.011}{10.1016/j.cognition.2016.09.011}
 
-\leavevmode\vadjust pre{\hypertarget{ref-morganFrequencydependentRegularizationIterated2016}{}}%
+\bibitem[\citeproctext]{ref-morganFrequencydependentRegularizationIterated2016}
 Morgan, E., \& Levy, R. (2016b). Frequency-dependent regularization in
 iterated learning. \emph{The Evolution of Language: Proceedings of the
 11th International Conference}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-poppelsStructuresensitiveNoiseInference2016}{}}%
+\bibitem[\citeproctext]{ref-poppelsStructuresensitiveNoiseInference2016}
 Poppels, T., \& Levy, R. (2016). Structure-sensitive noise inference:
 Comprehenders expect exchange errors. In. Retrieved from
 \url{https://tpoppels.github.io/files/2016-poppels-levy-cogsci-proceedings.pdf}
 
-\leavevmode\vadjust pre{\hypertarget{ref-realiEvolutionFrequencyDistributions2009}{}}%
+\bibitem[\citeproctext]{ref-realiEvolutionFrequencyDistributions2009}
 Reali, F., \& Griffiths, T. L. (2009). The evolution of frequency
 distributions: Relating regularization to inductive biases through
 iterated learning. \emph{Cognition}, \emph{111}(3), 317--328.
 http://doi.org/\href{https://doi.org/10.1016/j.cognition.2009.02.012}{10.1016/j.cognition.2009.02.012}
 
-\leavevmode\vadjust pre{\hypertarget{ref-saffranStatisticalLearning8MonthOld1996}{}}%
+\bibitem[\citeproctext]{ref-saffranStatisticalLearning8MonthOld1996}
 Saffran, J. R., Aslin, R. N., \& Newport, E. L. (1996). Statistical
 Learning by 8-Month-Old Infants. \emph{Science}, \emph{274}(5294),
 1926--1928.
 http://doi.org/\href{https://doi.org/10.1126/science.274.5294.1926}{10.1126/science.274.5294.1926}
 
-\leavevmode\vadjust pre{\hypertarget{ref-yuRapidWordLearning2007}{}}%
+\bibitem[\citeproctext]{ref-yuRapidWordLearning2007}
 Yu, C., \& Smith, L. B. (2007). Rapid Word Learning Under Uncertainty
 via Cross-Situational Statistics. \emph{Psychological Science},
 \emph{18}(5), 414--420.

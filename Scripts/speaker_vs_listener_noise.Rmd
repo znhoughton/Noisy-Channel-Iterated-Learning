@@ -494,7 +494,7 @@ df = as.data.frame(c(50, 100, 500, 1000, 10000))
 no_cores = availableCores() - 1
 plan(multisession, workers = no_cores)
 
-file_path = '../Sims Data/speaker_.01_listener_.009_ngen1000.csv'
+file_path = '../Sims Data/speaker_.01_listener_.009_ngen2000.csv'
 
 if (!file.exists(file_path)) {
 
@@ -511,6 +511,48 @@ new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen2000.csv')
 plot_data = new_df 
 
 ngen_2000_2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  #geom_density() +
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
+  ylab('Density') +
+  scale_x_continuous(breaks = c(0.5, 1)) +
+  theme_bw()
+```
+
+```{r}
+n_gen = 4000 #number of generations
+n_sims = 500 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+p_noise = 0.01 #listener noise
+prior_prob_noise = 0.009 #speaker noise
+
+prior_mu = 0.6
+
+df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/speaker_.01_listener_.009_ngen4000.csv'
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(df, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise, last_gen_only = T), 'Overall Frequency' = ..1))
+
+write_csv(new_df, '../Sims Data/speaker_.01_listener_.009_ngen4000.csv')
+
+} else {
+new_df = read_csv('../Sims Data/speaker_.01_listener_.009_ngen4000.csv')
+}
+
+
+plot_data = new_df 
+
+ngen_2000_3 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
   facet_wrap(~Overall.Frequency, nrow = 1) +
@@ -561,7 +603,7 @@ ngen_2000 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
 
-ggarrange(ngen_500_2, ngen_500, ngen_2000_2, ngen_2000, nrow = 2, ncol = 2)
+ggarrange(ngen_2000_2, ngen_2000, nrow = 2)
 
 #ggsave('./Write-up/Figures/fasterSlowerReg.png', , width = 20, height = 14, units = 'cm')
 ```
