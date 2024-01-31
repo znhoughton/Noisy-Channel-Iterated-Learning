@@ -108,7 +108,7 @@ binomial expressions, are often more extreme for higher frequency items
 (e.g., \emph{bread and butter}). That is, higher-frequency items
 typically have more polarized preferences (Liu \& Morgan, 2020, 2021;
 Morgan \& Levy, 2015, 2016b, 2016a). This phenomenon is called
-\emph{Frequency-dependent regularization}, and while there is evidence
+\emph{frequency-dependent regularization}, and while there is evidence
 of it in several different constructions, it is still unclear what
 processes this phenomenon is driven by. For example, it could be a
 consequence of learning processes or a consequence of sentence
@@ -152,11 +152,17 @@ transmission across generations. Specifically, they used an iterated
 learning paradigm (following Reali \& Griffiths, 2009) and demonstrated
 that by introducing a frequency-independent regularization bias, after
 several generations the model predicted frequency-\emph{dependent}
-regularization. They argued that frequency-dependent regularization
-emerges because for low-frequency items, the regularization bias cannot
-overcome the prior. Despite the evidence of frequency-dependent
+regularization. For example, after hearing \emph{bread and butter} 7
+times, and \emph{butter and bread} 3 times, the learner might reproduce
+\emph{bread and butter} 8 times and \emph{butter and bread} 2 times.
+They argued that frequency-dependent regularization emerges because for
+low-frequency items, the regularization bias cannot overcome the prior.
+In other words, the model posits that while learners of a language are
+in general very good at learning the statistical patterns in the
+language (Saffran, Aslin, \& Newport, 1996; Yu \& Smith, 2007), they may
+do so imperfectly. Despite the evidence of frequency-dependent
 regularization, however, it is unclear what process in language is
-analogous to the frequency-independent bias.
+analogous to the frequency-independent regularization bias.
 
 \hypertarget{noisy-channel-processing}{%
 \subsection{Noisy-channel Processing}\label{noisy-channel-processing}}
@@ -167,7 +173,8 @@ confronted with a great deal of noise in the form of perception errors
 (e.g., a noisy environment) and even production errors (speakers don't
 always say what they intended to, Gibson et al., 2013). In order to
 overcome these errors, a processing system must take into account the
-noise of the system.
+noise of the system, for example by probabilistically determining
+whether the perceived utterance was infact intended by the speaker.
 
 Indeed, there is evidence that our processing system does take noise
 into account. For example, Ganong (1980) found that people will process
@@ -179,8 +186,23 @@ heard tends to be higher frequency than the target word. Further, Keshev
 process ambiguous subject/object relative clauses as the more frequent
 interpretation, even if this interpretation compromises subject-verb
 agreement. These results taken together suggests that misperceptions may
-sometimes actually be a consequence of noisy-channel processing (rather
-than a failure of our perceptual system).
+sometimes actually be a consequence of noisy-channel processing (though
+see Ferreira \& Patson, 2007 for an alternative account).
+
+Further, people will even process \emph{grammatical} utterances, as a
+more frequent or plausible interpretation (Christianson, Hollingworth,
+Halliwell, \& Ferreira, 2001; Levy, 2008; Poppels \& Levy, 2016;
+\textbf{christian?}), even going so far as to process two
+interpretations that cannot both be consistent with the original
+sentence. For example, Christianson et al. (2001) demonstrated that when
+people read the sentence \emph{While the man hunted the deer ran into
+the woods}, people will answer in the affirmative for both \emph{Did the
+man hunt the deer?} and \emph{Did the dear run into the woods?}. Levy
+(2008) argued that this phenonenon was explained by noisy-channel
+processing, since a single insertion results in plausible, grammatical
+constructions for both meanings (\emph{While the man hunted it the deer
+ran into the woods} vs \emph{While the man hunted the deer it ran into
+the woods}).
 
 In order to account for findings like these, Gibson et al. (2013)
 developed a computational model that demonstrated how a system might
@@ -198,10 +220,22 @@ utterance being corrupted to the perceived utterance (See Equation
 P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
 
-where \(P(S_i|S_p)\) is the probability that the intended utterance was
-actually the utterance that was perceived, \(P(S_i)\) is the prior
-probability of the intended utterance, and \(P(S_i \to S_p)\) is the
-probability that the intended utterance was corrupted by noise.
+\noindent where \(P(S_i|S_p)\) is the probability that the intended
+utterance was actually the utterance that was perceived, \(P(S_i)\) is
+the prior probability of the intended utterance, and \(P(S_i \to S_p)\)
+is the probability of the perceived utterance (\(S_p\)) given the
+intended utterance (\(S_i\)). For example, if \(S_p =\) \emph{bread and
+butter}, then in order to infer the probability \emph{bread and butter}
+being the intended utterance of the speaker (\(P(S_i)=\) \emph{bread and
+butter)}, we multiply the prior probability of \emph{bread and butter,}
+\(P(S_i)\), by the probability of the perceived utterance being
+\emph{bread and butter} given the intended utterance being \emph{bread
+and butter,} \(P(S_p =\) \emph{bread and butter} \textbar{} \(S_i=\)
+\emph{bread and butter}). Another way to conceptualize \(P(S_p =\)
+\emph{bread and butter} \textbar{} \(S_i=\) \emph{bread and butter}) is
+1 - the probability that the speaker said something \emph{other} than
+\emph{bread and butter}, given that they intended to say \emph{bread and
+butter}.
 
 Gibson et al. (2013)'s model made a variety of interesting predictions.
 For example, the model predicted that when people are presented with an
@@ -214,8 +248,11 @@ predicted that increasing the likelihood of implausible events (e.g., by
 adding more filler items that were implausible, such as \emph{the girl
 was kicked by the ball}) should increase the rate of implausible
 interpretations of the sentence. Interestingly both of these results
-were born out in their experimental data, suggesting that humans do
-utilize a noisy-channel system in processing.
+were born out in their experimental data. In a follow up study, Poppels
+\& Levy (2016) further demonstrated that word-exchanges (e.g., \emph{The
+ball kicked the girl} vs \emph{The girl kicked the ball}) are also taken
+into account by comprehenders. These results taken together suggest that
+humans do utilize a noisy-channel system in processing.
 
 \hypertarget{present-study}{%
 \subsection{Present Study}\label{present-study}}
@@ -224,24 +261,25 @@ Given the evidence of noisy-channel processing, it is possible that the
 frequency-dependent regularization that Morgan \& Levy (2016b) saw is a
 product of listeners' noisy-channel processing. That is, perhaps when
 learners hear the phrase \emph{butter and bread}, they think the speaker
-intended \emph{bread and butter}, and thus also increase the strength of
-\emph{bread and butter} even though they didn't hear it. Thus, the
-present study examines whether Gibson et al. (2013)'s noisy-channel
-processing model can also predict frequency-dependent regularization
-across generations of language transmission.
+intended \emph{bread and butter}, and thus also activates \emph{bread
+and butter} even though they didn't hear it. Further, this may compound
+over time for high frequency items, but not for low frequency items.
+Thus, the present study examines whether Gibson et al. (2013)'s
+noisy-channel processing model can also predict frequency-dependent
+regularization across generations of language transmission.
 
 \hypertarget{dataset}{%
 \section{Dataset}\label{dataset}}
 
-Following Morgan \& Levy (2016b), Morgan \& Levy (2015)'s corpus of 594
-binomial expressions. This corpus has been annotated for various
+Following Morgan \& Levy (2016b), we use Morgan \& Levy (2015)'s corpus
+of 594 binomial expressions. This corpus has been annotated for various
 phonological, semantic, and lexical constraints that are known to affect
 binomial ordering preferences. The corpus also includes estimated
 generative preferences for each binomial, which are the ordering
 preferences estimated from the above constraints (e.g., preference for
 short before long). Additionally, it contains the observed binomial
 orderings preferences (hereafter: observed preferences) which are the
-proportion of binomial orderings that are in alphabetical form for a
+proportion of binomial orderings that are in alphabetical order for a
 given binomial. A visualization of the distribution of observed
 preferences and compositional preferences is included below in Figure
 \ref{fig:corpusplot1}.
@@ -249,7 +287,7 @@ preferences and compositional preferences is included below in Figure
 \begin{CodeChunk}
 \begin{figure}[tb]
 
-{\centering \includegraphics[width=1\linewidth]{Figures/corpus_plots} 
+{\centering \includegraphics[width=1\linewidth,height=0.15\textheight]{Figures/corpus_plots} 
 
 }
 
@@ -496,9 +534,9 @@ iterative-learning paradigm (Morgan \& Levy, 2016b; Reali \& Griffiths,
 speakers actually produce.
 
 Further our results suggest that in order to account for
-frequency-dependent regularization, listeners are inferring more noise
-than speakers are producing. An interesting avenue for future research
-is whether this prediction is born out in experimental work.
+frequency-dependent regularization, listeners are encountering more
+noise than speakers are producing. An interesting avenue for future
+research is whether this prediction is born out in experimental work.
 
 \hypertarget{references}{%
 \section{References}\label{references}}
@@ -519,6 +557,18 @@ America}, \emph{134}(1), 572--585.
 \leavevmode\vadjust pre{\hypertarget{ref-benor2006}{}}%
 Benor, S. B., \& Levy, R. (2006). The chicken or the egg? A
 probabilistic analysis of english binomials. \emph{Language}, 233278.
+
+\leavevmode\vadjust pre{\hypertarget{ref-christiansonThematicRolesAssigned2001}{}}%
+Christianson, K., Hollingworth, A., Halliwell, J. F., \& Ferreira, F.
+(2001). Thematic roles assigned along the garden path linger.
+\emph{Cognitive Psychology}, \emph{42}(4), 368--407.
+http://doi.org/\href{https://doi.org/10.1006/cogp.2001.0752}{10.1006/cogp.2001.0752}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ferreiraGoodEnoughApproach2007}{}}%
+Ferreira, F., \& Patson, N. D. (2007). The {`}Good Enough{'} Approach to
+Language Comprehension. \emph{Language and Linguistics Compass},
+\emph{1}(1-2), 71--83.
+http://doi.org/\href{https://doi.org/10.1111/j.1749-818X.2007.00007.x}{10.1111/j.1749-818X.2007.00007.x}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ganongPhoneticCategorizationAuditory1980}{}}%
 Ganong, W. F. (1980). Phonetic categorization in auditory word
@@ -576,11 +626,28 @@ Morgan, E., \& Levy, R. (2016b). Frequency-dependent regularization in
 iterated learning. \emph{The Evolution of Language: Proceedings of the
 11th International Conference}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-poppelsStructuresensitiveNoiseInference2016}{}}%
+Poppels, T., \& Levy, R. (2016). Structure-sensitive noise inference:
+Comprehenders expect exchange errors. In. Retrieved from
+\url{https://tpoppels.github.io/files/2016-poppels-levy-cogsci-proceedings.pdf}
+
 \leavevmode\vadjust pre{\hypertarget{ref-realiEvolutionFrequencyDistributions2009}{}}%
 Reali, F., \& Griffiths, T. L. (2009). The evolution of frequency
 distributions: Relating regularization to inductive biases through
 iterated learning. \emph{Cognition}, \emph{111}(3), 317--328.
 http://doi.org/\href{https://doi.org/10.1016/j.cognition.2009.02.012}{10.1016/j.cognition.2009.02.012}
+
+\leavevmode\vadjust pre{\hypertarget{ref-saffranStatisticalLearning8MonthOld1996}{}}%
+Saffran, J. R., Aslin, R. N., \& Newport, E. L. (1996). Statistical
+Learning by 8-Month-Old Infants. \emph{Science}, \emph{274}(5294),
+1926--1928.
+http://doi.org/\href{https://doi.org/10.1126/science.274.5294.1926}{10.1126/science.274.5294.1926}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yuRapidWordLearning2007}{}}%
+Yu, C., \& Smith, L. B. (2007). Rapid Word Learning Under Uncertainty
+via Cross-Situational Statistics. \emph{Psychological Science},
+\emph{18}(5), 414--420.
+http://doi.org/\href{https://doi.org/10.1111/j.1467-9280.2007.01915.x}{10.1111/j.1467-9280.2007.01915.x}
 
 \end{CSLReferences}
 
