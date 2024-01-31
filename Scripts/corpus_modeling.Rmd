@@ -65,7 +65,7 @@ our_model_p1 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) 
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
   #facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  xlab('Proportion of occurrences in alpahbetical order')+
   ylab('Density') +
   theme(plot.margin = unit(c(0.5,1,0.5,1), 'cm')) +
   theme_bw()
@@ -87,11 +87,11 @@ corpus_p2 = ggplot(data = corpus, aes(x = GenPref, y = ..density..)) +
   theme_bw()
 
 ggarrange(corpus_p1, corpus_p2, nrow = 1)
-#ggsave('./Write-up/Figures/corpus_plots.png')
+#ggsave('./Write-up/Figures/corpus_plots.png', width = 20, height = 7, units = 'cm')
 
 ggarrange(corpus_p1, our_model_p1)
 
-#ggsave('./Write-up/Figures/corpus_plot_and_ours.png')
+#ggsave('./Write-up/Figures/corpus_plot_and_ours.png', width = 20, height = 7, units = 'cm')
 
 ```
 

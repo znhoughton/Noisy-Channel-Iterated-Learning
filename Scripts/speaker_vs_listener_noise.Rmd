@@ -55,18 +55,21 @@ new_df = read_csv('../Sims Data/speaker_.001_listener_.01.csv')
 }
 
 plot_data = new_df 
-
+freq_labs = c('N = 50', 'N=100', 'N=500', 'N=1000', 'N=10000')
 p_higher_reg = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 
+p_higher_reg
+
 ggarrange(p_lower_reg, p_higher_reg, ncol = 1)
 #ggsave('./Write-up/Figures/higher_and_lower_reg.png')
+#ggsave('./Write-up/Figures/speaker_noise_001_listener_01.png', width = 20, height = 7, units = 'cm')
 ```
 
 ### p_noise = 0.001, prior_noise = 0.01
@@ -104,11 +107,14 @@ plot_data = new_df
 
 ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
+  xlab(bquote(P(S[i])))+
+  ylab('Density') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
+  facet_wrap(~ Overall.Frequency, nrow = 1) +
+  scale_x_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
   theme_bw()
 
-#ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png')
+#ggsave('./Write-up/Figures/speaker_noise_01_listener_001.png', width = 20, height = 7, units = 'cm')
 ```
 
 ### p_noise = 0.1, prior_noise = 0.091
@@ -148,15 +154,15 @@ plot_data = new_df
 rel_dif2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~ Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
-  scale_x_continuous(breaks = c(0, 0.5, 1.0)) +
+  scale_x_continuous(breaks = c(0, 0.5, 1.0), limits = c(-0.1, 1.1)) +
   theme_bw()
 
 
 ggarrange(rel_dif2, p_higher_reg, nrow = 2)
-#ggsave('./Write-up/Figures/absolute_matters.png')
+#ggsave('./Write-up/Figures/absolute_matters.png', width = 20, height = 14, units = 'cm')
 ```
 
 ### p_noise = 0.1, prior_noise = 0.01
@@ -372,8 +378,8 @@ plot_data = new_df
 ngen_500_2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
@@ -461,8 +467,8 @@ plot_data = new_df
 ngen_500 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
@@ -507,8 +513,8 @@ plot_data = new_df
 ngen_2000_2 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
@@ -549,15 +555,15 @@ plot_data = new_df
 ngen_2000 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
   #geom_density() +
-  facet_grid(generation ~ Overall.Frequency) +
-  xlab(expression(mu[posterior]))+
+  facet_wrap(~Overall.Frequency, nrow = 1) +
+  xlab(bquote(P(S[i])))+
   ylab('Density') +
   scale_x_continuous(breaks = c(0.5, 1)) +
   theme_bw()
 
 ggarrange(ngen_500_2, ngen_500, ngen_2000_2, ngen_2000, nrow = 2, ncol = 2)
 
-#ggsave('./Write-up/Figures/fasterSlowerReg.png')
+#ggsave('./Write-up/Figures/fasterSlowerReg.png', , width = 20, height = 14, units = 'cm')
 ```
 
 ```{r}
