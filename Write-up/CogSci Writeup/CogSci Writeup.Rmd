@@ -181,32 +181,17 @@ First we demonstrate that frequency-dependent regularization does not arise when
 knitr::include_graphics('Figures/noNoise.png')
 ```
 
-In a follow-up simulation, we introduced speaker and listener noise to examine the evolution of a single binomial across 500 generations. Similarly, we varied the frequencies (50, 100, 500, 1000, and 10,000), set the generative preference to 0.6, and ran 1000 chains. The key difference is that in this simulation, speaker noise ($P_{SpeakerNoise}$) was set when we to 0.001 and listener noise $P_{noise}$ was set to 0.01. Interestingly, introducing noise results in predicted frequency-dependent regularization across generations (Figure \ref{fig:regularizationplot1}).
+We then systematically manipulated N, listener noise ($P_{noise}$) and speaker noise ($P_{SpeakerNoise}$). Specifically, we varied N across 100, 1000, and 10000, and listener and speaker noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every combination of these values (Figure \ref{fullsimsplot}. For these simulations, the generative preference was set to 0.6 and 1000 chains were run across 500 generations.
 
-```{r regularizationplot1, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.'}
-knitr::include_graphics('Figures/speaker_noise_001_listener_01.png')
+Our results suggest that frequency-dependent regularization does arise from the model when noise is introduced, but only if listener noise is greater than speaker noise. Further our results demonstrate that if listener noise is greater than speaker noise, then the greater the difference between the listener and speaker noise, the stronger the regularization effect (this is demonstrated by moving horizontally across the first row of our graph).
+
+Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. For example, notice how if you split the plot along the diagonal, all the plots on the bottom half, including the diagonal, show no evidence of regularization. These graphs are all visualizations where the speaker noise is greater than the listener noise.
+
+```{r fullsimsplot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'Our simulation results for every combination of speaker noise, listener noise, and N. N varied across 100, 1000, and 10000. Both speaker and listener noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. The results demonstrate that frequency-dependent regularization only arises when listener noise is greater than speaker noise. The distributions in the plot demonstrate the inferred ordering preference at the 500th generation.'}
+knitr::include_graphics('Figures/full_graph.png')
 ```
 
-Further, the disparity of the noise affects the rate of regularization (see Figure \ref{fig:absolutediff}). To demonstrate this, we replicated the same simulations as above but with different speaker and listener values. Specifically, we ran a simulation with the speaker noise parameter set to 0.091 and the listener noise set to 0.1 (top plot in \ref{fig:absolutediff}) and another with speaker noise set to 0.001 and listener noise set to 0.01 (bottom plot in Figure \ref{fig:absolutediff}). Note that the difference between the speaker and listener noise for both was the same.
-
-Interestingly, a larger difference between the speaker and listener noise parameters increases the strength of the regularization. To examine this, we simulated across the same frequency span as before (50, 100, 500, 1000, 10000), with generative preference set to 0.6, however we varied the speaker noise parameter. Since regularization occurred more slowly, we ran the simulation for 2000 generations to ensure that we arrived at the stationary distribution. For both simulations, listener noise was set to 0.01, however in one simulation (top of Figure \ref{fig:fasterslowerreg}), speaker noise was set to 0.009 and in another simulation (bottom of Figure \ref{fig:fasterslowerreg}), speaker noise was set to 0.0075. As Figure \ref{fig:fasterslowerreg} demonstrates, Increased noise results in weaker regularization (i.e., less regularization for lower frequency items in the left plot compared to the right plot).
-
-```{r fasterslowerreg, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of simulations with different noise parameters after 2000 generations. For the top plot, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the bottom plot, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.'}
-knitr::include_graphics('Figures/fasterSlowerReg.png')
-```
-
-```{r absolutediff, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of simulations with different noise parameters, but the same difference between the speaker and listener noise parameters. For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the difference between the listener and speaker noise parameters for both plots was the same (0.009).'}
-knitr::include_graphics('Figures/absolute_matters.png')
-```
-
-Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. To examine this, we ran a simulation using the same frequency and generative preferences settings as before, but we varied the listener and speaker noise parameters. Specifically, listener noise was set to 0.001 and speaker noise was set to 0.01. We ran the simulation across 500 generations. The simulations demonstrate that when listener noise is less than speaker noise, regularization does not occur (Figure \ref{fig:regularizationplot2}).
-
-```{r regularizationplot2, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.'}
-knitr::include_graphics('Figures/speaker_noise_01_listener_001.png')
-
-```
-
-It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal eachother, since they essentially cancel eachother out (everytime a speaker makes an error, the listener is accounting for it, thus we get convergence to the prior).
+It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal each other, since they essentially cancel eachother out (everytime a speaker makes an error, the listener is accounting for it, thus we get convergence to the prior).
 
 Thus our model makes a novel prediction: In order to account for frequency-dependent regularization, listeners must be inferring more noise than speakers are actually producing (according to our model).
 
@@ -223,8 +208,6 @@ knitr::include_graphics('Figures/corpus_plot_and_ours.png')
 The present study examined whether a noisy-channel processing model [@gibson2013] integrated in an iterated learning model [@morganFrequencydependentRegularizationIterated2016] can capture the effects of frequency-dependent regularization.
 
 Our results demonstrate the frequency-dependent regularization can emerge from a noisy-channel processing model when listeners infer more noise in the environment than the speakers actually produce.
-
-Further our results suggest that in order to account for frequency-dependent regularization, listeners are inferring more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
 
 # References
 

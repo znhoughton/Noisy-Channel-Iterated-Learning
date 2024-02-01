@@ -15,7 +15,7 @@ library(furrr)
 library(tictoc)
 library(ggpubr)
 source('iterated_learning.R')
-
+library(grid)
 ```
 
 ## Speaker vs Listener Noise
@@ -695,8 +695,57 @@ new_df = read_csv(file_path)
 
 plot_data = new_df 
 
-ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
+
+
+#n_labs = c('N = 100', 'N = 1000', 'N = 10000')
+#prior_prob_noise_labs = c(bquote(P[noise] = 0), bquote(P[noise] = 0.02), bquote(P[noise] = 0.04), bquote(P[noise] = 0.06), bquote(P[noise] = 0.08), bquote(P[noise] = 0.1))
+
+plot_data$Overall.Frequency = factor(plot_data$Overall.Frequency, levels = c('100', '1000', '10000'),
+                                     labels = c('N == 100', 'N == 1000', 'N == 10000'))
+
+plot_data$p_noise = factor(plot_data$p_noise, levels = c('0', '0.02', '0.04', '0.06', '0.08', '0.1'),
+                           labels = c('P[noise] == 0', 'P[noise] == 0.02', 'P[noise] == 0.04', 'P[noise] == 0.06', 'P[noise] == 0.08', 'P[noise] == 0.1'))
+
+plot_data$prior_prob_noise = factor(plot_data$prior_prob_noise, levels = c('0', '0.02', '0.04', '0.06', '0.08', '0.1'),
+                           labels = c('P[SpeakerNoise] == 0', 'P[SpeakerNoise] == 0.02', 'P[SpeakerNoise] == 0.04', 'P[SpeakerNoise] == 0.06', 'P[SpeakerNoise] == 0.08', 'P[SpeakerNoise] == 0.1'))
+
+names(n_labs) = c('100', '1000', '10000')
+names(prior_prob_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
+names(p_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
+
+
+full_plot = ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
-  facet_grid(Overall.Frequency ~ speaker_noise + listener_noise)
+  facet_grid(prior_prob_noise ~ p_noise + Overall.Frequency,
+             labeller = label_parsed) + #listener noise and N on x-axis, speaker noise on y-axis
+  ylab('Density') +
+  xlab(bquote(P(S[i]))) +
+  scale_x_continuous(breaks = c(0, 0.5, 1), labels = c('0', '0.5', '1')) +
+  theme_bw() +
+  theme(strip.text = element_text(
+    size = 11, color = "black")) #+
+  #theme_bw()
   
+full_plot
+
+gt = ggplot_gtable(ggplot_build(full_plot))
+#gtable_show_layout(gt)
+
+#gt$heights[8] = 1.2 * gt$heights[7]
+#gt$heights[10] = 1.2 * gt$heights[7]
+#gt$heights[12] = 1.2 * gt$heights[7]
+#gt$heights[14] = 1.2 * gt$heights[7]
+#gt$heights[16] = 1.2 * gt$heights[7]
+#gt$heights[18] = 1.2 * gt$heights[7]
+
+
+gt$widths[c(5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39)] = gt$widths[40] * 2
+
+gt$widths[10] = 4*gt$widths[10]
+gt$widths[16] = 4*gt$widths[16]
+gt$widths[22] = 4*gt$widths[22]
+gt$widths[28] = 4*gt$widths[28]
+gt$widths[34] = 4*gt$widths[34]
+gt$widths[40] = 4*gt$widths[40]
+grid.draw(gt)
 ```
