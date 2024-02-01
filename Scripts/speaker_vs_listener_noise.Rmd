@@ -651,3 +651,52 @@ ngen_2000 = ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   scale_x_continuous(breaks = c(0, 0.5, 1)) +
   theme_bw()
 ```
+
+# Big Graph
+
+```{r}
+N = c(100, 1000, 10000)
+speaker_noise = seq(0, 0.1, by = 0.02)
+listener_noise = speaker_noise
+
+combinations = expand.grid(N, speaker_noise, listener_noise)
+
+colnames(combinations) = c('N', 'listener_noise', 'speaker_noise')
+
+n_gen = 500 #number of generations
+n_sims = 1000 #number of chains
+p_theta = 0.5 #initial p_theta value
+
+nu = 10
+#p_noise = 0.01 #listener noise
+#prior_prob_noise = 0.0075 #speaker noise
+
+prior_mu = 0.6
+
+#df = as.data.frame(c(50, 100, 500, 1000, 10000))
+
+no_cores = availableCores() - 1
+plan(multisession, workers = no_cores)
+
+file_path = '../Sims Data/full_graph.csv'
+
+
+if (!file.exists(file_path)) {
+
+
+new_df = pmap_dfr(combinations, ~data.frame(iterated_learning(n_gen = n_gen, n_sims = n_sims, p_theta = 0.5, N = ..1, prior_mu = prior_mu, nu = nu, p_noise = ..2, prior_prob_noise = ..3, last_gen_only = T), 'Overall Frequency' = ..1, 'p_noise' = ..2, 'prior_prob_noise' = ..3))
+
+write_csv(new_df, file_path)
+
+} else {
+new_df = read_csv(file_path)
+}
+
+
+plot_data = new_df 
+
+ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
+  geom_histogram(color = 'black', fill = 'white') +
+  facet_grid(Overall.Frequency ~ speaker_noise + listener_noise)
+  
+```
