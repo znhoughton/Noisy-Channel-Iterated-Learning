@@ -134,7 +134,7 @@ Levy, 2015, 2016b). For example, Morgan \& Levy (2015) demonstrated that
 more frequent binomial expressions (e.g., \emph{bread and butter}) are
 more strongly regularized (i.e., are preferred in one order
 overwhelmingly more than the alternative). These ordering preferences
-are also not simply a result of abstract ordering preferences (e.g.,
+are also not simply a result of generative ordering preferences (e.g.,
 short words before long words, Morgan \& Levy, 2016a). Interestingly,
 Morgan \& Levy (2016b) even showed that the distribution of binomial
 orderings at the corpus-wide level are different than what would be
@@ -230,22 +230,13 @@ utterance being corrupted to the perceived utterance (See Equation
 P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
 
-\noindent where \(P(S_i|S_p)\) is the probability that the intended
-utterance was actually the utterance that was perceived, \(P(S_i)\) is
-the prior probability of the intended utterance, and \(P(S_i \to S_p)\)
-is the probability of the perceived utterance (\(S_p\)) given the
-intended utterance (\(S_i\)). For example, if \(S_p =\) \emph{bread and
-butter}, then in order to infer the probability \emph{bread and butter}
-being the intended utterance of the speaker (\(P(S_i)=\) \emph{bread and
-butter)}, we multiply the prior probability of \emph{bread and butter,}
-\(P(S_i)\), by the probability of the perceived utterance being
-\emph{bread and butter} given the intended utterance being \emph{bread
-and butter,} \(P(S_p =\) \emph{bread and butter} \textbar{} \(S_i=\)
-\emph{bread and butter}). Another way to conceptualize \(P(S_p =\)
-\emph{bread and butter} \textbar{} \(S_i=\) \emph{bread and butter}) is
-1 - the probability that the speaker said something \emph{other} than
-\emph{bread and butter}, given that they intended to say \emph{bread and
-butter}.
+\noindent where \(P(S_i|S_p)\) is the probability of the intended
+utterance the perceived utterance, \(P(S_i)\) is the prior probability
+of the intended utterance, and \(P(S_i \to S_p)\) is the probability of
+the perceived utterance (\(S_p\)) given the intended utterance
+(\(S_i\)). If the perceived utterance is \emph{bread and butter}, for
+example, the listener can infer the probability that the intended
+utterance was \emph{bread and butter} or \emph{butter and bread}.
 
 Gibson et al. (2013a)'s model made a variety of interesting predictions.
 For example, the model predicted that when people are presented with an
@@ -301,7 +292,7 @@ binomial ordering preferences. The corpus also includes:
   preferences) which are the proportion of binomial orderings that are
   in alphabetical order (a neutral reference order) for a given
   binomial. A visualization of the distribution of observed preferences
-  and compositional preferences is included below in Figure
+  and generative preferences is included below in Figure
   \ref{fig:corpusplot1}.
 \item
   The overall frequency of a binomial expression (the frequency of AandB
@@ -450,17 +441,14 @@ examining whether our model can capture the corpus-wide distribution.
 First we demonstrate that frequency-dependent regularization does not
 arise when there is no listener or speaker noise.\footnote{All code and
   results can be found publicly available here: {[}redacted{]}} Instead
-we see convergence to the prior, which is expected. That is, Griffiths
-\& Kalish (2007) demonstrated that when learners sample from the
-posterior, as the number of iterations increases, the stationary
-distribution converges to the prior. In other words, without any noise,
-each generation of learners produces data that is more and more similar
-to the prior, until convergence is reached. To confirm this, we
-simulated the evolution of a single binomial across 500 generations and,
-with various frequencies (50, 100, 500, 1000, and 10,000). The
-generative preference was 0.6. 1000 chains were run. We then examined
-the model's inferred ordering preference in the final generation. A
-visualization of the results is presented in Figure
+we see convergence to the prior, which is expected following Griffiths
+\& Kalish (2007). They demonstrated that when learners sample from the
+posterior in an iterated learning paradigm the stationary distribution
+converges to the prior. To confirm this, we simulated the evolution of a
+single binomial across 500 generations with various N (50, 100, 500,
+1000, and 10,000). The generative preference was 0.6. 1000 chains were
+run. We then examined the model's inferred ordering preference in the
+final generation. A visualization of the results is presented in Figure
 \ref{fig:noNoisePlot}.
 
 \begin{CodeChunk}
@@ -474,93 +462,33 @@ visualization of the results is presented in Figure
 \end{figure}
 \end{CodeChunk}
 
-In a follow-up simulation, we introduced speaker and listener noise to
-examine the evolution of a single binomial across 500 generations.
-Similarly, we varied the frequencies (50, 100, 500, 1000, and 10,000),
-set the generative preference to 0.6, and ran 1000 chains. The key
-difference is that in this simulation, speaker noise
-(\(P_{SpeakerNoise}\)) was set when we to 0.001 and listener noise
-\(P_{noise}\) was set to 0.01. Interestingly, introducing noise results
-in predicted frequency-dependent regularization across generations
-(Figure \ref{fig:regularizationplot1}).
+We then systematically manipulated N, listener noise (\(P_{noise}\)) and
+speaker noise (\(P_{SpeakerNoise}\)). Specifically, we varied N across
+100, 1000, and 10000, and listener and speaker noise were varied across
+0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every
+combination of these values (Figure \ref{fig:fullsimsplot}. For these
+simulations, the generative preference was set to 0.6 and 1000 chains
+were run across 500 generations.
 
-\begin{CodeChunk}
-\begin{figure}[tb]
-
-{\centering \includegraphics[width=1\linewidth]{Figures/speaker_noise_001_listener_01} 
-
-}
-
-\caption[A plot of the distribution of simulated binomials at the 500th generation, varying in frequency]{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.001, listener noise was set to 0.01, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how for the binomials with large N, the ordering preferences tend to be more extreme.}\label{fig:regularizationplot1}
-\end{figure}
-\end{CodeChunk}
-
-Further, the disparity of the noise affects the rate of regularization
-(see Figure \ref{fig:absolutediff}). To demonstrate this, we replicated
-the same simulations as above but with different speaker and listener
-values. Specifically, we ran a simulation with the speaker noise
-parameter set to 0.091 and the listener noise set to 0.1 (top plot in
-\ref{fig:absolutediff}) and another with speaker noise set to 0.001 and
-listener noise set to 0.01 (bottom plot in Figure
-\ref{fig:absolutediff}). Note that the difference between the speaker
-and listener noise for both was the same.
-
-Interestingly, a larger difference between the speaker and listener
-noise parameters increases the strength of the regularization. To
-examine this, we simulated across the same frequency span as before (50,
-100, 500, 1000, 10000), with generative preference set to 0.6, however
-we varied the speaker noise parameter. Since regularization occurred
-more slowly, we ran the simulation for 2000 generations to ensure that
-we arrived at the stationary distribution. For both simulations,
-listener noise was set to 0.01, however in one simulation (top of Figure
-\ref{fig:fasterslowerreg}), speaker noise was set to 0.009 and in
-another simulation (bottom of Figure \ref{fig:fasterslowerreg}), speaker
-noise was set to 0.0075. As Figure \ref{fig:fasterslowerreg}
-demonstrates, Increased noise results in weaker regularization (i.e.,
-less regularization for lower frequency items in the left plot compared
-to the right plot).
-
-\begin{CodeChunk}
-\begin{figure}[tb]
-
-{\centering \includegraphics[width=1\linewidth]{Figures/fasterSlowerReg} 
-
-}
-
-\caption[A plot of simulations with different noise parameters after 2000 generations]{A plot of simulations with different noise parameters after 2000 generations. For the top plot, the speaker noise was set to 0.009 and the listener noise parameter was set to 0.01. For the bottom plot, the speaker noise was set to 0.0075 and the listener noise parameter was set to 0.01. For both plots, the generative preference was set to 0.6 and nu was set to 10.}\label{fig:fasterslowerreg}
-\end{figure}
-\end{CodeChunk}
-
-\begin{CodeChunk}
-\begin{figure}[tb]
-
-{\centering \includegraphics[width=1\linewidth]{Figures/absolute_matters} 
-
-}
-
-\caption[A plot of simulations with different noise parameters, but the same difference between the speaker and listener noise parameters]{A plot of simulations with different noise parameters, but the same difference between the speaker and listener noise parameters. For the top plot, the speaker noise was set to 0.091 and listener noise was set to 0.1. For the bottom plot, the speaker noise was set to 0.001 and listener noise was set to 0.01. Note that the difference between the listener and speaker noise parameters for both plots was the same (0.009).}\label{fig:absolutediff}
-\end{figure}
-\end{CodeChunk}
+Our results suggest that frequency-dependent regularization does arise
+from the model when noise is introduced, but only if listener noise is
+greater than speaker noise. Further our results demonstrate that if
+listener noise is greater than speaker noise, then the greater the
+difference between the listener and speaker noise, the stronger the
+regularization effect (this is demonstrated by moving horizontally
+across the first row of our graph).
 
 Interestingly this regularization disappears if the listener's noise
-parameter is less than or equal to the speaker's noise parameter. To
-examine this, we ran a simulation using the same frequency and
-generative preferences settings as before, but we varied the listener
-and speaker noise parameters. Specifically, listener noise was set to
-0.001 and speaker noise was set to 0.01. We ran the simulation across
-500 generations. The simulations demonstrate that when listener noise is
-less than speaker noise, regularization does not occur (Figure
-\ref{fig:regularizationplot2}).
+parameter is less than or equal to the speaker's noise parameter. For
+example, notice how if you split the plot along the diagonal, all the
+plots on the bottom half, including the diagonal, show no evidence of
+regularization. These graphs are all visualizations where the speaker
+noise is greater than the listener noise.
 
 \begin{CodeChunk}
-\begin{figure}[tb]
-
-{\centering \includegraphics[width=1\linewidth]{Figures/speaker_noise_01_listener_001} 
-
-}
-
-\caption[A plot of the distribution of simulated binomials at the 500th generation, varying in frequency]{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N. On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker noise was set to 0.01, listener noise was set to 0.001, the generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note how regularization does not appear to be present in this graph.}\label{fig:regularizationplot2}
-\end{figure}
+\begin{figure*}[tb]
+\includegraphics[width=1\linewidth]{Figures/full_graph} \caption[Our simulation results for every combination of speaker noise, listener noise, and N]{Our simulation results for every combination of speaker noise, listener noise, and N. N varied across 100, 1000, and 10000. Both speaker and listener noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. The results demonstrate that frequency-dependent regularization only arises when listener noise is greater than speaker noise. The distributions in the plot demonstrate the inferred ordering preference at the 500th generation.}\label{fig:fullsimsplot}
+\end{figure*}
 \end{CodeChunk}
 
 It is useful to revisit here what the speaker and listener noise
@@ -568,7 +496,7 @@ parameters represent. The speaker noise parameter is how often the
 speaker produces an error and the listener noise parameter is the
 listeners' belief of how noisy the environment is. Framed this way, it
 is perhaps unsurprising that we do not see regularization when the
-parameters equal eachother, since they essentially cancel eachother out
+parameters equal each other, since they essentially cancel eachother out
 (everytime a speaker makes an error, the listener is accounting for it,
 thus we get convergence to the prior).
 
@@ -610,13 +538,8 @@ learning model (Morgan \& Levy, 2016b) can capture the effects of
 frequency-dependent regularization.
 
 Our results demonstrate the frequency-dependent regularization can
-emerge from a noisy-channel processing model when listeners encounter
-more noise in the environment than the speakers actually produce.
-
-Further our results suggest that in order to account for
-frequency-dependent regularization, listeners are encountering more
-noise than speakers are producing. An interesting avenue for future
-research is whether this prediction is born out in experimental work.
+emerge from a noisy-channel processing model when listeners infer more
+noise in the environment than the speakers actually produce.
 
 \hypertarget{references}{%
 \section{References}\label{references}}

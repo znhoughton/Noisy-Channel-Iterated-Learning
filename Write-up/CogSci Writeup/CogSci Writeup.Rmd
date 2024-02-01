@@ -181,13 +181,13 @@ First we demonstrate that frequency-dependent regularization does not arise when
 knitr::include_graphics('Figures/noNoise.png')
 ```
 
-We then systematically manipulated N, listener noise ($P_{noise}$) and speaker noise ($P_{SpeakerNoise}$). Specifically, we varied N across 100, 1000, and 10000, and listener and speaker noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every combination of these values (Figure \ref{fullsimsplot}. For these simulations, the generative preference was set to 0.6 and 1000 chains were run across 500 generations.
+We then systematically manipulated N, listener noise ($P_{noise}$) and speaker noise ($P_{SpeakerNoise}$). Specifically, we varied N across 100, 1000, and 10000, and listener and speaker noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every combination of these values (Figure \ref{fig:fullsimsplot}. For these simulations, the generative preference was set to 0.6 and 1000 chains were run across 500 generations.
 
 Our results suggest that frequency-dependent regularization does arise from the model when noise is introduced, but only if listener noise is greater than speaker noise. Further our results demonstrate that if listener noise is greater than speaker noise, then the greater the difference between the listener and speaker noise, the stronger the regularization effect (this is demonstrated by moving horizontally across the first row of our graph).
 
 Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. For example, notice how if you split the plot along the diagonal, all the plots on the bottom half, including the diagonal, show no evidence of regularization. These graphs are all visualizations where the speaker noise is greater than the listener noise.
 
-```{r fullsimsplot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'Our simulation results for every combination of speaker noise, listener noise, and N. N varied across 100, 1000, and 10000. Both speaker and listener noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. The results demonstrate that frequency-dependent regularization only arises when listener noise is greater than speaker noise. The distributions in the plot demonstrate the inferred ordering preference at the 500th generation.'}
+```{r fullsimsplot, echo = F, fig.env = 'figure*', out.width = "100%", warning = F, message = F, fig.cap = 'Our simulation results for every combination of speaker noise, listener noise, and N. N varied across 100, 1000, and 10000. Both speaker and listener noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. The results demonstrate that frequency-dependent regularization only arises when listener noise is greater than speaker noise. The distributions in the plot demonstrate the inferred ordering preference at the 500th generation.'}
 knitr::include_graphics('Figures/full_graph.png')
 ```
 
