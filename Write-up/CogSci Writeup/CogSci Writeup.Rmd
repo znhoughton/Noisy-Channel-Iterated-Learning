@@ -49,7 +49,7 @@ Interestingly, ordering preferences for certain constructions, such as binomial 
 
 ## Frequency-dependent regularization
 
-Frequency-dependent regularization has been documented for a variety of different constructions in English [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015]. For example, @morganModelingIdiosyncraticPreferences2015 demonstrated that more frequent binomial expressions (e.g., *bread and butter*) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). These ordering preferences are also not simply a result of abstract ordering preferences [e.g., short words before long words, @morgan2016]. Interestingly, @morganFrequencydependentRegularizationIterated2016 even showed that the distribution of binomial orderings at the corpus-wide level are different than what would be expected given the generative preferences for the binomials (see Figure \ref{fig:corpusplot1}).
+Frequency-dependent regularization has been documented for a variety of different constructions in English [@liu2020; @liu2021; @morganFrequencydependentRegularizationIterated2016; @morganModelingIdiosyncraticPreferences2015]. For example, @morganModelingIdiosyncraticPreferences2015 demonstrated that more frequent binomial expressions (e.g., *bread and butter*) are more strongly regularized (i.e., are preferred in one order overwhelmingly more than the alternative). These ordering preferences are also not simply a result of generative ordering preferences [e.g., short words before long words, @morgan2016]. Interestingly, @morganFrequencydependentRegularizationIterated2016 even showed that the distribution of binomial orderings at the corpus-wide level are different than what would be expected given the generative preferences for the binomials (see Figure \ref{fig:corpusplot1}).
 
 Additionally, @liu2020 dative alternation in English also shows evidence of frequency-dependent regularization (e.g., *give* *the ball to him* vs *give him the ball*). Specifically, they demonstrated higher frequency verbs have more polarized preferences with respect to the dative alternation. Similarly, @liu2021 showed that Adjective-Adjective-Noun orderings also show frequency-dependent regularization. That is, adjective-adjective-Nouns with higher overall frequencies show stronger ordering preferences, even after taking into account generative preferences of adjective orderings.
 
@@ -73,7 +73,7 @@ In order to account for findings like these, @gibsonNoisy2013 developed a comput
 P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 \end{equation}
 ```
-\noindent where $P(S_i|S_p)$ is the probability that the intended utterance was actually the utterance that was perceived, $P(S_i)$ is the prior probability of the intended utterance, and $P(S_i \to S_p)$ is the probability of the perceived utterance ($S_p$) given the intended utterance ($S_i$). For example, if $S_p =$ *bread and butter*, then in order to infer the probability *bread and butter* being the intended utterance of the speaker ($P(S_i)=$ *bread and butter)*, we multiply the prior probability of *bread and butter,* $P(S_i)$, by the probability of the perceived utterance being *bread and butter* given the intended utterance being *bread and butter,* $P(S_p =$ *bread and butter* \| $S_i=$ *bread and butter*). Another way to conceptualize $P(S_p =$ *bread and butter* \| $S_i=$ *bread and butter*) is 1 - the probability that the speaker said something *other* than *bread and butter*, given that they intended to say *bread and butter*.
+\noindent where $P(S_i|S_p)$ is the probability of the intended utterance the perceived utterance, $P(S_i)$ is the prior probability of the intended utterance, and $P(S_i \to S_p)$ is the probability of the perceived utterance ($S_p$) given the intended utterance ($S_i$). If the perceived utterance is *bread and butter*, for example, the listener can infer the probability that the intended utterance was *bread and butter* or *butter and bread*.
 
 @gibsonNoisy2013's model made a variety of interesting predictions. For example, the model predicted that when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), they should be more likely to interpret the plausible version of the sentence (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding syntactic errors to the filler items, such as a deleted function word). Their model also predicted that increasing the likelihood of implausible events (e.g., by adding more filler items that were implausible, such as *the girl was kicked by the ball*) should increase the rate of implausible interpretations of the sentence. Interestingly both of these results were born out in their experimental data. In a follow up study, @poppelsStructuresensitiveNoiseInference2016 further demonstrated that word-exchanges (e.g., *The ball kicked the girl* vs *The girl kicked the ball*) are also taken into account by comprehenders. These results taken together suggest that humans do utilize a noisy-channel system in processing.
 
@@ -89,7 +89,7 @@ Following @morganFrequencydependentRegularizationIterated2016, we use @morganMod
 
 1.  The estimated generative preferences for each binomial, which are values between 0 and 1 representing the ordering preferences estimated from the above constraints, independent of frequency. The generative constraints are calculated using @morganModelingIdiosyncraticPreferences2015's model.
 
-2.  The observed binomial orderings preferences (hereafter: observed preferences) which are the proportion of binomial orderings that are in alphabetical order (a neutral reference order) for a given binomial. A visualization of the distribution of observed preferences and compositional preferences is included below in Figure \ref{fig:corpusplot1}.
+2.  The observed binomial orderings preferences (hereafter: observed preferences) which are the proportion of binomial orderings that are in alphabetical order (a neutral reference order) for a given binomial. A visualization of the distribution of observed preferences and generative preferences is included below in Figure \ref{fig:corpusplot1}.
 
 3.  The overall frequency of a binomial expression (the frequency of AandB plus the frequency of BandA).
 
@@ -173,7 +173,7 @@ The second section compares our model's predicted binomial orderings across a ra
 
 ## Speaker vs Listener Noise
 
-First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^2] Instead we see convergence to the prior, which is expected. That is, @griffithsLanguageEvolutionIterated2007 demonstrated that when learners sample from the posterior, as the number of iterations increases, the stationary distribution converges to the prior. In other words, without any noise, each generation of learners produces data that is more and more similar to the prior, until convergence is reached. To confirm this, we simulated the evolution of a single binomial across 500 generations and, with various frequencies (50, 100, 500, 1000, and 10,000). The generative preference was 0.6. 1000 chains were run. We then examined the model's inferred ordering preference in the final generation. A visualization of the results is presented in Figure \ref{fig:noNoisePlot}.
+First we demonstrate that frequency-dependent regularization does not arise when there is no listener or speaker noise.[^2] Instead we see convergence to the prior, which is expected following @griffithsLanguageEvolutionIterated2007. They demonstrated that when learners sample from the posterior in an iterated learning paradigm the stationary distribution converges to the prior. To confirm this, we simulated the evolution of a single binomial across 500 generations with various N (50, 100, 500, 1000, and 10,000). The generative preference was 0.6. 1000 chains were run. We then examined the model's inferred ordering preference in the final generation. A visualization of the results is presented in Figure \ref{fig:noNoisePlot}.
 
 [^2]: All code and results can be found publicly available here: [redacted]
 
@@ -222,9 +222,9 @@ knitr::include_graphics('Figures/corpus_plot_and_ours.png')
 
 The present study examined whether a noisy-channel processing model [@gibson2013] integrated in an iterated learning model [@morganFrequencydependentRegularizationIterated2016] can capture the effects of frequency-dependent regularization.
 
-Our results demonstrate the frequency-dependent regularization can emerge from a noisy-channel processing model when listeners encounter more noise in the environment than the speakers actually produce.
+Our results demonstrate the frequency-dependent regularization can emerge from a noisy-channel processing model when listeners infer more noise in the environment than the speakers actually produce.
 
-Further our results suggest that in order to account for frequency-dependent regularization, listeners are encountering more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
+Further our results suggest that in order to account for frequency-dependent regularization, listeners are inferring more noise than speakers are producing. An interesting avenue for future research is whether this prediction is born out in experimental work.
 
 # References
 
