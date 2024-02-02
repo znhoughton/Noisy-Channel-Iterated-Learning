@@ -16,6 +16,7 @@ library(tictoc)
 library(ggpubr)
 source('iterated_learning.R')
 library(grid)
+library(ggh4x)
 ```
 
 ## Speaker vs Listener Noise
@@ -716,14 +717,15 @@ names(p_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
 
 full_plot = ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
   geom_histogram(color = 'black', fill = 'white') +
-  facet_grid(prior_prob_noise ~ p_noise + Overall.Frequency,
-             labeller = label_parsed) + #listener noise and N on x-axis, speaker noise on y-axis
+  facet_nested(p_noise ~prior_prob_noise + Overall.Frequency,
+             labeller = label_parsed) + #speaker noise and N on x-axis, listener noise on y-axis
   ylab('Density') +
   xlab(bquote(P(S[i]))) +
   scale_x_continuous(breaks = c(0, 0.5, 1), labels = c('0', '0.5', '1')) +
   theme_bw() +
   theme(strip.text = element_text(
-    size = 11, color = "black")) #+
+    size = 15, color = "black"),
+        axis.title = element_text(size = 15)) #+
   #theme_bw()
   
 full_plot
@@ -737,15 +739,11 @@ gt = ggplot_gtable(ggplot_build(full_plot))
 #gt$heights[14] = 1.2 * gt$heights[7]
 #gt$heights[16] = 1.2 * gt$heights[7]
 #gt$heights[18] = 1.2 * gt$heights[7]
-
-
-gt$widths[c(5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39)] = gt$widths[40] * 2
-
-gt$widths[10] = 4*gt$widths[10]
-gt$widths[16] = 4*gt$widths[16]
-gt$widths[22] = 4*gt$widths[22]
-gt$widths[28] = 4*gt$widths[28]
-gt$widths[34] = 4*gt$widths[34]
-gt$widths[40] = 4*gt$widths[40]
+gt$widths[15] = 4*gt$widths[15]
+gt$widths[27] = 4*gt$widths[27]
+gt$widths[39] = 4*gt$widths[39]
+gt$widths[51] = 4*gt$widths[51]
+gt$widths[63] = 4*gt$widths[63]
+gt$widths[75] = 4*gt$widths[75]
 grid.draw(gt)
 ```
