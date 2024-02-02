@@ -991,7 +991,8 @@ ggplot(data = plot_data, aes(x = posterior_mu, y = ..density..)) +
   ylab('Density') +
   scale_x_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
   facet_wrap(~Overall.Frequency, nrow = 1) +
-  theme_bw()
+  theme_bw() +
+  theme(axis.title = element_text(size = 12))
 
 #ggsave('./Write-up/Figures/noNoise.png', width = 20, height = 7, units = 'cm')
 ```
