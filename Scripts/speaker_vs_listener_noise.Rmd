@@ -698,7 +698,7 @@ plot_data = new_df
 
 
 
-#n_labs = c('N = 100', 'N = 1000', 'N = 10000')
+n_labs = c('N = 100', 'N = 1000', 'N = 10000')
 #prior_prob_noise_labs = c(bquote(P[noise] = 0), bquote(P[noise] = 0.02), bquote(P[noise] = 0.04), bquote(P[noise] = 0.06), bquote(P[noise] = 0.08), bquote(P[noise] = 0.1))
 
 plot_data$Overall.Frequency = factor(plot_data$Overall.Frequency, levels = c('100', '1000', '10000'),
@@ -710,9 +710,9 @@ plot_data$p_noise = factor(plot_data$p_noise, levels = c('0', '0.02', '0.04', '0
 plot_data$prior_prob_noise = factor(plot_data$prior_prob_noise, levels = c('0', '0.02', '0.04', '0.06', '0.08', '0.1'),
                            labels = c('P[SpeakerNoise] == 0', 'P[SpeakerNoise] == 0.02', 'P[SpeakerNoise] == 0.04', 'P[SpeakerNoise] == 0.06', 'P[SpeakerNoise] == 0.08', 'P[SpeakerNoise] == 0.1'))
 
-names(n_labs) = c('100', '1000', '10000')
-names(prior_prob_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
-names(p_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
+#names(n_labs) = c('100', '1000', '10000')
+#names(prior_prob_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
+#names(p_noise_labs) = c('0', '0.02', '0.04', '0.06', '0.08', '0.1')
 
 
 full_plot = ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
