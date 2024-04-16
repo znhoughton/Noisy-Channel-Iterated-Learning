@@ -917,7 +917,7 @@ full_plot = ggplot(plot_data, aes(x = posterior_mu, y = ..density..)) +
   scale_x_continuous(breaks = c(0, 0.5, 1), labels = c('0', '0.5', '1')) +
   theme_bw() +
   theme(strip.text = element_text(
-    size = 7, color = "black"),
+    size = 11, color = "black"),
         axis.title = element_text(size = 13)) #+
   #theme_bw()
   
@@ -939,4 +939,6 @@ gt$widths[51] = 4*gt$widths[51]
 gt$widths[63] = 4*gt$widths[63]
 gt$widths[75] = 4*gt$widths[75]
 grid.draw(gt)
+
+ggsave(full_plot, filename = 'full_plot_smaller.png', width = 11, height = 6)
 ```
