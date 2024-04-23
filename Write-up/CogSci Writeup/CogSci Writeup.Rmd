@@ -81,6 +81,8 @@ P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 
 @gibsonNoisy2013's model made a variety of interesting predictions. For example, the model predicted that when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), they should be more likely to interpret the plausible version of the sentence (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding syntactic errors to the filler items, such as a deleted function word). Their model also predicted that increasing the likelihood of implausible events (e.g., by adding more filler items that were implausible, such as *the girl was kicked by the ball*) should increase the rate of implausible interpretations of the sentence. Interestingly both of these results were born out in their experimental data. In a follow up study, @poppelsStructuresensitiveNoiseInference2016 further demonstrated that word-exchanges (e.g., *The ball kicked the girl* vs *The girl kicked the ball*) are also taken into account by comprehenders. These results taken together suggest that humans do utilize a noisy-channel system in processing.
 
+Previous research has demonstrated that noisy-channel processing models may account for certain types of regularization [e.g., @ferdinandCognitiveRootsRegularization2019, @schneiderNoisyChannelModel2020]. For example, there is evidence that children who receive primarily non-native input learn language that is more similar to native speakers [@singletonWhenLearnersSurpass2004]. One explanation is that children attribute the low-frequency unpredictable items to noise and regularize them [@schneiderNoisyChannelModel2020]. @schneiderNoisyChannelModel2020 demonstrated that a noisy-channel model can account for this type of regularization. It is important to note, however, that this is a different type of regularization than the regularization we'll be examining in this paper. Specifically, as mentioned earlier, we'll be looking at cases where it is the *high-frequency* items that become regularized. It is outside the scope of this paper to reconcile these two different types of regularization, however one intuition is when regularizing low-frequency irregular forms, there is a clear regular candidate. However, in the case of binomials, there is no clear candidate form for the low-frequency form to be regularized into.
+
 ## Present Study
 
 Given the evidence of noisy-channel processing, it is possible that the frequency-dependent regularization that @morganFrequencydependentRegularizationIterated2016 saw is a product of listeners' noisy-channel processing. Perhaps when learners hear the phrase *butter and bread*, they think the speaker intended *bread and butter*, which results in an activation of *bread and butter* even though they didn't hear it. This activation could potentially even be stronger for *bread and butter* than *butter and bread* in cases where the listener thinks the speaker made a mistake. Further, this may compound over time for high frequency items, but not for low frequency items. Thus, the present study examines whether @gibsonNoisy2013's noisy-channel processing model can also predict frequency-dependent regularization across generations of language transmission.
@@ -110,18 +112,18 @@ Within a single generation, after hearing a single token, learners compute $P(S_
 ```{=tex}
 \begin{multline}
 \label{eq:psi}
-P(S_i) \\ \sim Bernoulli(P_{theta})
+P(S_i) \\ \sim Bernoulli(p_{theta})
 \end{multline}
 ```
 ```{=tex}
 \begin{multline}
 \label{eq:ptheta}
-P_{theta} \\ \sim Beta(\alpha_1, \alpha_2)
+p_{theta} \\ \sim Beta(\alpha_1, \alpha_2)
 \end{multline}
 ```
-After hearing a token, learners compute $P(S_i = AandB|S_p)$ according to Equation \ref{eq:gibsonnoisy}. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $P_{noise}$. $P_{noise}$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's prior belief of the probability of the intended order of the binomial.
+After hearing a token, learners compute $P(S_i = AandB|S_p)$ according to Equation \ref{eq:gibsonnoisy}. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $p_{noise}$. $p_{noise}$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's prior belief of the probability of the intended order of the binomial.
 
-To initialize $P_{theta}$ before the learner hears any data, we used the mean and concentration parametrization of the beta distribution. The mean ($\mu$) represents the expectation of the distribution (the mean value of draws from the distribution). The concentration parameter ($\nu$) describes how dense the distribution is. Before the learner hears any data, $\mu$ is equal to the generative preference for the binomial [taken from @morganFrequencydependentRegularizationIterated2016]. $\nu$ is a free parameter, set to 10 for all simulations in this paper.[^1] $\alpha_1$ and $\alpha_2$ can also be expressed in terms of $\mu$ and $\nu$:
+To initialize $p_{theta}$ before the learner hears any data, we used the mean and concentration parametrization of the beta distribution. The mean ($\mu$) represents the expectation of the distribution (the mean value of draws from the distribution). The concentration parameter ($\nu$) describes how dense the distribution is. Before the learner hears any data, $\mu$ is equal to the generative preference for the binomial [taken from @morganFrequencydependentRegularizationIterated2016]. $\nu$ is a free parameter, set to 10 for all simulations in this paper.[^1] $\alpha_1$ and $\alpha_2$ can also be expressed in terms of $\mu$ and $\nu$:
 
 [^1]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
 
@@ -137,7 +139,7 @@ To initialize $P_{theta}$ before the learner hears any data, we used the mean an
 \alpha_2 \\ = (1-\mu) \cdot \nu
 \end{multline}
 ```
-For all future tokens, learners will use the updated $P(S_i)$ from the previous token, where $P(S_i = AandB)$ is the expectation of $P_\theta$. Crucially, this value will be different because of the update on the previous step.
+For all future tokens, learners will use the updated $P(S_i)$ from the previous token, where $P(S_i = AandB)$ is the expectation of $p_\theta$. Crucially, this value will be different because of the update on the previous step.
 
 ```{=tex}
 \begin{multline}
@@ -145,18 +147,18 @@ For all future tokens, learners will use the updated $P(S_i)$ from the previous 
 P(S_i = AandB) \\ = \mathbb{E}(p_\theta)
 \end{multline}
 ```
-We then use $P(S_i)$ and $P(noise)$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations. Note that the process is comparable if the perceived binomial is nonalphabetical.
+We then use $P(S_i)$ and $p_{noise}$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations. Note that the process is comparable if the perceived binomial is nonalphabetical.
 
 ```{=tex}
 \begin{multline}
 \label{eq:praw}
-P_{raw}(S_i = AandB|S_p = AandB) \\ = P(S_i = AandB) \cdot (1 -  P(noise))
+P_{raw}(S_i = AandB|S_p = AandB) \\ = P(S_i = AandB) \cdot (1 -  p_{noise})
 \end{multline}
 ```
 ```{=tex}
 \begin{multline}
 \label{eq:prawtwo}
-P_{raw}(S_i = BandA|S_p = AandB) \\ = (1 - P(S_i = AandB)) \cdot P(noise)
+P_{raw}(S_i = BandA|S_p = AandB) \\ = (1 - P(S_i = AandB)) \cdot P_{noise}
 \end{multline}
 ```
 After calculating the unnormalized (raw) probabilities, they are then normalized:
@@ -164,42 +166,42 @@ After calculating the unnormalized (raw) probabilities, they are then normalized
 ```{=tex}
 \begin{myequation}%
 \label{eq:phatalpha}
-\hat{P}_{\alpha} = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)} %
+\hat{p}_{\alpha} = \frac{P_{raw}(S_i = AandB|S_p = AandB)}{P_{raw}(S_i = AandB | S_p = AandB) + P_{raw}(S_i = BandA|S_p = AandB)} %
 \end{myequation}
 ```
 ```{=tex}
 \begin{equation}
 \label{eq:phatnotalpha}
-\hat{P}_{\neg\alpha} = 1 - \hat{P}(\alpha)
+\hat{p}_{\neg\alpha} = 1 - \hat{P}(\alpha)
 \end{equation}
 ```
-\noindent where $\hat{P_\alpha}$ is the probability that the intended binomial order was the alphabetical order, and $\hat{P}_{\neg\alpha}$ is the probability that the intended binomial order was the nonalphabetical order.
+\noindent where $\hat{p_\alpha}$ is the probability that the intended binomial order was the alphabetical order, and $\hat{p}_{\neg\alpha}$ is the probability that the intended binomial order was the nonalphabetical order.
 
-We then update $\alpha_1'$ and $\alpha_2'$ to be used as the parameters of $P_\theta$ when the learner hears the next token. The learner then uses $\alpha_1'$ and $\alpha_2'$ to calculate $p_\theta$ and thus $P(S_i)$. This update is done according to the following equation:
+We then update $\alpha_1'$ and $\alpha_2'$ to be used as the parameters of $p_\theta$ when the learner hears the next token. The learner then uses $\alpha_1'$ and $\alpha_2'$ to calculate $p_\theta$ and thus $P(S_i)$. This update is done according to the following equation:
 
 ```{=tex}
 \begin{equation}
 \label{eq:alpha1}
-\alpha_1' = \alpha_1 + \hat{P}(\alpha)
+\alpha_1' = \alpha_1 + \hat{p}(\alpha)
 \end{equation}
 ```
 ```{=tex}
 \begin{equation}
 \label{eq:alpha2}
-\alpha_2' = \alpha_2 + \hat{P}(\neg\alpha)
+\alpha_2' = \alpha_2 + \hat{p}(\neg\alpha)
 \end{equation}
 ```
 When the learner hears the next token, they use $\alpha_1'$ and $\alpha_2'$ to compute $P(S_i)$. Note that when the learner hears a binomial, they update their beliefs about the probability of both the alpahabetical *and* nonalphabetical forms of the binomial.
 
-When the learner is done hearing N tokens and updating their beliefs of $P(S_i)$ for a given binomial, they then produce N tokens for the next generation of learners. These are generated binomially, where$\theta = P(S_i=AandB)$ is the inferred probability of the alphabetical form of a given binomial.
+When the learner is done hearing N tokens and updating their beliefs of $P(S_i)$ for a given binomial, they then produce N tokens for the next generation of learners. These are generated binomially, where $\theta = P(S_i=AandB)$ is the inferred probability of the alphabetical form of a given binomial.
 
-When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. The speaker error is analogous to a speaker choosing to produce a binomial ordering (AandB or BandA), and then accidently flipping it. For example, perhaps they intended to say *butter and bread*, but accidentally said *bread and butter* (or vice versa). In order to model this, the speaker produces a token in the unintended order with probability $P_{SpeakerNoise}$. This is a fixed parameter in the model and remains constant across binomials and generations.
+When producing each token, there is also a possibility that the speaker makes an error and produces an unintended ordering of the binomial. The speaker error is analogous to a speaker choosing to produce a binomial ordering (AandB or BandA), and then accidently flipping it. For example, perhaps they intended to say *butter and bread*, but accidentally said *bread and butter* (or vice versa). In order to model this, the speaker produces a token in the unintended order with probability $p_{SpeakerNoise}$. This is a fixed parameter in the model and remains constant across binomials and generations.
 
 This process continues iteratively for $ngen$ generations.
 
 # Results
 
-We present our results in two main sections. The first section demonstrates the effects of the speaker and listener noise parameters ($P_{noise}$ and $P_{SpeakerNoise}$ respectively) on simulations of individual binomials. The aim of this section is to examine whether the model can account for frequency-dependent regularization across individual binomials varying in frequency.
+We present our results in two main sections. The first section demonstrates the effects of the speaker and listener noise parameters ($p_{noise}$ and $p_{SpeakerNoise}$ respectively) on simulations of individual binomials. The aim of this section is to examine whether the model can account for frequency-dependent regularization across individual binomials varying in frequency.
 
 The second section compares our model's predicted binomial orderings across a range of binomials to the real-world corpus-wide distribution. In this section, rather than simulating individual binomials, we simulate the distribution of binomial orderings across the entire dataset of binomials from @morganModelingIdiosyncraticPreferences2015 with the intent of examining whether our model can capture the corpus-wide distribution.
 
@@ -213,9 +215,9 @@ First we demonstrate that frequency-dependent regularization does not arise when
 knitr::include_graphics('Figures/noNoise.png')
 ```
 
-We then systematically manipulated N, listener noise ($P_{noise}$) and speaker noise ($P_{SpeakerNoise}$). Specifically, we varied N across 100, 1000, and 10000, and listener and speaker noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every combination of these values (Figure \ref{fig:fullsimsplot}. For these simulations, the generative preference was set to 0.6 and 1000 chains were run across 500 generations.
+We then systematically manipulated N, listener noise ($p_{noise}$) and speaker noise ($p_{SpeakerNoise}$). Specifically, we varied N across 100, 1000, and 10000, and listener and speaker noise were varied across 0, 0.02, 0.04, 0.06, 0.08, and 0.1. We ran simulations for every combination of these values (Figure \ref{fig:fullsimsplot}. For these simulations, the generative preference was set to 0.6 and 1000 chains were run across 500 generations.
 
-Our results suggest that frequency-dependent regularization does arise from the model when noise is introduced, but only if listener noise is greater than speaker noise. Further our results demonstrate that if listener noise is greater than speaker noise, then the greater the difference between the listener and speaker noise, the stronger the regularization effect (this is demonstrated by moving vertically down the column labeled $P_{SpeakerNoise} = 0$ in Figure \ref{fig:fullsimsplot}).
+Our results suggest that frequency-dependent regularization does arise from the model when noise is introduced, but only if listener noise is greater than speaker noise. Further our results demonstrate that if listener noise is greater than speaker noise, then the greater the difference between the listener and speaker noise, the stronger the regularization effect (this is demonstrated by moving vertically down the column labeled $p_{SpeakerNoise} = 0$ in Figure \ref{fig:fullsimsplot}).
 
 Interestingly this regularization disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. For example, notice how if you split the plot along the diagonal, all the plots on the top half, including the diagonal, show no evidence of regularization. These graphs are all visualizations where the speaker noise is greater than the listener noise.
 
@@ -223,7 +225,7 @@ Interestingly this regularization disappears if the listener's noise parameter i
 knitr::include_graphics('Figures/full_plot_smaller.png')
 ```
 
-It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal each other, since in the long run any errors made by the speakers will be corrected for by the learner, essentially canceling eachother out (i.e., cancelled out on average).
+It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Note that a speaker error here is not whether the speaker produces the more frequent binomial ordering, but rather whether the speaker produces the intended binomial ordering. In other words, if a speaker intends to produce *butter and bread*, and instead produces *bread and butter*, this is an error in our model. Framed this way, it is perhaps unsurprising that we do not see regularization when the parameters equal each other, since in the long run any errors made by the speakers will be corrected for by the learner, essentially canceling eachother out (i.e., cancelled out on average).
 
 Thus our model makes a novel prediction: In order to account for frequency-dependent regularization, listeners must be inferring more noise than speakers are actually producing.
 
