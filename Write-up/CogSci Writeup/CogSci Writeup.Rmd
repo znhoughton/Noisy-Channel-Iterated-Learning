@@ -130,13 +130,13 @@ To initialize $p_{theta}$ before the learner hears any data, we used the mean an
 ```{=tex}
 \begin{multline}
 \label{eq:alpha1}
-\alpha_1 \\ = \mu \cdot \nu
+\alpha_1 = \mu \cdot \nu
 \end{multline}
 ```
 ```{=tex}
 \begin{multline}
 \label{eq:alpha2}
-\alpha_2 \\ = (1-\mu) \cdot \nu
+\alpha_2 = (1-\mu) \cdot \nu
 \end{multline}
 ```
 For all future tokens, learners will use the updated $P(S_i)$ from the previous token, where $P(S_i = AandB)$ is the expectation of $p_\theta$. Crucially, this value will be different because of the update on the previous step.
@@ -144,7 +144,7 @@ For all future tokens, learners will use the updated $P(S_i)$ from the previous 
 ```{=tex}
 \begin{multline}
 \label{eq:expectationptheta}
-P(S_i = AandB) \\ = \mathbb{E}(p_\theta)
+P(S_i = AandB) = \mathbb{E}(p_\theta)
 \end{multline}
 ```
 We then use $P(S_i)$ and $p_{noise}$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations. Note that the process is comparable if the perceived binomial is nonalphabetical.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  23 APR 2024 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  23 APR 2024 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -430,8 +430,23 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 411.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 411.
+
+Underfull \hbox (badness 10000) detected at line 418
+ []$[]  \OML/ptmcm/m/it/10 [] \OT1/ptmcm/m/n/10 = \OML/ptmcm/m/it/10 ^^V \OMS/pzccm/m/n/10 ^^A \OML/ptmcm/m/it/10 ^^W$ [][][]  
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 423
+ []$[]  \OML/ptmcm/m/it/10 [] \OT1/ptmcm/m/n/10 = (1 \OMS/pzccm/m/n/10 ^^@ \OML/ptmcm/m/it/10 ^^V\OT1/ptmcm/m/n/10 ) \OMS/pzccm/m/n/10 ^^A \OML/ptmcm/m/it/10 ^^W$ [][][]  
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 433
+ []$[]  \OML/ptmcm/m/it/10 P\OT1/ptmcm/m/n/10 (\OML/ptmcm/m/it/10 S[] \OT1/ptmcm/m/n/10 = \OML/ptmcm/m/it/10 AandB\OT1/ptmcm/m/n/10 ) = \U/msb/m/n/10 E\OT1/ptmcm/m/n/10 (\OML/ptmcm/m/it/10 p[]\OT1/ptmcm/m/n/10 )$ [][][]  
+ []
+
 [4]
-<Figures/noNoise.png, id=109, 569.0058pt x 198.9834pt>
+<Figures/noNoise.png, id=110, 569.0058pt x 198.9834pt>
 File: Figures/noNoise.png Graphic file (type png)
 <use Figures/noNoise.png>
 Package pdftex.def Info: Figures/noNoise.png  used on input line 544.
@@ -441,20 +456,17 @@ Underfull \hbox (badness 1394) in paragraph at lines 552--559
 []\OT1/ptm/m/n/10 We then sys-tem-at-i-cally ma-nip-u-lated N, lis-tener noise
  []
 
-<Figures/full_plot_smaller.png, id=112, 794.97pt x 433.62pt>
+<Figures/full_plot_smaller.png, id=113, 794.97pt x 433.62pt>
 File: Figures/full_plot_smaller.png Graphic file (type png)
 <use Figures/full_plot_smaller.png>
 Package pdftex.def Info: Figures/full_plot_smaller.png  used on input line 578.
 (pdftex.def)             Requested size: 505.89pt x 275.94774pt.
-<Figures/corpus_plot_and_ours.png, id=114, 569.0058pt x 198.9834pt>
+<Figures/corpus_plot_and_ours.png, id=115, 569.0058pt x 198.9834pt>
 File: Figures/corpus_plot_and_ours.png Graphic file (type png)
 <use Figures/corpus_plot_and_ours.png>
 Package pdftex.def Info: Figures/corpus_plot_and_ours.png  used on input line 617.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
 [5 <./Figures/noNoise.png>]
-Underfull \vbox (badness 1237) has occurred while \output is active []
-
-
 Underfull \hbox (badness 3179) in paragraph at lines 668--673
  []\OT1/ptm/m/n/10 Ferreira, F., & Pat-son, N. D. (2007). The `Good
  []
@@ -468,6 +480,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 668--673
 Underfull \hbox (badness 4569) in paragraph at lines 668--673
  \OT1/ptm/m/it/10 Lan-guage and Lin-guis-tics Com-pass\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 1\OT1/ptm/m/n/10 (1-2), 71--83.
  []
+
+
+Underfull \vbox (badness 2932) has occurred while \output is active []
 
 
 Underfull \hbox (badness 5667) in paragraph at lines 694--699
@@ -554,9 +569,9 @@ Here is how much of TeX's memory you used:
  34406 multiletter control sequences out of 15000+600000
  601290 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,778b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,778b,476s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CogSci-Writeup.pdf (7 pages, 653186 bytes).
+Output written on CogSci-Writeup.pdf (7 pages, 653329 bytes).
 PDF statistics:
  250 PDF objects out of 1000 (max. 8388607)
  214 compressed objects within 3 object streams
