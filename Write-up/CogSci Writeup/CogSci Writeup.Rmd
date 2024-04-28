@@ -81,7 +81,7 @@ P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 
 @gibsonNoisy2013's model made a variety of interesting predictions. For example, the model predicted that when people are presented with an implausible sentence (e.g., *the mother gave the candle the daughter*), they should be more likely to interpret the plausible version of the sentence (e.g., *the mother gave the candle to the daughter*) if there is increased noise (e.g., by adding syntactic errors to the filler items, such as a deleted function word). Their model also predicted that increasing the likelihood of implausible events (e.g., by adding more filler items that were implausible, such as *the girl was kicked by the ball*) should increase the rate of implausible interpretations of the sentence. Interestingly both of these results were born out in their experimental data. In a follow up study, @poppelsStructuresensitiveNoiseInference2016 further demonstrated that word-exchanges (e.g., *The ball kicked the girl* vs *The girl kicked the ball*) are also taken into account by comprehenders. These results taken together suggest that humans do utilize a noisy-channel system in processing.
 
-Previous research has demonstrated that noisy-channel processing models may account for certain types of regularization [e.g., @ferdinandCognitiveRootsRegularization2019, @schneiderNoisyChannelModel2020]. For example, there is evidence that children who receive primarily non-native input learn language that is more similar to native speakers [@singletonWhenLearnersSurpass2004]. One explanation is that children attribute the low-frequency unpredictable items to noise and regularize them [@schneiderNoisyChannelModel2020]. @schneiderNoisyChannelModel2020 demonstrated that a noisy-channel model can account for this type of regularization. It is important to note, however, that this is a different type of regularization than the regularization we'll be examining in this paper. Specifically, as mentioned earlier, we'll be looking at cases where it is the *high-frequency* items that become regularized. It is outside the scope of this paper to reconcile these two different types of regularization, however one intuition is when regularizing low-frequency irregular forms, there is a clear regular candidate. However, in the case of binomials, there is no clear candidate form for the low-frequency form to be regularized into.
+Previous research has demonstrated that noisy-channel processing models may account for certain types of regularization [e.g., @ferdinandCognitiveRootsRegularization2019, @schneiderNoisyChannelModel2020]. For example, there is evidence that children who receive primarily non-native input learn language that is more similar to native speakers [@singletonWhenLearnersSurpass2004]. One explanation is that children attribute the low-frequency unpredictable items to noise and regularize them [@schneiderNoisyChannelModel2020]. @schneiderNoisyChannelModel2020 demonstrated that a noisy-channel model can account for this type of regularization. It is important to note, however, that this is a different type of regularization than the regularization we'll be examining in this paper. Specifically, as mentioned earlier, we'll be looking at cases where it is the *high-frequency* items that become regularized. It is outside the scope of this paper to reconcile these two different types of regularization, however one intuition is when regularizing low-frequency irregular forms, there is a clear regular candidate. However, in the case of binomials, there is no clear candidate form for the low-frequency binomial to be regularized into.
 
 ## Present Study
 
@@ -110,16 +110,16 @@ Following @morganFrequencydependentRegularizationIterated2016, we use a 2-altern
 Within a single generation, after hearing a single token, learners compute $P(S_i = AandB|S_p)$ and update their beliefs about prior probability of the ordering for a given binomial, $P(S_i)$, according to equations \ref{eq:psi} and \ref{eq:ptheta}. $\alpha_1$ and $\alpha_2$ are pseudocounts of the alphabetical and nonalphabetical forms respectively. The size of the update is proportional to how probable the learner believes it is that each order was intended.
 
 ```{=tex}
-\begin{multline}
+\begin{equation}
 \label{eq:psi}
-P(S_i) \\ \sim Bernoulli(p_{theta})
-\end{multline}
+P(S_i) \sim Bernoulli(p_{theta})
+\end{equation}
 ```
 ```{=tex}
-\begin{multline}
+\begin{equation}
 \label{eq:ptheta}
-p_{theta} \\ \sim Beta(\alpha_1, \alpha_2)
-\end{multline}
+p_{theta} \sim Beta(\alpha_1, \alpha_2)
+\end{equation}
 ```
 After hearing a token, learners compute $P(S_i = AandB|S_p)$ according to Equation \ref{eq:gibsonnoisy}. $P(S_i \to S_p)$ is a fixed noise parameter, which we will call $p_{noise}$. $p_{noise}$ represents the probability of the perceived binomial ordering being swapped by the learner (i.e., AandB being swapped to BandA or vice versa). $P(S_i)$ represents the learner's prior belief of the probability of the intended order of the binomial.
 
@@ -128,24 +128,24 @@ To initialize $p_{theta}$ before the learner hears any data, we used the mean an
 [^1]: Changing $\nu$ does not qualitatively change the pattern of the results for any simulations in the paper, as long as it's greater than 2.
 
 ```{=tex}
-\begin{multline}
+\begin{equation}
 \label{eq:alpha1}
 \alpha_1 = \mu \cdot \nu
-\end{multline}
+\end{equation}
 ```
 ```{=tex}
-\begin{multline}
+\begin{equation}
 \label{eq:alpha2}
 \alpha_2 = (1-\mu) \cdot \nu
-\end{multline}
+\end{equation}
 ```
 For all future tokens, learners will use the updated $P(S_i)$ from the previous token, where $P(S_i = AandB)$ is the expectation of $p_\theta$. Crucially, this value will be different because of the update on the previous step.
 
 ```{=tex}
-\begin{multline}
+\begin{equation}
 \label{eq:expectationptheta}
 P(S_i = AandB) = \mathbb{E}(p_\theta)
-\end{multline}
+\end{equation}
 ```
 We then use $P(S_i)$ and $p_{noise}$ to compute $P(S_i|S_p)$. If the perceived binomial is alphabetical (AandB), we compute the unnormalized probability of the alphabetical and nonalphabetical orderings according to the below equations. Note that the process is comparable if the perceived binomial is nonalphabetical.
 

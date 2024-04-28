@@ -381,15 +381,15 @@ to equations \ref{eq:psi} and \ref{eq:ptheta}. \(\alpha_1\) and
 forms respectively. The size of the update is proportional to how
 probable the learner believes it is that each order was intended.
 
-\begin{multline}
+\begin{equation}
 \label{eq:psi}
-P(S_i) \\ \sim Bernoulli(p_{theta})
-\end{multline}
+P(S_i) \sim Bernoulli(p_{theta})
+\end{equation}
 
-\begin{multline}
+\begin{equation}
 \label{eq:ptheta}
-p_{theta} \\ \sim Beta(\alpha_1, \alpha_2)
-\end{multline}
+p_{theta} \sim Beta(\alpha_1, \alpha_2)
+\end{equation}
 
 After hearing a token, learners compute \(P(S_i = AandB|S_p)\) according
 to Equation \ref{eq:gibsonnoisy}. \(P(S_i \to S_p)\) is a fixed noise
@@ -412,25 +412,25 @@ parameter, set to 10 for all simulations in this paper.\footnote{Changing
 \(\alpha_1\) and \(\alpha_2\) can also be expressed in terms of \(\mu\)
 and \(\nu\):
 
-\begin{multline}
+\begin{equation}
 \label{eq:alpha1}
 \alpha_1 = \mu \cdot \nu
-\end{multline}
+\end{equation}
 
-\begin{multline}
+\begin{equation}
 \label{eq:alpha2}
 \alpha_2 = (1-\mu) \cdot \nu
-\end{multline}
+\end{equation}
 
 For all future tokens, learners will use the updated \(P(S_i)\) from the
 previous token, where \(P(S_i = AandB)\) is the expectation of
 \(p_\theta\). Crucially, this value will be different because of the
 update on the previous step.
 
-\begin{multline}
+\begin{equation}
 \label{eq:expectationptheta}
 P(S_i = AandB) = \mathbb{E}(p_\theta)
-\end{multline}
+\end{equation}
 
 We then use \(P(S_i)\) and \(p_{noise}\) to compute \(P(S_i|S_p)\). If
 the perceived binomial is alphabetical (AandB), we compute the
