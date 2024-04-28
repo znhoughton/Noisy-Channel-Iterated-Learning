@@ -158,35 +158,35 @@ noisy_channel_learning_prod_noise_ordered = function(p_theta, N, prior_mu, nu, p
 }
 
 
-
-iterated_learning_ordered = function(n_gen, n_sims, p_theta, N, prior_mu, nu, p_noise, prior_prob_noise, last_gen_only = F) { #set last_gen_only to T if you wish to save memory and only care about the last generation.
-  #mu_df = tibble(posterior_mu = numeric(), generation = numeric(), estimated_p_theta = numeric())
-  
-  sim_function = function() {
-    p_new_theta = p_theta
-    map_dfr(1:n_gen, ~{
-      #if (. %% 100 == 0) {
-      # print(sprintf('current generation is: %s', .))
-      #}
-      generation = .
-      posterior_mu = noisy_channel_learning_prod_noise_ordered(p_theta = p_new_theta, N = N, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise)
-      
-      if(last_gen_only == F) {
-        result = tibble(posterior_mu = posterior_mu, generation = generation, estimated_p_theta = p_new_theta)
-        p_new_theta <<- posterior_mu #need to use the operator <<- to update p_new_theta on a global scope
-        
-        return(result)
-      }
-      else{
-        p_new_theta <<- posterior_mu #need to use the operator <<- to update p_new_theta on a global scope
-        if(generation == n_gen) {
-          result = tibble(posterior_mu = posterior_mu, generation = generation, estimated_p_theta = p_new_theta)
-        }
-      }
-    })
-  }
-  
-  mu_df <- future_map_dfr(1:n_sims, ~sim_function())
-  
-  return(mu_df)
-}
+# 
+# iterated_learning_ordered = function(n_gen, n_sims, p_theta, N, prior_mu, nu, p_noise, prior_prob_noise, last_gen_only = F) { #set last_gen_only to T if you wish to save memory and only care about the last generation.
+#   #mu_df = tibble(posterior_mu = numeric(), generation = numeric(), estimated_p_theta = numeric())
+#   
+#   sim_function = function() {
+#     p_new_theta = p_theta
+#     map_dfr(1:n_gen, ~{
+#       #if (. %% 100 == 0) {
+#       # print(sprintf('current generation is: %s', .))
+#       #}
+#       generation = .
+#       posterior_mu = noisy_channel_learning_prod_noise_ordered(p_theta = p_new_theta, N = N, prior_mu = prior_mu, nu = nu, p_noise = p_noise, prior_prob_noise = prior_prob_noise)
+#       
+#       if(last_gen_only == F) {
+#         result = tibble(posterior_mu = posterior_mu, generation = generation, estimated_p_theta = p_new_theta)
+#         p_new_theta <<- posterior_mu #need to use the operator <<- to update p_new_theta on a global scope
+#         
+#         return(result)
+#       }
+#       else{
+#         p_new_theta <<- posterior_mu #need to use the operator <<- to update p_new_theta on a global scope
+#         if(generation == n_gen) {
+#           result = tibble(posterior_mu = posterior_mu, generation = generation, estimated_p_theta = p_new_theta)
+#         }
+#       }
+#     })
+#   }
+#   
+#   mu_df <- future_map_dfr(1:n_sims, ~sim_function())
+#   
+#   return(mu_df)
+# }
