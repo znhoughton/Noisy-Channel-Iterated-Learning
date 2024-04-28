@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  23 APR 2024 12:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  28 APR 2024 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -308,7 +308,9 @@ Package color Info: Driver file: pdftex.def on input line 149.
 Package: environ 2014/05/04 v0.3 A new way to define environments
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
+)) (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
 \cslhangindent=\skip60
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
@@ -324,32 +326,32 @@ LaTeX Warning: Label `eq:alpha2' multiply defined.
 )
 \openout1 = `CogSci-Writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 68.
-LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 69.
+LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 69.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 68.
+Package hyperref Info: Link coloring OFF on input line 69.
 (./CogSci-Writeup.out) (./CogSci-Writeup.out)
 \@outlinefile=\write4
 \openout4 = `CogSci-Writeup.out'.
@@ -369,7 +371,13 @@ Package hyperref Info: Link coloring OFF on input line 68.
 \everyMPtoPDFconversion=\toks26
 ) (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+(c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
@@ -379,164 +387,146 @@ File: english.apc 2013/07/21 v6.03 apacite language file
 LaTeX Info: Redefining \BPBI on input line 129.
 LaTeX Info: Redefining \BHBI on input line 130.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 72.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 72.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 71.
+LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 72.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
 (c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \vbox (badness 10000) detected at line 71
+Underfull \vbox (badness 10000) detected at line 72
  []
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 86--89
-[]\OT1/ptm/b/n/9 Keywords: \OT1/ptm/m/n/9 Frequency-dependent reg-u-lar-iza-tion; Noisy-
+Underfull \hbox (badness 6995) in paragraph at lines 88--91
+[]\OT1/ptm/b/n/9 Keywords: \OT1/ptm/m/n/9 Frequency-dependent pref-er-ence ex-trem-ity;
  []
 
 [1{c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
-] [2]
-<Figures/corpus_plots.png, id=71, 569.0058pt x 198.9834pt>
+]
+Underfull \hbox (badness 4752) in paragraph at lines 184--188
+\OT1/ptm/m/n/10 pref-er-ence ex-trem-ity bias can ac-count for frequency-
+ []
+
+
+Underfull \vbox (badness 4981) has occurred while \output is active []
+
+[2]
+<Figures/corpus_plots.png, id=72, 569.0058pt x 198.9834pt>
 File: Figures/corpus_plots.png Graphic file (type png)
 <use Figures/corpus_plots.png>
-Package pdftex.def Info: Figures/corpus_plots.png  used on input line 351.
+Package pdftex.def Info: Figures/corpus_plots.png  used on input line 345.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
-[3 <./Figures/corpus_plots.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 411.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 411.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 411.
-[4]
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
+[3 <./Figures/corpus_plots.png>] [4]
 <Figures/noNoise.png, id=111, 569.0058pt x 198.9834pt>
 File: Figures/noNoise.png Graphic file (type png)
 <use Figures/noNoise.png>
-Package pdftex.def Info: Figures/noNoise.png  used on input line 544.
+Package pdftex.def Info: Figures/noNoise.png  used on input line 542.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
 
-Underfull \hbox (badness 1394) in paragraph at lines 552--559
+Underfull \hbox (badness 1394) in paragraph at lines 550--557
 []\OT1/ptm/m/n/10 We then sys-tem-at-i-cally ma-nip-u-lated N, lis-tener noise
  []
 
 <Figures/full_plot_smaller.png, id=114, 794.97pt x 433.62pt>
 File: Figures/full_plot_smaller.png Graphic file (type png)
 <use Figures/full_plot_smaller.png>
-Package pdftex.def Info: Figures/full_plot_smaller.png  used on input line 578.
+Package pdftex.def Info: Figures/full_plot_smaller.png  used on input line 576.
 (pdftex.def)             Requested size: 505.89pt x 275.94774pt.
 <Figures/corpus_plot_and_ours.png, id=116, 569.0058pt x 198.9834pt>
 File: Figures/corpus_plot_and_ours.png Graphic file (type png)
 <use Figures/corpus_plot_and_ours.png>
-Package pdftex.def Info: Figures/corpus_plot_and_ours.png  used on input line 617.
+Package pdftex.def Info: Figures/corpus_plot_and_ours.png  used on input line 624.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
-
-Underfull \hbox (badness 3179) in paragraph at lines 668--673
+[5 <./Figures/noNoise.png>] [6 <./Figures/full_plot_smaller.png> <./Figures/corpus_plot_and_ours.png>]
+Underfull \hbox (badness 3179) in paragraph at lines 681--686
  []\OT1/ptm/m/n/10 Ferreira, F., & Pat-son, N. D. (2007). The `Good
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 668--673
+Underfull \hbox (badness 10000) in paragraph at lines 681--686
  \OT1/ptm/m/n/10 Enough' Ap-proach to Lan-guage Com-pre-hen-sion.
  []
 
 
-Underfull \hbox (badness 4569) in paragraph at lines 668--673
+Underfull \hbox (badness 4569) in paragraph at lines 681--686
  \OT1/ptm/m/it/10 Lan-guage and Lin-guis-tics Com-pass\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 1\OT1/ptm/m/n/10 (1-2), 71--83.
  []
 
-[5 <./Figures/noNoise.png>]
-Underfull \vbox (badness 2932) has occurred while \output is active []
 
-
-Underfull \hbox (badness 5667) in paragraph at lines 694--699
+Underfull \hbox (badness 5667) in paragraph at lines 700--705
  []\OT1/ptm/m/n/10 Griffiths, T. L., & Kalish, M. L. (2007). Lan-
  []
 
 
-Underfull \hbox (badness 4981) in paragraph at lines 694--699
+Underfull \hbox (badness 4981) in paragraph at lines 700--705
  \OT1/ptm/m/n/10 guage evo-lu-tion by it-er-ated learn-ing with bayesian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 694--699
+Underfull \hbox (badness 10000) in paragraph at lines 700--705
  \OT1/ptm/m/n/10 agents. \OT1/ptm/m/it/10 Cog-ni-tive Sci-ence\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 31\OT1/ptm/m/n/10 (3), 441--480.
  []
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 700--705
+Underfull \hbox (badness 3312) in paragraph at lines 706--711
  []\OT1/ptm/m/n/10 Keshev, M., & Meltzer-Asscher, A. (2021). Noisy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 700--705
+Underfull \hbox (badness 10000) in paragraph at lines 706--711
  \OT1/ptm/m/n/10 is bet-ter than rare: Com-pre-hen-ders com-pro-mise
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 700--705
+Underfull \hbox (badness 4608) in paragraph at lines 706--711
  \OT1/ptm/m/n/10 subject-verb agree-ment to form more prob-a-ble lin-
  []
 
-[6 <./Figures/full_plot_smaller.png> <./Figures/corpus_plot_and_ours.png>]
-Underfull \hbox (badness 2772) in paragraph at lines 732--737
+
+Underfull \hbox (badness 2772) in paragraph at lines 738--743
  []\OT1/ptm/m/n/10 Morgan, E., & Levy, R. (2016a). Ab-stract knowl-
  []
 
 
-Underfull \hbox (badness 4429) in paragraph at lines 732--737
+Underfull \hbox (badness 4429) in paragraph at lines 738--743
  \OT1/ptm/m/n/10 edge ver-sus di-rect ex-pe-ri-ence in pro-cess-ing of bi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--737
+Underfull \hbox (badness 10000) in paragraph at lines 738--743
  \OT1/ptm/m/n/10 no-mial ex-pres-sions. \OT1/ptm/m/it/10 Cog-ni-tion\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 157\OT1/ptm/m/n/10 , 384--402.
  []
 
-
-Underfull \hbox (badness 2617) in paragraph at lines 765--770
- []\OT1/ptm/m/n/10 Singleton, J. L., & New-port, E. L. (2004). When
- []
-
-
-Underfull \hbox (badness 5696) in paragraph at lines 765--770
- \OT1/ptm/m/n/10 learn-ers sur-pass their mod-els: The ac-qui-si-tion of
- []
-
-
-Underfull \hbox (badness 3449) in paragraph at lines 765--770
- \OT1/ptm/m/it/10 ni-tive Psy-chol-ogy\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 49\OT1/ptm/m/n/10 (4), 370407. Re-trieved from
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 765--770
- []$\OT1/pcr/m/n/10 https :// www [] .sciencedirect [] .com / science / article /
- []
-
-[7
-
-] (./CogSci-Writeup.aux)
+[7] (./CogSci-Writeup.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -545,21 +535,21 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `CogSci-Writeup.out' has not changed.
-(rerunfilecheck)             Checksum: 1852C90E10AF05E806A65333B056FB3D;1350.
+(rerunfilecheck)             Checksum: 4C1B34E016F864E4D655C73B45E9B30C;1383.
  ) 
 Here is how much of TeX's memory you used:
- 12407 strings out of 474221
- 197383 string characters out of 5738619
- 1946978 words of memory out of 5000000
- 34406 multiletter control sequences out of 15000+600000
+ 12474 strings out of 474221
+ 199110 string characters out of 5738619
+ 1948978 words of memory out of 5000000
+ 34467 multiletter control sequences out of 15000+600000
  601290 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,778b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,799b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CogSci-Writeup.pdf (7 pages, 653248 bytes).
+Output written on CogSci-Writeup.pdf (7 pages, 652854 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 245 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
