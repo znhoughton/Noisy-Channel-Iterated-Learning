@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  28 APR 2024 14:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.24)  7 MAY 2024 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,117 +421,209 @@ Underfull \hbox (badness 6995) in paragraph at lines 88--91
 []\OT1/ptm/b/n/9 Keywords: \OT1/ptm/m/n/9 Frequency-dependent pref-er-ence ex-trem-ity;
  []
 
+
+Underfull \hbox (badness 1436) in paragraph at lines 147--159
+\OT1/ptm/m/n/10 dependent pref-er-ence ex-trem-ity. That is, ad-jec-tives in
+ []
+
 [1{c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
 ]
-Underfull \hbox (badness 4752) in paragraph at lines 184--188
+Underfull \hbox (badness 4752) in paragraph at lines 209--213
 \OT1/ptm/m/n/10 pref-er-ence ex-trem-ity bias can ac-count for frequency-
  []
 
-
-Underfull \vbox (badness 4981) has occurred while \output is active []
-
 [2]
-<Figures/corpus_plots.png, id=72, 569.0058pt x 198.9834pt>
+<Figures/corpus_plots.png, id=71, 569.0058pt x 198.9834pt>
 File: Figures/corpus_plots.png Graphic file (type png)
 <use Figures/corpus_plots.png>
-Package pdftex.def Info: Figures/corpus_plots.png  used on input line 345.
+Package pdftex.def Info: Figures/corpus_plots.png  used on input line 372.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 405.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 400.
 [3 <./Figures/corpus_plots.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 433.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 433.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 433.
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 556--556
 []$\OT1/pcr/m/n/9 https :// github [] .com / znhoughton / Noisy [] -Channel [] -Iterated []
  []
 
-[4]
-<Figures/noNoise.png, id=114, 569.0058pt x 198.9834pt>
+<Figures/noNoise.png, id=111, 569.0058pt x 198.9834pt>
 File: Figures/noNoise.png Graphic file (type png)
 <use Figures/noNoise.png>
-Package pdftex.def Info: Figures/noNoise.png  used on input line 543.
+Package pdftex.def Info: Figures/noNoise.png  used on input line 570.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
 
-Underfull \hbox (badness 1394) in paragraph at lines 551--558
+Underfull \hbox (badness 1394) in paragraph at lines 578--585
 []\OT1/ptm/m/n/10 We then sys-tem-at-i-cally ma-nip-u-lated N, lis-tener noise
  []
 
-<Figures/full_plot_smaller.png, id=117, 794.97pt x 433.62pt>
-File: Figures/full_plot_smaller.png Graphic file (type png)
-<use Figures/full_plot_smaller.png>
-Package pdftex.def Info: Figures/full_plot_smaller.png  used on input line 577.
+<Figures/full_plot_smallerN.png, id=114, 794.97pt x 433.62pt>
+File: Figures/full_plot_smallerN.png Graphic file (type png)
+<use Figures/full_plot_smallerN.png>
+Package pdftex.def Info: Figures/full_plot_smallerN.png  used on input line 604.
 (pdftex.def)             Requested size: 505.89pt x 275.94774pt.
-<Figures/corpus_plot_and_ours.png, id=119, 569.0058pt x 198.9834pt>
+[5 <./Figures/noNoise.png>]
+<Figures/corpus_plot_and_ours.png, id=128, 569.0058pt x 198.9834pt>
 File: Figures/corpus_plot_and_ours.png Graphic file (type png)
 <use Figures/corpus_plot_and_ours.png>
-Package pdftex.def Info: Figures/corpus_plot_and_ours.png  used on input line 625.
+Package pdftex.def Info: Figures/corpus_plot_and_ours.png  used on input line 656.
 (pdftex.def)             Requested size: 243.91125pt x 85.29703pt.
-[5 <./Figures/noNoise.png>] [6 <./Figures/full_plot_smaller.png> <./Figures/corpus_plot_and_ours.png>]
-Underfull \hbox (badness 3179) in paragraph at lines 682--687
+[6 <./Figures/full_plot_smallerN.png> <./Figures/corpus_plot_and_ours.png>]
+Underfull \hbox (badness 3179) in paragraph at lines 716--721
  []\OT1/ptm/m/n/10 Ferreira, F., & Pat-son, N. D. (2007). The `Good
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 682--687
+Underfull \hbox (badness 10000) in paragraph at lines 716--721
  \OT1/ptm/m/n/10 Enough' Ap-proach to Lan-guage Com-pre-hen-sion.
  []
 
 
-Underfull \hbox (badness 4569) in paragraph at lines 682--687
+Underfull \hbox (badness 4569) in paragraph at lines 716--721
  \OT1/ptm/m/it/10 Lan-guage and Lin-guis-tics Com-pass\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 1\OT1/ptm/m/n/10 (1-2), 71--83.
  []
 
 
-Underfull \hbox (badness 5667) in paragraph at lines 701--706
+Underfull \hbox (badness 5667) in paragraph at lines 735--740
  []\OT1/ptm/m/n/10 Griffiths, T. L., & Kalish, M. L. (2007). Lan-
  []
 
 
-Underfull \hbox (badness 4981) in paragraph at lines 701--706
+Underfull \hbox (badness 4981) in paragraph at lines 735--740
  \OT1/ptm/m/n/10 guage evo-lu-tion by it-er-ated learn-ing with bayesian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--706
+Underfull \hbox (badness 10000) in paragraph at lines 735--740
  \OT1/ptm/m/n/10 agents. \OT1/ptm/m/it/10 Cog-ni-tive Sci-ence\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 31\OT1/ptm/m/n/10 (3), 441--480.
  []
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 707--712
+Underfull \hbox (badness 1194) in paragraph at lines 741--746
+ \OT1/ptm/m/n/10 to novel uses: The role of form ac-ces-si-bil-ity in se-
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 741--746
+ \OT1/ptm/m/n/10 man-tic ex-ten-sion. \OT1/ptm/m/it/10 Cog-ni-tive Psy-chol-ogy\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 98\OT1/ptm/m/n/10 , 22--44.
+ []
+
+
+Underfull \hbox (badness 4229) in paragraph at lines 747--752
+ \OT1/ptm/m/n/10 ting it right by get-ting it wrong: When learn-ers
+ []
+
+
+Underfull \hbox (badness 5460) in paragraph at lines 753--758
+ []\OT1/ptm/m/n/10 Kapatsinski, V. (2018). \OT1/ptm/m/it/10 Chang-ing minds chang-ing
+ []
+
+
+Underfull \hbox (badness 5050) in paragraph at lines 753--758
+ \OT1/ptm/m/it/10 tools: From learn-ing the-ory to lan-guage ac-qui-si-
+ []
+
+
+Underfull \hbox (badness 3029) in paragraph at lines 753--758
+ \OT1/ptm/m/it/10 tion to lan-guage change\OT1/ptm/m/n/10 . MIT Press. Re-trieved
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--758
+ \OT1/ptm/m/n/10 from []$\OT1/pcr/m/n/10 https :// books [] .google [] .com / books [] ?hl =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--758
+ \OT1/pcr/m/n/10 en&lr = &id = YZxjDwAAQBAJ&oi = fnd&pg = PR5&dq =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--758
+ \OT1/pcr/m/n/10 kapatsinski + changing + minds&ots = 9bGhgkCaY0&sig =
+ []
+
+
+Underfull \hbox (badness 3312) in paragraph at lines 759--764
  []\OT1/ptm/m/n/10 Keshev, M., & Meltzer-Asscher, A. (2021). Noisy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 707--712
+Underfull \hbox (badness 10000) in paragraph at lines 759--764
  \OT1/ptm/m/n/10 is bet-ter than rare: Com-pre-hen-ders com-pro-mise
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 707--712
+Underfull \hbox (badness 4608) in paragraph at lines 759--764
  \OT1/ptm/m/n/10 subject-verb agree-ment to form more prob-a-ble lin-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 739--744
+Underfull \hbox (badness 8038) in paragraph at lines 777--782
+ []\OT1/ptm/m/n/10 Levy, R., Fe-dorenko, E., Breen, M., & Gib-son,
+ []
+
+
+Underfull \hbox (badness 6758) in paragraph at lines 777--782
+ \OT1/ptm/m/n/10 E. (2012). The pro-cess-ing of ex-tra-posed struc-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 777--782
+ \OT1/ptm/m/n/10 tures in en-glish. \OT1/ptm/m/it/10 Cog-ni-tion\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 122\OT1/ptm/m/n/10 (1), 12--36.
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 804--809
  []\OT1/ptm/m/n/10 Morgan, E., & Levy, R. (2016a). Ab-stract knowl-
  []
 
 
-Underfull \hbox (badness 4429) in paragraph at lines 739--744
+Underfull \hbox (badness 4429) in paragraph at lines 804--809
  \OT1/ptm/m/n/10 edge ver-sus di-rect ex-pe-ri-ence in pro-cess-ing of bi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--744
+Underfull \hbox (badness 10000) in paragraph at lines 804--809
  \OT1/ptm/m/n/10 no-mial ex-pres-sions. \OT1/ptm/m/it/10 Cog-ni-tion\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 157\OT1/ptm/m/n/10 , 384--402.
  []
 
-[7] (./CogSci-Writeup.aux)
+
+Underfull \hbox (badness 2617) in paragraph at lines 837--842
+ []\OT1/ptm/m/n/10 Singleton, J. L., & New-port, E. L. (2004). When
+ []
+
+
+Underfull \hbox (badness 5696) in paragraph at lines 837--842
+ \OT1/ptm/m/n/10 learn-ers sur-pass their mod-els: The ac-qui-si-tion of
+ []
+
+
+Underfull \hbox (badness 3449) in paragraph at lines 837--842
+ \OT1/ptm/m/it/10 ni-tive Psy-chol-ogy\OT1/ptm/m/n/10 , \OT1/ptm/m/it/10 49\OT1/ptm/m/n/10 (4), 370407. Re-trieved from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 837--842
+ []$\OT1/pcr/m/n/10 https :// www [] .sciencedirect [] .com / science / article /
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 843--848
+ \OT1/ptm/m/n/10 chil-dren's and adults' per-for-mance on gram-mat-i-cal-ity
+ []
+
+[7] [8
+
+] (./CogSci-Writeup.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -543,18 +635,18 @@ Package rerunfilecheck Info: File `CogSci-Writeup.out' has not changed.
 (rerunfilecheck)             Checksum: 4C1B34E016F864E4D655C73B45E9B30C;1383.
  ) 
 Here is how much of TeX's memory you used:
- 12476 strings out of 474221
- 199130 string characters out of 5738619
- 1949978 words of memory out of 5000000
- 34468 multiletter control sequences out of 15000+600000
+ 12488 strings out of 474221
+ 199472 string characters out of 5738619
+ 1948978 words of memory out of 5000000
+ 34472 multiletter control sequences out of 15000+600000
  601813 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,799b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,805b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/Users/zacha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CogSci-Writeup.pdf (7 pages, 655365 bytes).
+Output written on CogSci-Writeup.pdf (8 pages, 661024 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 211 compressed objects within 3 object streams
- 73 named destinations out of 1000 (max. 500000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
