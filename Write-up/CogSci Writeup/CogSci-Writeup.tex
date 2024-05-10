@@ -1,7 +1,7 @@
 % Template for Cogsci submission with R Markdown
 
 % Stuff changed from original Markdown PLOS Template
-\documentclass[10pt, letterpaper]{article}
+\documentclass[10pt, letterpaper, hidelinks]{article}
 
 \usepackage{cogsci}
 \usepackage{pslatex}
@@ -78,12 +78,11 @@ some ways over others. For example, people overwhelmingly prefer
 has demonstrated that these ordering preferences grow stronger with
 frequency (i.e., frequency-dependent preference extremity). In this
 paper we demonstrate that this frequency-dependent preference extremity
-can be accounted for by noisy-channel processing models (e.g., Gibson,
-Bergen, \& Piantadosi, 2013; Levy, 2008). We also show that this
-preference extremity can only be accounted for if the listener infers
-more noise than the speaker produces. Finally, we show that the model
-can account for the language-wide distribution of binomial ordering
-preferences.
+can be accounted for by noisy-channel processing models (e.g., Gibson et
+al., 2013; Levy, 2008). We also show that this preference extremity can
+only be accounted for if the listener infers more noise than the speaker
+produces. Finally, we show that the model can account for the
+language-wide distribution of binomial ordering preferences.
 
 \textbf{Keywords:}
 Frequency-dependent preference extremity; Noisy-channel processing;
@@ -123,9 +122,8 @@ what processes this phenomenon is driven by. For example, it could be a
 consequence of learning processes or a consequence of sentence
 processing more broadly. In the present paper we examine whether a
 noisy-channel processing model (Gibson et al., 2013) combined with
-transmission across generations (Kirby, Cornish, \& Smith, 2008; Reali
-\& Griffiths, 2009) can account for frequency-dependent preference
-extremity.
+transmission across generations (Kirby et al., 2008; Reali \& Griffiths,
+2009) can account for frequency-dependent preference extremity.
 
 \hypertarget{frequency-dependent-preference-extremity}{%
 \subsection{Frequency-dependent preference
@@ -161,55 +159,56 @@ Interestingly, frequency-dependent preference extremity patterns
 differently from rule-following regularization processes (e.g.,
 morphological regularization) where it is the low-frequency items that
 become more regular (rather than the high-frequency items, e.g.
-Singleton \& Newport, 2004). For example, Schneider, Perkins, \& Feldman
-(2020) demonstrated through a noisy-channel processing model that
+Singleton \& Newport, 2004). For example, Schneider et al. (2020)
+demonstrated through a noisy-channel processing model that
 regularization can arise from learners attributing variation in the
 low-frequency items to noise. On the other hand, frequency-dependent
 preference extremity patterns more similarly to other processes, such as
 semantic entrenchment, where it is the high-frequency items that develop
-strict preferences (Harmon \& Kapatsinski, 2017; Kapatsinski, 2018;
-Theakston, 2004). For example, people are generally more willing to
-accept a low-frequency intransitive verb in a transitive context than a
-high-frequency intransitive verb (Kapatsinski, 2018; e.g., \emph{He
-vanished it} is judged to be more acceptable than \emph{He disappeared
-it,} Theakston, 2004).
+strict preferences (Harmon \& Kapatsinski, 2017; Theakston, 2004). For
+example, people are generally more willing to accept a low-frequency
+intransitive verb in a transitive context than a high-frequency
+intransitive verb (e.g., \emph{He vanished it} is judged to be more
+acceptable than \emph{He disappeared it}, Kapatsinski, 2018; Robenalt \&
+Goldberg, 2015; Theakston, 2004).
 
 Why is it that it is the high-frequency items that develop more
 polarized preferences in frequency-dependent preference extremity? One
-possibility is that it occurs as a consequence of imperfect transmission
-between generations. For example, as speakers transmit the language from
-one generation to the next, it is possible that the next generation may
-imperfectly infer the probability of each ordering. Indeed, Morgan \&
-Levy (2016b) demonstrated this possibility in an iterated-learning
-paradigm. Specifically, they showed that a data generation model with a
-frequency-\emph{independent} bias can result in
+possibility is that it occurs as an interaction between imperfect
+learning and transmission across generations. For example, it's possible
+that while learners of a language are in general very good at learning
+the statistical patterns in the language (e.g., Saffran et al., 1996; Yu
+\& Smith, 2007), they may do so imperfectly and with a bias towards
+preference extremity. For example, if a learner hears 70 tokens of
+\emph{bread and butter} and 30 tokens of \emph{butter and bread}, they
+may imperfectly infer the ordering preference and transmit the language
+with a more skewed distribution (e.g., 75 tokens \emph{bread and butter}
+and 25 tokens of \emph{butter and bread}). Indeed, previous studies have
+shown that learners will reproduce the more frequent item at an even
+higher rate than they heard it (Harmon \& Kapatsinski, 2017; Hudson Kam
+\& Newport, 2009). As the language is transmitted from generation to
+generation, it is possible this compounds until the highest-frequency
+items develop polarized ordering preferences.
+
+Following this logic, Morgan \& Levy (2016b) investigated whether
+frequency-dependent preference extremity can arise as a result of
+imperfect learning across generations. They found that a data generation
+model with a frequency-\emph{independent} bias can result in
 frequency-\emph{dependent} preference extremity across generations of
 learners in a 2-alternative iterated learning paradigm. They argued that
 frequency-dependent preference extremity emerges because for
 low-frequency items, the preference extremity bias cannot overcome the
 learner's generative preferences for maintaining variation, but for
-high-frequency items, it can.
-
-In other words, it's possible that while learners of a language are in
-general very good at learning the statistical patterns in the language
-(e.g., Saffran, Aslin, \& Newport, 1996; Yu \& Smith, 2007), they may do
-so imperfectly and with a bias towards preference extremity. For
-example, if a learner hears 70 tokens of \emph{bread and butter} and 30
-tokens of \emph{butter and bread}, they may imperfectly infer the
-ordering preference and transmit the language with a more skewed
-distribution (e.g., 75 tokens \emph{bread and butter} and 25 tokens of
-\emph{butter and bread}). Indeed, previous studies have shown that
-learners will reproduce the more frequent item at an even higher rate
-than they heard it (Harmon \& Kapatsinski, 2017; Hudson Kam \& Newport,
-2009). On the other hand, for lower frequency items learners may rely
-more on their generative preferences because they haven't heard the item
-very much. As this occurs over many generations, it may result in
-frequency-dependent preference extremity.
+high-frequency items, it can. In other words, for lower frequency items,
+learners may rely more on their generative preferences because they
+haven't heard the item very much. As the language is transmitted across
+many generations, it may result in frequency-dependent preference
+extremity.
 
 While there is good evidence that a frequency-\emph{independent}
 preference extremity bias can account for frequency-dependent preference
 extremity across generations, it remains unclear what processes in
-language transmission is analogous to this preference extremity bias.
+language transmission are analogous to this preference extremity bias.
 
 \hypertarget{noisy-channel-processing}{%
 \subsection{Noisy-channel Processing}\label{noisy-channel-processing}}
@@ -227,30 +226,30 @@ speaker.
 Indeed, there is evidence that our processing system does take noise
 into account. For example, Ganong (1980) found that people will process
 a non-word as being a word under noisy conditions. Additionally, Albert
-Felty, Buchwald, Gruenenfelder, \& Pisoni (2013) demonstrated that when
-listeners do misperceive a word, the word that they believe to have
-heard tends to be higher frequency than the target word. Further, Keshev
-\& Meltzer-Asscher (2021) found that in Arabic, readers will even
-process ambiguous subject/object relative clauses as the more frequent
-interpretation, even if this interpretation compromises subject-verb
-agreement. These results taken together suggest that misperceptions may
-sometimes actually be a consequence of noisy-channel processing
-(although it's worth noting that good-enough processing theories also
-make very similar predictions, e.g., Ferreira \& Patson, 2007).
+Felty et al. (2013) demonstrated that when listeners do misperceive a
+word, the word that they believe to have heard tends to be higher
+frequency than the target word. Further, Keshev \& Meltzer-Asscher
+(2021) found that in Arabic, readers will even process ambiguous
+subject/object relative clauses as the more frequent interpretation,
+even if this interpretation compromises subject-verb agreement. These
+results taken together suggest that misperceptions may sometimes
+actually be a consequence of noisy-channel processing (although it's
+worth noting that good-enough processing theories also make very similar
+predictions, e.g., Ferreira \& Patson, 2007).
 
 Further, people will even process \emph{grammatical} utterances, as a
-more frequent or plausible interpretation (Christianson, Hollingworth,
-Halliwell, \& Ferreira, 2001; Levy, 2008; Poppels \& Levy, 2016). This
-can even arise in two interpretations that cannot both be consistent
-with the original sentence. For example, Christianson et al. (2001)
-demonstrated that when people read the sentence \emph{While the man
-hunted the deer ran into the woods}, people will answer in the
-affirmative for both \emph{Did the man hunt the deer?} and \emph{Did the
-dear run into the woods?}. Levy (2008) argued that this phenonenon was
-explained by noisy-channel processing, since a single insertion results
-in plausible, grammatical constructions for both meanings (\emph{While
-the man hunted it the deer ran into the woods} vs \emph{While the man
-hunted the deer it ran into the woods}).
+more frequent or plausible interpretation (Christianson et al., 2001;
+Levy, 2008; Poppels \& Levy, 2016). This can even arise in two
+interpretations that cannot both be consistent with the original
+sentence. For example, Christianson et al. (2001) demonstrated that when
+people read the sentence \emph{While the man hunted the deer ran into
+the woods}, people will answer in the affirmative for both \emph{Did the
+man hunt the deer?} and \emph{Did the dear run into the woods?}. Levy
+(2008) argued that this phenonenon was explained by noisy-channel
+processing, since a single insertion results in plausible, grammatical
+constructions for both meanings (\emph{While the man hunted it the deer
+ran into the woods} vs \emph{While the man hunted the deer it ran into
+the woods}).
 
 In order to account for findings like these, Gibson et al. (2013)
 developed a computational model that demonstrated how a system might
@@ -272,8 +271,8 @@ P(S_i|S_p) \propto P(S_i) P(S_i \to S_p)
 utterance given the perceived utterance, \(P(S_i)\) is the prior
 probability of the intended utterance, and \(P(S_i \to S_p)\) is the
 probability of the perceived utterance (\(S_p\)) given the intended
-utterance (\(S_i\)). If the perceived utterance is \emph{bread and
-butter}, for example, the listener can infer the probability that the
+utterance (\(S_i\)). If the perceived utterance is \emph{butter and
+bread}, for example, the listener can infer the probability that the
 intended utterance was \emph{bread and butter} or \emph{butter and
 bread}.
 
@@ -296,9 +295,9 @@ humans do utilize a noisy-channel system in processing.
 
 In addition to Gibson et al. (2013), previous research has demonstrated
 that noisy-channel processing models may also account for certain types
-of regularization (e.g., Ferdinand, Kirby, \& Smith, 2019; Schneider et
-al., 2020). For example, as mentioned earlier, Schneider et al. (2020)
-has demonstrated that a noisy-channel model can account for some
+of regularization (e.g., Ferdinand et al., 2019; Schneider et al.,
+2020). For example, as mentioned earlier, Schneider et al. (2020) has
+demonstrated that a noisy-channel model can account for some
 rule-following regularization processes (e.g., morphological
 regularization). However, it is unclear whether noisy-channel processing
 models can also account for frequency-dependent preference extremity.
@@ -397,7 +396,7 @@ proportion to what they believe the intended order was: e.g.~if they
 believe the intended utterance was AandB with 50\% probability and BandA
 with 50\% probability, they will add 0.5 to each count. These updated
 beliefs then influence their beliefs about future intended utterances
-(Eq. \textbackslash ref\{eq:gibsonnoisy\}).
+(Eq. \ref{eq:gibsonnoisy}).
 
 Specifically, the prior probability over the binomial ordering
 preferences, \(P(S_i)\), follows Equations \ref{eq:psi} and
@@ -493,12 +492,12 @@ parameters of \(p_\theta\), and thus \(P(S_i)\), when the learner hears
 the next token. This update is done according to the following equation:
 
 \begin{equation}
-\label{eq:alpha1}
+\label{eq:alpha1prime}
 \alpha_1' = \alpha_1 + \hat{p}_\alpha
 \end{equation}
 
 \begin{equation}
-\label{eq:alpha2}
+\label{eq:alpha2prime}
 \alpha_2' = \alpha_2 + \hat{p}_{\neg\alpha}
 \end{equation}
 
@@ -571,7 +570,7 @@ presented in Figure \ref{fig:noNoisePlot}.
 
 }
 
-\caption[A plot of the distribution of simulated binomials at the 500th generation, varying in frequency]{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N, which is the overall frequency of a binomial regardless of ordering (i.e., count(AandB) + count(BandA). On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that all values of N produce dense distributions clustered around 0.6 (i.e., there is no frequency-dependent preference extremity).}\label{fig:noNoisePlot}
+\caption[A plot of the distribution of simulated binomials at the 500th generation, varying in frequency]{A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N, which is the overall frequency of a binomial regardless of ordering (i.e., count(AandB) + count(BandA)). On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that all values of N produce dense distributions clustered around 0.6 (i.e., there is no frequency-dependent preference extremity).}\label{fig:noNoisePlot}
 \end{figure}
 \end{CodeChunk}
 
@@ -635,18 +634,17 @@ predictions for all 594 binomials from Morgan \& Levy (2015). The model
 estimated the ordering preference across 500 generations with 10 chains
 each. Values for the generative preference and N for each binomial were
 taken from (Morgan \& Levy, 2015)'s corpus. Listener noise was set to
-0.02 and speaker noise to 0.005. Our results demonstrate that our model
-can approximate the distribution in the corpus data (See Figure
-\ref{fig:corpusourmodel}). Note that we scale N based on an estimated
-lifetime exposure of 300 million tokens (Levy, Fedorenko, Breen, \&
-Gibson, 2012).
+0.02 and speaker noise to 0.005. Note that we scale N based on an
+estimated lifetime exposure of 300 million tokens (Levy et al., 2012).
 
-In other words, the corpus-wide distribution of binomial orderings
-according to our model is similar to the ordering we see in actual
-corpus data. Further, the distribution is qualitatively similar
-regardless of listener and speaker noise parameters, as long as listener
-noise is greater than speaker noise. Altogether, this suggests that our
-model both captures the phenomenon of frequency-dependent preference
+Our results demonstrate that our model can approximate the distribution
+in the corpus data (See Figure \ref{fig:corpusourmodel}). In other
+words, the corpus-wide distribution of binomial orderings according to
+our model is similar to the ordering we see in actual corpus data.
+Further, the distribution is qualitatively similar regardless of
+listener and speaker noise parameters, as long as listener noise is
+greater than speaker noise. Altogether, this suggests that our model
+both captures the phenomenon of frequency-dependent preference
 extremity, but also in capturing it our model also predicts a similar
 distribution of binomial orderings to what we see in corpus data.
 
@@ -682,6 +680,12 @@ high-frequency binomials than low-frequency binomials (e.g., producing
 Thus it will also be interesting to examine models that don't use a
 fixed speaker-noise parameter.
 
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+This research was supported by the UC Davis Society of Hellman Fellows
+Program and the UC Davis College of Letters and Science.
+
 \hypertarget{references}{%
 \section{References}\label{references}}
 
@@ -706,23 +710,23 @@ probabilistic analysis of english binomials. \emph{Language}, 233278.
 Christianson, K., Hollingworth, A., Halliwell, J. F., \& Ferreira, F.
 (2001). Thematic roles assigned along the garden path linger.
 \emph{Cognitive Psychology}, \emph{42}(4), 368--407.
-http://doi.org/\href{https://doi.org/10.1006/cogp.2001.0752}{10.1006/cogp.2001.0752}
+\url{https://doi.org/10.1006/cogp.2001.0752}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ferdinandCognitiveRootsRegularization2019}{}}%
 Ferdinand, V., Kirby, S., \& Smith, K. (2019). The cognitive roots of
 regularization in language. \emph{Cognition}, \emph{184}, 53--68.
-http://doi.org/\href{https://doi.org/10.1016/j.cognition.2018.12.002}{10.1016/j.cognition.2018.12.002}
+\url{https://doi.org/10.1016/j.cognition.2018.12.002}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ferreiraGoodEnoughApproach2007}{}}%
 Ferreira, F., \& Patson, N. D. (2007). The {`}Good Enough{'} Approach to
 Language Comprehension. \emph{Language and Linguistics Compass},
 \emph{1}(1-2), 71--83.
-http://doi.org/\href{https://doi.org/10.1111/j.1749-818X.2007.00007.x}{10.1111/j.1749-818X.2007.00007.x}
+\url{https://doi.org/10.1111/j.1749-818X.2007.00007.x}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ganongPhoneticCategorizationAuditory1980}{}}%
 Ganong, W. F. (1980). Phonetic categorization in auditory word
 perception. \emph{Journal of Experimental Psychology: Human Perception
-and Performance}, \emph{6}(1), 110. Retrieved from
+and Performance}, \emph{6}(1), 110.
 \url{https://psycnet.apa.org/record/1981-07020-001}
 
 \leavevmode\vadjust pre{\hypertarget{ref-gibsonNoisy2013}{}}%
@@ -730,82 +734,78 @@ Gibson, E., Bergen, L., \& Piantadosi, S. T. (2013). Rational
 integration of noisy evidence and prior semantic expectations in
 sentence interpretation. \emph{Proceedings of the National Academy of
 Sciences}, \emph{110}(20), 8051--8056.
-http://doi.org/\href{https://doi.org/10.1073/pnas.1216438110}{10.1073/pnas.1216438110}
+\url{https://doi.org/10.1073/pnas.1216438110}
 
 \leavevmode\vadjust pre{\hypertarget{ref-griffithsLanguageEvolutionIterated2007}{}}%
 Griffiths, T. L., \& Kalish, M. L. (2007). Language evolution by
 iterated learning with bayesian agents. \emph{Cognitive Science},
-\emph{31}(3), 441--480.
-http://doi.org/\href{https://doi.org/10.1080/15326900701326576}{10.1080/15326900701326576}
+\emph{31}(3), 441--480. \url{https://doi.org/10.1080/15326900701326576}
 
 \leavevmode\vadjust pre{\hypertarget{ref-harmonPuttingOldTools2017}{}}%
 Harmon, Z., \& Kapatsinski, V. (2017). Putting old tools to novel uses:
 The role of form accessibility in semantic extension. \emph{Cognitive
 Psychology}, \emph{98}, 22--44.
-http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2017.08.002}{10.1016/j.cogpsych.2017.08.002}
+\url{https://doi.org/10.1016/j.cogpsych.2017.08.002}
 
 \leavevmode\vadjust pre{\hypertarget{ref-hudsonkamGettingItRight2009}{}}%
 Hudson Kam, C. L., \& Newport, E. L. (2009). Getting it right by getting
 it wrong: When learners change languages. \emph{Cognitive Psychology},
 \emph{59}(1), 30--66.
-http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2009.01.001}{10.1016/j.cogpsych.2009.01.001}
+\url{https://doi.org/10.1016/j.cogpsych.2009.01.001}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kapatsinskiChangingMindsChanging2018}{}}%
 Kapatsinski, V. (2018). \emph{Changing minds changing tools: From
 learning theory to language acquisition to language change}. MIT Press.
-Retrieved from
 \url{https://books.google.com/books?hl=en\&lr=\&id=YZxjDwAAQBAJ\&oi=fnd\&pg=PR5\&dq=kapatsinski+changing+minds\&ots=9bGhgkCaY0\&sig=MHfWF9cbhbtMmx33a0FYSM6AMAs}
 
 \leavevmode\vadjust pre{\hypertarget{ref-keshevNoisyBetterRare2021}{}}%
 Keshev, M., \& Meltzer-Asscher, A. (2021). Noisy is better than rare:
 Comprehenders compromise subject-verb agreement to form more probable
 linguistic structures. \emph{Cognitive Psychology}, \emph{124}, 101359.
-http://doi.org/\href{https://doi.org/10.1016/j.cogpsych.2020.101359}{10.1016/j.cogpsych.2020.101359}
+\url{https://doi.org/10.1016/j.cogpsych.2020.101359}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kirbyCumulativeCulturalEvolution2008}{}}%
 Kirby, S., Cornish, H., \& Smith, K. (2008). Cumulative cultural
 evolution in the laboratory: An experimental approach to the origins of
 structure in human language. \emph{Proceedings of the National Academy
 of Sciences}, \emph{105}(31), 10681--10686.
-http://doi.org/\href{https://doi.org/10.1073/pnas.0707835105}{10.1073/pnas.0707835105}
+\url{https://doi.org/10.1073/pnas.0707835105}
 
 \leavevmode\vadjust pre{\hypertarget{ref-levyNoisychannel2008}{}}%
-Levy, R. (2008). A noisy-channel model of human sentence comprehension
-under uncertain input. In (p. 234243). Retrieved from
+Levy, R. (2008). \emph{A noisy-channel model of human sentence
+comprehension under uncertain input}. 234243.
 \url{https://aclanthology.org/D08-1025.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-levyProcessingExtraposedStructures2012}{}}%
 Levy, R., Fedorenko, E., Breen, M., \& Gibson, E. (2012). The processing
 of extraposed structures in english. \emph{Cognition}, \emph{122}(1),
-12--36.
-http://doi.org/\href{https://doi.org/10.1016/j.cognition.2011.07.012}{10.1016/j.cognition.2011.07.012}
+12--36. \url{https://doi.org/10.1016/j.cognition.2011.07.012}
 
 \leavevmode\vadjust pre{\hypertarget{ref-linSyntacticAnnotationsGoogle2012}{}}%
 Lin, Y., Michel, J.-B., Lieberman, E. A., Orwant, J., Brockman, W., \&
-Petrov, S. (2012). Syntactic annotations for the google books ngram
-corpus. In (p. 169174). Retrieved from
-\url{https://aclanthology.org/P12-3029.pdf}
+Petrov, S. (2012). \emph{Syntactic annotations for the google books
+ngram corpus}. 169174. \url{https://aclanthology.org/P12-3029.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-liu2020}{}}%
-Liu, Z., \& Morgan, E. (2020). Frequency-dependent regularization in
-constituent ordering preferences. In. Retrieved from
+Liu, Z., \& Morgan, E. (2020). \emph{Frequency-dependent regularization
+in constituent ordering preferences.}
 \url{https://www.cognitivesciencesociety.org/cogsci20/papers/0751/0751.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-liu2021}{}}%
-Liu, Z., \& Morgan, E. (2021). Frequency-dependent regularization in
-syntactic constructions. In (p. 387389). Retrieved from
+Liu, Z., \& Morgan, E. (2021). \emph{Frequency-dependent regularization
+in syntactic constructions}. 387389.
 \url{https://aclanthology.org/2021.scil-1.41.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-morganModelingIdiosyncraticPreferences2015}{}}%
-Morgan, E., \& Levy, R. (2015). Modeling idiosyncratic preferences : How
-generative knowledge and expression frequency jointly determine language
-structure, 1649--1654.
+Morgan, E., \& Levy, R. (2015). \emph{Modeling idiosyncratic preferences
+: How generative knowledge and expression frequency jointly determine
+language structure}. 1649--1654.
 
 \leavevmode\vadjust pre{\hypertarget{ref-morgan2016}{}}%
 Morgan, E., \& Levy, R. (2016a). Abstract knowledge versus direct
 experience in processing of binomial expressions. \emph{Cognition},
 \emph{157}, 384--402.
-http://doi.org/\href{https://doi.org/10.1016/j.cognition.2016.09.011}{10.1016/j.cognition.2016.09.011}
+\url{https://doi.org/10.1016/j.cognition.2016.09.011}
 
 \leavevmode\vadjust pre{\hypertarget{ref-morganFrequencydependentRegularizationIterated2016}{}}%
 Morgan, E., \& Levy, R. (2016b). Frequency-dependent regularization in
@@ -813,44 +813,50 @@ iterated learning. \emph{The Evolution of Language: Proceedings of the
 11th International Conference}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-poppelsStructuresensitiveNoiseInference2016}{}}%
-Poppels, T., \& Levy, R. (2016). Structure-sensitive noise inference:
-Comprehenders expect exchange errors. In. Retrieved from
+Poppels, T., \& Levy, R. (2016). \emph{Structure-sensitive noise
+inference: Comprehenders expect exchange errors.}
 \url{https://tpoppels.github.io/files/2016-poppels-levy-cogsci-proceedings.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-realiEvolutionFrequencyDistributions2009}{}}%
 Reali, F., \& Griffiths, T. L. (2009). The evolution of frequency
 distributions: Relating regularization to inductive biases through
 iterated learning. \emph{Cognition}, \emph{111}(3), 317--328.
-http://doi.org/\href{https://doi.org/10.1016/j.cognition.2009.02.012}{10.1016/j.cognition.2009.02.012}
+\url{https://doi.org/10.1016/j.cognition.2009.02.012}
+
+\leavevmode\vadjust pre{\hypertarget{ref-robenaltJudgmentEvidenceStatistical2015}{}}%
+Robenalt, C., \& Goldberg, A. E. (2015). Judgment evidence for
+statistical preemption: It is relatively better to vanish than to
+disappear a rabbit, but a lifeguard can equally well backstroke or swim
+children to shore. \emph{Cognitive Linguistics}, \emph{26}(3), 467--503.
+\url{https://doi.org/10.1515/cog-2015-0004}
 
 \leavevmode\vadjust pre{\hypertarget{ref-saffranStatisticalLearning8MonthOld1996}{}}%
 Saffran, J. R., Aslin, R. N., \& Newport, E. L. (1996). Statistical
 Learning by 8-Month-Old Infants. \emph{Science}, \emph{274}(5294),
-1926--1928.
-http://doi.org/\href{https://doi.org/10.1126/science.274.5294.1926}{10.1126/science.274.5294.1926}
+1926--1928. \url{https://doi.org/10.1126/science.274.5294.1926}
 
 \leavevmode\vadjust pre{\hypertarget{ref-schneiderNoisyChannelModel2020}{}}%
-Schneider, J., Perkins, L., \& Feldman, N. H. (2020). A noisy channel
-model for systematizing unpredictable input variation. In (p. 533547).
-Retrieved from \url{http://www.lingref.com/bucld/44/BUCLD44-43.pdf}
+Schneider, J., Perkins, L., \& Feldman, N. H. (2020). \emph{A noisy
+channel model for systematizing unpredictable input variation}. 533547.
+\url{http://www.lingref.com/bucld/44/BUCLD44-43.pdf}
 
 \leavevmode\vadjust pre{\hypertarget{ref-singletonWhenLearnersSurpass2004}{}}%
 Singleton, J. L., \& Newport, E. L. (2004). When learners surpass their
 models: The acquisition of american sign language from inconsistent
-input. \emph{Cognitive Psychology}, \emph{49}(4), 370407. Retrieved from
+input. \emph{Cognitive Psychology}, \emph{49}(4), 370407.
 \url{https://www.sciencedirect.com/science/article/pii/S0010028504000295}
 
 \leavevmode\vadjust pre{\hypertarget{ref-theakstonRoleEntrenchmentChildren2004}{}}%
 Theakston, A. L. (2004). The role of entrenchment in children{'}s and
 adults{'} performance on grammaticality judgment tasks. \emph{Cognitive
 Development}, \emph{19}(1), 15--34.
-http://doi.org/\href{https://doi.org/10.1016/j.cogdev.2003.08.001}{10.1016/j.cogdev.2003.08.001}
+\url{https://doi.org/10.1016/j.cogdev.2003.08.001}
 
 \leavevmode\vadjust pre{\hypertarget{ref-yuRapidWordLearning2007}{}}%
 Yu, C., \& Smith, L. B. (2007). Rapid Word Learning Under Uncertainty
 via Cross-Situational Statistics. \emph{Psychological Science},
 \emph{18}(5), 414--420.
-http://doi.org/\href{https://doi.org/10.1111/j.1467-9280.2007.01915.x}{10.1111/j.1467-9280.2007.01915.x}
+\url{https://doi.org/10.1111/j.1467-9280.2007.01915.x}
 
 \end{CSLReferences}
 

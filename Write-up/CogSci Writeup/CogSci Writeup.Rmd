@@ -1,9 +1,10 @@
 ---
 title: "Frequency-dependent preference extremity arises from a noisy-channel processing model"
 bibliography: ["library.bib", "references.bib"]
-csl: apa6.csl
-document-params: "10pt, letterpaper"
+csl: apa.csl
+document-params: "10pt, letterpaper, hidelinks"
 header-includes:
+  # - \usepackage[hidelinks]{hyperref}
    - \usepackage{environ}
    - \usepackage[section]{placeins}
 author-information: > 
@@ -55,11 +56,11 @@ Additionally, @liu2020 demonstrated that the dative alternation in English also 
 
 <!--# this bottom paragraph needs to be expanded -->
 
-Interestingly, frequency-dependent preference extremity patterns differently from rule-following regularization processes (e.g., morphological regularization) where it is the low-frequency items that become more regular [rather than the high-frequency items, e.g. @singletonWhenLearnersSurpass2004]. For example, @schneiderNoisyChannelModel2020 demonstrated through a noisy-channel processing model that regularization can arise from learners attributing variation in the low-frequency items to noise. On the other hand, frequency-dependent preference extremity patterns more similarly to other processes, such as semantic entrenchment, where it is the high-frequency items that develop strict preferences [@theakstonRoleEntrenchmentChildren2004; @kapatsinskiChangingMindsChanging2018; @harmonPuttingOldTools2017]. For example, people are generally more willing to accept a low-frequency intransitive verb in a transitive context than a high-frequency intransitive verb [e.g., *He vanished it* is judged to be more acceptable than *He disappeared it,* @theakstonRoleEntrenchmentChildren2004; @kapatsinskiChangingMindsChanging2018; @robenaltJudgmentEvidenceStatistical2015].
+Interestingly, frequency-dependent preference extremity patterns differently from rule-following regularization processes (e.g., morphological regularization) where it is the low-frequency items that become more regular [rather than the high-frequency items, e.g. @singletonWhenLearnersSurpass2004]. For example, @schneiderNoisyChannelModel2020 demonstrated through a noisy-channel processing model that regularization can arise from learners attributing variation in the low-frequency items to noise. On the other hand, frequency-dependent preference extremity patterns more similarly to other processes, such as semantic entrenchment, where it is the high-frequency items that develop strict preferences [@theakstonRoleEntrenchmentChildren2004; @harmonPuttingOldTools2017]. For example, people are generally more willing to accept a low-frequency intransitive verb in a transitive context than a high-frequency intransitive verb [e.g., *He vanished it* is judged to be more acceptable than *He disappeared it*, @kapatsinskiChangingMindsChanging2018; @theakstonRoleEntrenchmentChildren2004; @robenaltJudgmentEvidenceStatistical2015].
 
 <!--# Now to wrap up, I just need a paragraph to explain why frequency-dependent preference extremity patterns differently from rule-following regularization processes -->
 
-Why is it that it is the high-frequency items that develop more polarized preferences in frequency-dependent preference extremity? One possibility is that it occurs as an interaction between imperfect learning and transmission across generations. For example, it's possible that while learners of a language are in general very good at learning the statistical patterns in the language [e.g., @saffranStatisticalLearning8MonthOld1996; @yuRapidWordLearning2007], they may do so imperfectly and with a bias towards preference extremity. For example, if a learner hears 70 tokens of *bread and butter* and 30 tokens of *butter and bread*, they may imperfectly infer the ordering preference and transmit the language with a more skewed distribution (e.g., 75 tokens *bread and butter* and 25 tokens of *butter and bread*). Indeed, previous studies have shown that learners will reproduce the more frequent item at an even higher rate than they heard it [@hudsonkamGettingItRight2009; @harmonPuttingOldTools2017]. As this is transmitted from generation to generation, it is possible this compounds until the highest-frequency items develop polarized ordering preferences.
+Why is it that it is the high-frequency items that develop more polarized preferences in frequency-dependent preference extremity? One possibility is that it occurs as an interaction between imperfect learning and transmission across generations. For example, it's possible that while learners of a language are in general very good at learning the statistical patterns in the language [e.g., @saffranStatisticalLearning8MonthOld1996; @yuRapidWordLearning2007], they may do so imperfectly and with a bias towards preference extremity. For example, if a learner hears 70 tokens of *bread and butter* and 30 tokens of *butter and bread*, they may imperfectly infer the ordering preference and transmit the language with a more skewed distribution (e.g., 75 tokens *bread and butter* and 25 tokens of *butter and bread*). Indeed, previous studies have shown that learners will reproduce the more frequent item at an even higher rate than they heard it [@hudsonkamGettingItRight2009; @harmonPuttingOldTools2017]. As the language is transmitted from generation to generation, it is possible this compounds until the highest-frequency items develop polarized ordering preferences.
 
 Following this logic, @morganFrequencydependentRegularizationIterated2016 investigated whether frequency-dependent preference extremity can arise as a result of imperfect learning across generations. They found that a data generation model with a frequency-*independent* bias can result in frequency-*dependent* preference extremity across generations of learners in a 2-alternative iterated learning paradigm. They argued that frequency-dependent preference extremity emerges because for low-frequency items, the preference extremity bias cannot overcome the learner's generative preferences for maintaining variation, but for high-frequency items, it can. In other words, for lower frequency items, learners may rely more on their generative preferences because they haven't heard the item very much. As the language is transmitted across many generations, it may result in frequency-dependent preference extremity.
 
@@ -183,13 +184,13 @@ We then update $\alpha_1'$ and $\alpha_2'$ to be used as the parameters of $p_\t
 
 ```{=tex}
 \begin{equation}
-\label{eq:alpha1}
+\label{eq:alpha1prime}
 \alpha_1' = \alpha_1 + \hat{p}_\alpha
 \end{equation}
 ```
 ```{=tex}
 \begin{equation}
-\label{eq:alpha2}
+\label{eq:alpha2prime}
 \alpha_2' = \alpha_2 + \hat{p}_{\neg\alpha}
 \end{equation}
 ```
@@ -213,7 +214,7 @@ First we demonstrate that frequency-dependent preference extremity does not aris
 
 [^2]: All code and results can be found publicly available here: <https://github.com/znhoughton/Noisy-Channel-Iterated-Learning>
 
-```{r noNoisePlot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N, which is the overall frequency of a binomial regardless of ordering (i.e., count(AandB) + count(BandA). On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that all values of N produce dense distributions clustered around 0.6 (i.e., there is no frequency-dependent preference extremity).'}
+```{r noNoisePlot, echo = F, out.width = '100%', fig.align = 'center', warning = F, message = F, fig.cap = 'A plot of the distribution of simulated binomials at the 500th generation, varying in frequency. The top value represents N, which is the overall frequency of a binomial regardless of ordering (i.e., count(AandB) + count(BandA)). On the x-axis is the predicted probability of producing the binomial in alphabetical form. On the y-axis is probability density. Speaker and listener noise was set to 0. The generative preference was 0.6, and nu was set to 10. 1000 chains were run. Note that all values of N produce dense distributions clustered around 0.6 (i.e., there is no frequency-dependent preference extremity).'}
 knitr::include_graphics('Figures/noNoise.png')
 ```
 
@@ -221,13 +222,13 @@ We then systematically manipulated N, listener noise ($p_{noise}$) and speaker n
 
 Our results suggest that frequency-dependent preference extremity does arise from the model when noise is introduced, but only if listener noise is greater than speaker noise. Further our results demonstrate that if listener noise is greater than speaker noise, then the greater the difference between the listener and speaker noise, the stronger the preference extremity effect (this is demonstrated by moving vertically down the column labeled $p_{SpeakerNoise} = 0$ in Figure \ref{fig:fullsimsplot}).
 
-Interestingly this preference extremity disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. For example, notice how if you split the plot along the diagonal, all the plots on the top half, including the diagonal, show no evidence of preference extremity. These graphs are all visualizations where the speaker noise is greater than the listener noise.
+Interestingly this preference extremity disappears if the listener's noise parameter is less than or equal to the speaker's noise parameter. For example, notice how if you split the plot along the diagonal, all the plots on the top half, including the diagonal, show no evidence of preference extremity. These graphs are all visualizations where the speaker noise is greater than or equal to the listener noise.
 
 ```{r fullsimsplot, echo = F, fig.env = 'figure*', out.width = "100%", warning = F, message = F, fig.pos = '!htb', fig.cap = 'Our simulation results for every combination of speaker noise, listener noise, and N. Note that there is an increase in ordering preference extrmity as N increases when listener noise is greater than speaker noise. N corresponds to the overall frequency of the binomial (count of AandB plus count of BandA) and varies across 10, 100, and 1000. Both speaker and listener noise were varied across 0, 0.033, 0.066, and 0.1. The distributions in the plot demonstrate the inferred ordering preference at the 500th generation.'}
 knitr::include_graphics('Figures/full_plot_smallerN.png')
 ```
 
-It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Note that a speaker error here is not whether the speaker produces the more frequent binomial ordering, but rather whether the speaker produces the intended binomial ordering. In other words, if a speaker intends to produce *butter and bread*, and instead produces *bread and butter*, this is an error in our model. Framed this way, one explanation for our results is that when the listener is inferring more noise than the speakers are producing, they are relying more on their inferences, which can become more and more extreme. On the other hand, if they're not inferring enough noise, then they will rely more on the data. The greater the speaker noise, due to how we operationalized speaker noise, the more balanced the data will be.
+It is useful to revisit here what the speaker and listener noise parameters represent. The speaker noise parameter is how often the speaker produces an error and the listener noise parameter is the listeners' belief of how noisy the environment is. Note that a speaker error here is not whether the speaker produces the more frequent binomial ordering, but rather whether the speaker produces the intended binomial ordering. In other words, if a speaker intends to produce *butter and bread*, and instead produces *bread and butter*, this is an error in our model. Framed this way, one explanation for our results is that when the listener is inferring more noise than the speakers are producing, they are relying more on their inferences, which can become more and more extreme. On the other hand, if they're not inferring enough noise, then they are relying more on the data. The greater the speaker noise, due to how we operationalized speaker noise, the more balanced the data will be.
 
 Thus our model makes a novel prediction: In order to account for frequency-dependent preference extremity, listeners must be inferring more noise than speakers are actually producing.
 
